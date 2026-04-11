@@ -3,630 +3,364 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morning Brief — 11 เมษายน 2569</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Kodangs Weekly Report — Week 15 · Apr 6–11, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Inter',sans-serif; background:#FAFAFA; color:#1a1a1a; line-height:1.6; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #fafafa; color: #1a1a1a; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
+.header { text-align: center; padding: 40px 0 32px; }
+.header h1 { font-size: 28px; font-weight: 300; color: #1a1a1a; margin-bottom: 4px; }
+.header .subtitle { font-size: 14px; color: #888; font-weight: 400; }
+.header .date { font-size: 13px; color: #C9A96E; margin-top: 8px; font-weight: 500; }
+.card { background: #fff; border-radius: 16px; padding: 24px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.card-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 16px; }
+.gold { color: #C9A96E; }
+.big-number { font-size: 36px; font-weight: 700; color: #1a1a1a; }
+.big-number.small { font-size: 24px; }
+.label { font-size: 12px; color: #999; margin-top: 2px; }
+.caveat { font-size: 11px; color: #bbb; margin-top: 12px; font-style: italic; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.stat-box { text-align: center; padding: 16px 8px; background: #f8f8f6; border-radius: 12px; }
+.stat-box .num { font-size: 22px; font-weight: 700; }
+.stat-box .lbl { font-size: 11px; color: #888; margin-top: 2px; }
 
-/* NAV TABS */
-.tab-nav { display:flex; background:#1a1a1a; position:sticky; top:0; z-index:100; padding:0 20px; }
-.tab-btn { padding:14px 24px; cursor:pointer; border:none; background:none; color:rgba(255,255,255,0.5); font-size:13px; font-weight:600; border-bottom:3px solid transparent; font-family:'Inter',sans-serif; transition:all .2s; letter-spacing:.3px; }
-.tab-btn:hover { color:rgba(255,255,255,0.8); }
-.tab-btn.active { color:#fff; border-bottom-color:#C9A96E; }
-.tab-pane { display:none; }
-.tab-pane.active { display:block; }
+/* Pace bar */
+.pace-wrap { margin-top: 16px; }
+.pace-bar-bg { height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
+.pace-bar { height: 100%; border-radius: 4px; transition: width 0.8s ease; }
+.pace-label { display: flex; justify-content: space-between; font-size: 11px; color: #999; margin-top: 4px; }
 
-/* HEADER */
-.header { background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 60%,#3a3a3a 100%); padding:36px 24px 28px; text-align:center; }
-.header .brand { font-size:12px; color:#C9A96E; letter-spacing:2px; text-transform:uppercase; font-weight:500; margin-bottom:8px; }
-.header h1 { font-size:28px; font-weight:800; color:#fff; letter-spacing:-0.5px; }
-.header .date { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.1); border-radius:24px; padding:8px 22px; margin-top:12px; }
-.header .date span { color:#e0d5c0; font-size:14px; font-weight:500; }
+/* Month comparison */
+.month-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid #f5f5f5; }
+.month-row:last-child { border-bottom: none; }
+.month-name { width: 40px; font-size: 12px; font-weight: 600; color: #888; }
+.month-bar-bg { flex: 1; height: 6px; background: #f0f0f0; border-radius: 3px; overflow: hidden; }
+.month-bar { height: 100%; background: #C9A96E; border-radius: 3px; }
+.month-val { width: 80px; text-align: right; font-size: 12px; font-weight: 600; }
 
-/* CONTENT */
-.content { max-width:1000px; margin:0 auto; padding:20px 14px 40px; }
+/* Product table */
+.product-row { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f5f5f5; }
+.product-row:last-child { border-bottom: none; }
+.product-rank { width: 28px; font-size: 14px; font-weight: 700; color: #C9A96E; }
+.product-info { flex: 1; }
+.product-name { font-size: 13px; font-weight: 600; }
+.product-meta { font-size: 11px; color: #999; }
+.product-rev { text-align: right; font-size: 14px; font-weight: 700; }
+.product-rev .pct { font-size: 11px; color: #999; font-weight: 400; }
 
-/* KPI STRIP */
-.kpi-strip { display:flex; justify-content:center; gap:28px; margin-top:22px; flex-wrap:wrap; }
-.kpi-item { text-align:center; }
-.kpi-value { font-size:24px; font-weight:800; color:#fff; }
-.kpi-value.gold { color:#C9A96E; }
-.kpi-label { font-size:10px; color:rgba(255,255,255,0.5); margin-top:2px; text-transform:uppercase; letter-spacing:.5px; }
-.kpi-divider { width:1px; background:rgba(255,255,255,0.15); }
+/* Task list */
+.task-item { padding: 10px 0; border-bottom: 1px solid #f5f5f5; }
+.task-item:last-child { border-bottom: none; }
+.task-status { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-right: 6px; }
+.task-status.stuck { background: #fee; color: #c33; }
+.task-status.urgent { background: #fff3e0; color: #e65100; }
+.task-status.progress { background: #e8f5e9; color: #2e7d32; }
+.task-status.waiting { background: #f3e5f5; color: #7b1fa2; }
+.task-name { font-size: 13px; font-weight: 500; }
+.task-detail { font-size: 11px; color: #999; margin-top: 2px; }
 
-/* CARDS */
-.card { background:#fff; border-radius:14px; box-shadow:0 1px 8px rgba(0,0,0,0.07); margin-bottom:16px; overflow:hidden; }
-.card-head { background:linear-gradient(90deg,#1a1a1a,#2a2a2a); padding:12px 18px; display:flex; justify-content:space-between; align-items:center; }
-.card-head .title { color:#fff; font-size:14px; font-weight:700; }
-.card-head .subtitle { color:#C9A96E; font-size:12px; }
+/* Team overdue */
+.team-person { font-size: 13px; font-weight: 600; margin-top: 12px; margin-bottom: 4px; }
+.team-task { font-size: 12px; color: #666; padding-left: 12px; line-height: 1.8; }
+.team-task .overdue { color: #c33; font-weight: 600; font-size: 11px; }
 
-/* SUMMARY CARDS */
-.summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px; margin-bottom:20px; }
-.summary-card { background:#fff; border-radius:14px; padding:18px 16px; box-shadow:0 1px 8px rgba(0,0,0,0.07); border-left:5px solid #C9A96E; }
-.summary-card .label { font-size:10px; color:#95a5a6; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
-.summary-card .value { font-size:22px; font-weight:800; color:#1a1a1a; margin-top:4px; }
-.summary-card .meta { font-size:11px; color:#b2bec3; margin-top:2px; }
-.summary-card.green { border-left-color:#27ae60; }
-.summary-card.red { border-left-color:#e74c3c; }
-.summary-card.blue { border-left-color:#3498db; }
+/* News */
+.news-item { padding: 8px 0; border-bottom: 1px solid #f5f5f5; font-size: 13px; }
+.news-item:last-child { border-bottom: none; }
+.news-emoji { margin-right: 6px; }
 
-/* PROGRESS BAR */
-.pace-bar { height:10px; background:#f0ece4; border-radius:8px; margin-top:8px; overflow:hidden; }
-.pace-fill { height:100%; border-radius:8px; transition:width .6s ease; }
-.pace-fill.on-track { background:linear-gradient(90deg,#27ae60,#2ecc71); }
-.pace-fill.behind { background:linear-gradient(90deg,#e67e22,#f39c12); }
-.pace-fill.danger { background:linear-gradient(90deg,#e74c3c,#c0392b); }
+/* Calendar */
+.cal-empty { text-align: center; padding: 20px; color: #888; font-size: 14px; }
 
-/* TABLE */
-table { width:100%; border-collapse:collapse; }
-thead tr { background:#faf8f5; }
-th { padding:9px 12px; text-align:left; font-size:10px; color:#8a7d6b; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
-th.right { text-align:right; }
-th.center { text-align:center; }
-td { padding:10px 12px; font-size:13px; border-bottom:1px solid #f5f3f0; }
-td.name { font-weight:600; }
-td.center { text-align:center; color:#555; }
-td.right { text-align:right; }
-td.revenue { font-weight:700; color:#1a1a1a; }
-td.profit { font-weight:700; color:#27ae60; }
-td.gold { font-weight:700; color:#C9A96E; }
-tr.total { background:#faf8f5; border-top:2px solid #e8e2d8; }
-tr.total td { font-weight:800; color:#1a1a1a; font-size:13px; }
+/* Footer */
+.footer { text-align: center; padding: 32px 0; font-size: 14px; color: #ccc; font-weight: 300; }
 
-/* MINI BARS */
-.mini-bar { height:4px; background:#f0ece4; border-radius:4px; margin-top:4px; }
-.mini-fill { height:4px; background:linear-gradient(90deg,#C9A96E,#d4b87a); border-radius:4px; }
+/* Insight box */
+.insight { background: #f8f6f0; border-left: 3px solid #C9A96E; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 16px; font-size: 13px; color: #555; }
+.insight strong { color: #1a1a1a; }
 
-/* GRID */
-.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-@media (max-width:700px) { .grid-2 { grid-template-columns:1fr; } }
-
-/* SECTION TITLE */
-.section-title { font-size:16px; font-weight:800; color:#1a1a1a; margin:24px 0 12px; display:flex; align-items:center; gap:8px; }
-
-/* TASK / CALENDAR ITEMS */
-.task-item { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; border-bottom:1px solid #f5f5f5; font-size:14px; }
-.task-item:last-child { border-bottom:none; }
-.pill { font-size:10px; font-weight:700; padding:2px 8px; border-radius:12px; white-space:nowrap; flex-shrink:0; margin-top:2px; }
-.pill-stuck { background:#FEE2E2; color:#DC2626; }
-.pill-urgent { background:#FEF3C7; color:#D97706; }
-.pill-progress { background:#DBEAFE; color:#2563EB; }
-.pill-waiting { background:#F3E8FF; color:#7C3AED; }
-.task-name { flex:1; }
-.task-name a { color:#1a1a1a; text-decoration:none; }
-.task-name a:hover { color:#C9A96E; }
-.task-meta { font-size:12px; color:#999; margin-top:2px; }
-.overdue { font-size:11px; color:#DC2626; font-weight:500; white-space:nowrap; flex-shrink:0; }
-
-.team-group { margin-bottom:10px; padding:0 14px; }
-.team-name { font-size:13px; font-weight:600; color:#C9A96E; margin-bottom:4px; }
-.team-task { font-size:13px; color:#555; padding:3px 0 3px 12px; border-left:2px solid #f0f0f0; margin-bottom:2px; }
-
-.calendar-empty { text-align:center; padding:20px 14px; }
-.calendar-empty .big { font-size:18px; font-weight:500; margin-bottom:8px; }
-.calendar-empty .suggest { font-size:13px; color:#888; text-align:left; margin-top:12px; }
-
-.email-note { text-align:center; padding:14px; font-size:14px; color:#888; }
-.email-note code { background:#f5f5f5; padding:2px 6px; border-radius:4px; font-size:12px; color:#555; }
-
-.news-item { padding:8px 14px; border-bottom:1px solid #f5f5f5; font-size:14px; }
-.news-item:last-child { border-bottom:none; }
-.news-item a { color:#C9A96E; text-decoration:none; font-size:12px; }
-
-/* CHANNEL BAR */
-.channel-bar { display:flex; height:8px; border-radius:6px; overflow:hidden; margin-bottom:6px; }
-
-/* FOOTER */
-.footer { text-align:center; padding:32px 20px; color:#ccc; font-size:14px; font-weight:300; }
+@media (max-width: 600px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .big-number { font-size: 28px; }
+  .container { padding: 16px 12px; }
+}
 </style>
 </head>
 <body>
+<div class="container">
 
-<!-- TAB NAV -->
-<nav class="tab-nav">
-  <button class="tab-btn active" onclick="switchTab('brief',this)">☀️ Morning Brief</button>
-  <button class="tab-btn" onclick="switchTab('sales',this)">📊 Sales Dashboard</button>
-</nav>
-
-<!-- ═══════════════════════════════════════ -->
-<!-- TAB 1: MORNING BRIEF                   -->
-<!-- ═══════════════════════════════════════ -->
-<div id="tab-brief" class="tab-pane active">
-
+<!-- Header -->
 <div class="header">
-  <div class="brand">Kodangs · Morning Brief</div>
-  <h1>Good morning, Noon. ☀️</h1>
-  <div class="date"><span>วันเสาร์ที่ 11 เมษายน 2569 · Saturday, April 11, 2026</span></div>
-  <div class="kpi-strip">
-    <div class="kpi-item"><div class="kpi-value gold">฿510,274</div><div class="kpi-label">MTD Revenue</div></div>
-    <div class="kpi-divider"></div>
-    <div class="kpi-item"><div class="kpi-value">฿4,420</div><div class="kpi-label">วันนี้</div></div>
-    <div class="kpi-divider"></div>
-    <div class="kpi-item"><div class="kpi-value">฿1.39M</div><div class="kpi-label">Projected</div></div>
-    <div class="kpi-divider"></div>
-    <div class="kpi-item"><div class="kpi-value" style="color:#f39c12;">56%</div><div class="kpi-label">vs ฿2.5M Target</div></div>
-  </div>
+  <h1>Weekly Sales Report ☀️</h1>
+  <div class="subtitle">สัปดาห์ที่ 15 · 6–11 เมษายน 2569</div>
+  <div class="date">April 6–11, 2026 · Shipnity Channels Only</div>
 </div>
 
-<div class="content">
-
-<!-- QUICK SALES CARD -->
-<div class="summary-grid">
-  <div class="summary-card">
-    <div class="label">📊 MTD Revenue (11 วัน)</div>
-    <div class="value">฿510,274</div>
-    <div class="meta">vs Mar same period: ahead +55%</div>
-  </div>
-  <div class="summary-card green">
-    <div class="label">💰 Gross Profit MTD</div>
-    <div class="value" style="color:#27ae60;">฿295,853</div>
-    <div class="meta">GP margin ~58% · COGS ฿117K</div>
-  </div>
-  <div class="summary-card blue">
-    <div class="label">📦 Stock</div>
-    <div class="value" style="color:#3498db;">7,521</div>
-    <div class="meta">มูลค่า ฿8.7M · ต้นทุน ฿1.87M</div>
-  </div>
-  <div class="summary-card">
-    <div class="label">🎯 Pace vs Target ฿2.5M</div>
-    <div class="value">฿1.39M</div>
-    <div class="pace-bar"><div class="pace-fill behind" style="width:56%;"></div></div>
-    <div class="meta" style="margin-top:4px;">Projected pace · ต้องเพิ่มอีก ฿1.1M</div>
-  </div>
-</div>
-
-<!-- 🔴 CLICKUP NOON -->
-<div class="section-title">🔴 ClickUp · ต้องการ Noon</div>
+<!-- Sales Summary -->
 <div class="card">
-  <div class="task-item">
-    <span class="pill pill-stuck">STUCK</span>
-    <div class="task-name"><a href="https://app.clickup.com/t/86c72h7nj">Create Invoice for shipping 1st round</a><div class="task-meta">US Expansion · Noon + Kodangs US</div></div>
-    <span class="overdue">25 วัน</span>
+  <div class="card-title">📊 Weekly Sales — Shipnity Channels</div>
+  <div class="grid-2">
+    <div>
+      <div class="big-number">฿198,161</div>
+      <div class="label">ยอดขายสัปดาห์นี้ (6 วัน)</div>
+    </div>
+    <div>
+      <div class="big-number small">116 <span style="font-size:14px;font-weight:400;color:#888">ชิ้น</span></div>
+      <div class="label">36 สินค้า · AOV ฿1,708/ชิ้น</div>
+    </div>
   </div>
-  <div class="task-item">
-    <span class="pill pill-urgent">URGENT</span>
-    <div class="task-name"><a href="https://app.clickup.com/t/86c7bq25z">Eye recheck contract with more details</a><div class="task-meta">US Expansion · Noon + Kodangs US</div></div>
-    <span class="overdue">24 วัน</span>
-  </div>
-  <div class="task-item">
-    <span class="pill pill-progress">IN PROGRESS</span>
-    <div class="task-name"><a href="https://app.clickup.com/t/86c8y2gbp">prepare เอกสารแนบท้าย contract</a><div class="task-meta">US Expansion · Noon solo</div></div>
-    <span class="overdue">25 วัน</span>
-  </div>
-  <div class="task-item">
-    <span class="pill pill-urgent">URGENT</span>
-    <div class="task-name"><a href="https://app.clickup.com/t/86c7wbjaa">QA สินค้าค้างสต้อก — ทำโปรโมชั่นด่วน</a><div class="task-meta">ห้องSTOCK · Noon + Kanjana</div></div>
-    <span class="overdue">~42 วัน</span>
-  </div>
-  <div class="task-item">
-    <span class="pill pill-waiting">WAITING</span>
-    <div class="task-name"><a href="https://app.clickup.com/t/86c383m4h">RECRUIT: designer + marketing modco</a><div class="task-meta">Back End · Noon + Kanjana</div></div>
-    <span class="overdue">URGENT</span>
-  </div>
-  <div class="task-item">
-    <span class="pill pill-progress">IN PROGRESS</span>
-    <div class="task-name"><a href="https://app.clickup.com/t/86c7bq2qe">THAI LAWYER</a><div class="task-meta">US Expansion · Noon solo</div></div>
-    <span class="overdue">~86 วัน</span>
-  </div>
-</div>
 
-<!-- 👥 TEAM + 📅 CALENDAR -->
-<div class="grid-2">
-  <div>
-    <div class="section-title">👥 Team Overdue</div>
-    <div class="card" style="padding:14px 0;">
-      <div class="team-group"><div class="team-name">Kunyakorn (Nine)</div>
-        <div class="team-task">🔴 email marketing carter & restock <span style="color:#DC2626;font-size:11px">(URGENT · ~35 วัน)</span></div>
-        <div class="team-task">🟡 ภาพปกขนาดเท่ากัน website <span style="color:#D97706;font-size:11px">(HIGH · ~36 วัน)</span></div>
+  <div style="margin-top: 20px;">
+    <div class="grid-3">
+      <div class="stat-box">
+        <div class="num gold">฿510,274</div>
+        <div class="lbl">MTD เมษายน (11 วัน)</div>
       </div>
-      <div class="team-group"><div class="team-name">FRONT</div>
-        <div class="team-task">🔴 อัพเดท project activity <span style="color:#DC2626;font-size:11px">(URGENT · ~35 วัน)</span></div>
+      <div class="stat-box">
+        <div class="num" style="color:#c33">฿1.39M</div>
+        <div class="lbl">Projected (vs ฿2.5M)</div>
       </div>
-      <div class="team-group"><div class="team-name">Tantai</div>
-        <div class="team-task">🔴 สติกเกอร์ติดหน้าร้าน <span style="color:#DC2626;font-size:11px">(URGENT · ~38 วัน)</span></div>
-      </div>
-      <div class="team-group"><div class="team-name">2A Perspective</div>
-        <div class="team-task">🔴 Signage ผลิตป้ายต่างๆ <span style="color:#DC2626;font-size:11px">(URGENT · ~38 วัน)</span></div>
-      </div>
-      <div class="team-group"><div class="team-name">Panpornpach</div>
-        <div class="team-task">🔴 steps to do <span style="color:#DC2626;font-size:11px">(URGENT · ~50 วัน)</span></div>
+      <div class="stat-box">
+        <div class="num" style="color:#e65100">55.7%</div>
+        <div class="lbl">Pace to Target</div>
       </div>
     </div>
   </div>
-  <div>
-    <div class="section-title">📅 Calendar</div>
-    <div class="card">
-      <div class="calendar-empty">
-        <div class="big">ไม่มี meeting วันนี้ — Deep Work Day ✨</div>
-        <div class="suggest">
-          <strong style="color:#C9A96E;">Focus suggestions:</strong><br>
-          → ปิด Invoice for shipping 1st round (stuck 25 วัน)<br>
-          → เคลียร์เอกสาร contract US expansion<br>
-          → QA สินค้าค้างสต้อก กับ Kanjana
-        </div>
-      </div>
+
+  <div class="pace-wrap">
+    <div class="pace-bar-bg">
+      <div class="pace-bar" style="width: 55.7%; background: linear-gradient(90deg, #C9A96E, #e65100);"></div>
     </div>
-    <div class="section-title">📧 Email</div>
-    <div class="card">
-      <div class="email-note">
-        Gmail ยังไม่ได้เชื่อมต่อ — เช็ค inbox เองได้นะ<br><br>
-        <code>chanipanima@gmail.com</code><br>
-        <code>kodangs@gmail.com</code><br>
-        <code>kodangs.info@gmail.com</code>
-      </div>
+    <div class="pace-label">
+      <span>฿0</span>
+      <span>Target ฿2.5M</span>
     </div>
   </div>
+
+  <div class="insight">
+    <strong>⚠️ Pace ต่ำกว่าเป้า —</strong> projected ฿1.39M vs target ฿2.5M ยังเหลือเวลา 19 วัน แต่ต้องเร่ง ฿110K/วัน ถึงจะถึงเป้า ช่วง Songkran อาจกระทบ → วางแผน promo หลังสงกรานต์
+  </div>
+
+  <div class="caveat">* ยอดนี้เฉพาะ Shipnity (LINE@/Shopify/เว็บ) — ยอดจริงรวม Shopee/Lazada/TikTok Shop จะสูงกว่านี้</div>
 </div>
 
-<!-- NEWS + TRENDS -->
-<div class="grid-2">
-  <div>
-    <div class="section-title">🌍 Business & Market</div>
-    <div class="card">
-      <div class="news-item">🇹🇭 K-fashion ครองใจวัยรุ่นไทย — 40%+ Gen Z เลือกสไตล์เกาหลีเป็นอันดับ 1<br><a href="https://blog.delivered.co.kr/k-fashion/10-international-countries-that-love-k-fashion-the-most-in-2026/">DK Blog →</a></div>
-      <div class="news-item">🛒 Path-to-purchase ไทย: TikTok → LINE → Shopee → IG reinforce<br><a href="https://iconicthai.com/thailand-trends/">Iconic Thai →</a></div>
-      <div class="news-item">🇺🇸 US streetwear → $102.61B by 2032 — hip-hop + sneaker collabs drive growth<br><a href="https://www.fortunebusinessinsights.com/streetwear-market-110565">Fortune Insights →</a></div>
-    </div>
-  </div>
-  <div>
-    <div class="section-title">🔥 Trend Pulse</div>
-    <div class="card">
-      <div class="news-item">👖 "City-to-Trail" — workwear + outdoor merge: work jackets, technical blousons<br><a href="https://stealdeal.com/blogs/news/how-streetwear-is-evolving-in-2026-top-wholesale-trends-retailers-should-watch">Steal Deal →</a></div>
-      <div class="news-item">🧬 Hybrid Wear: office-to-gym-to-street ในชุดเดียว — technical fabrics + formal silhouettes<br><a href="https://theapparelfactory.com/blog/2026-wholesale-apparel-trends-top-10-insights-for-buyers/">Apparel Factory →</a></div>
-      <div class="news-item">💡 <strong style="color:#C9A96E;">Kodangs angle:</strong> workwear × functional × minimal = "city-to-trail" + "hybrid wear" sweet spot for US wholesale</div>
-    </div>
-  </div>
-</div>
-
-</div><!-- end content -->
-</div><!-- end tab-brief -->
-
-
-<!-- ═══════════════════════════════════════ -->
-<!-- TAB 2: SALES DASHBOARD                 -->
-<!-- ═══════════════════════════════════════ -->
-<div id="tab-sales" class="tab-pane">
-
-<div class="header">
-  <div class="brand">Kodangs · Sales Dashboard</div>
-  <h1>📊 เมษายน 2569</h1>
-  <div class="date"><span>ข้อมูลจาก Shipnity · อัพเดท 11 เม.ย. 2569</span></div>
-  <div class="kpi-strip">
-    <div class="kpi-item"><div class="kpi-value gold">฿510,274</div><div class="kpi-label">MTD Revenue</div></div>
-    <div class="kpi-divider"></div>
-    <div class="kpi-item"><div class="kpi-value">฿295,853</div><div class="kpi-label">Gross Profit</div></div>
-    <div class="kpi-divider"></div>
-    <div class="kpi-item"><div class="kpi-value">246</div><div class="kpi-label">Units Sold</div></div>
-    <div class="kpi-divider"></div>
-    <div class="kpi-item"><div class="kpi-value">231</div><div class="kpi-label">SKUs</div></div>
-    <div class="kpi-divider"></div>
-    <div class="kpi-item"><div class="kpi-value" style="color:#27ae60;">58%</div><div class="kpi-label">GP Margin</div></div>
-  </div>
-</div>
-
-<div class="content">
-
-<!-- ① HEALTH CHECK -->
-<div class="section-title">① ยอดเราเป็นยังไง? — Health Check</div>
-<div class="summary-grid">
-  <div class="summary-card">
-    <div class="label">💰 Revenue วันนี้</div>
-    <div class="value">฿4,420</div>
-    <div class="meta">11 เม.ย. 2569</div>
-  </div>
-  <div class="summary-card">
-    <div class="label">📊 MTD (11 วัน)</div>
-    <div class="value">฿510,274</div>
-    <div class="meta">avg ฿46,388/วัน</div>
-  </div>
-  <div class="summary-card green">
-    <div class="label">💰 Gross Profit</div>
-    <div class="value" style="color:#27ae60;">฿295,853</div>
-    <div class="meta">margin 58% · COGS ฿117K · Ship ฿60K</div>
-  </div>
-  <div class="summary-card">
-    <div class="label">🎯 Pace vs ฿2.5M Target</div>
-    <div class="value">฿1.39M</div>
-    <div class="pace-bar"><div class="pace-fill behind" style="width:56%;"></div></div>
-    <div class="meta" style="margin-top:4px;">56% of target · ต้องเร่งอีก ฿1.1M</div>
-  </div>
-</div>
-
-<!-- MONTHLY COMPARISON TABLE -->
+<!-- Month Comparison -->
 <div class="card">
-  <div class="card-head">
-    <span class="title">📅 เปรียบเทียบรายเดือน 2569</span>
-    <span class="subtitle">YTD ฿3,254,922</span>
+  <div class="card-title">📅 Monthly Comparison 2026 (Shipnity)</div>
+  <div class="month-row">
+    <div class="month-name">ม.ค.</div>
+    <div class="month-bar-bg"><div class="month-bar" style="width:100%"></div></div>
+    <div class="month-val">฿1,017,696</div>
   </div>
-  <table>
-    <thead><tr>
-      <th>เดือน</th>
-      <th class="right">Revenue</th>
-      <th class="right">COGS</th>
-      <th class="right">Shipping</th>
-      <th class="right">Gross Profit</th>
-      <th class="right">GP%</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td class="name">🥇 มกราคม</td>
-        <td class="right revenue">฿1,017,696</td>
-        <td class="right">฿277,015</td>
-        <td class="right">฿113,585</td>
-        <td class="right profit">฿627,096</td>
-        <td class="right gold">61.6%</td>
-      </tr>
-      <tr>
-        <td class="name">มีนาคม</td>
-        <td class="right revenue">฿896,750</td>
-        <td class="right">฿260,301</td>
-        <td class="right">฿111,587</td>
-        <td class="right profit">฿524,861</td>
-        <td class="right gold">58.5%</td>
-      </tr>
-      <tr>
-        <td class="name">กุมภาพันธ์</td>
-        <td class="right revenue">฿867,332</td>
-        <td class="right">฿249,970</td>
-        <td class="right">฿115,434</td>
-        <td class="right profit">฿501,953</td>
-        <td class="right gold">57.9%</td>
-      </tr>
-      <tr style="background:#fffbf0;">
-        <td class="name">🔥 เมษายน (11 วัน)</td>
-        <td class="right revenue">฿510,274</td>
-        <td class="right">฿117,468</td>
-        <td class="right">฿59,823</td>
-        <td class="right profit">฿295,853</td>
-        <td class="right gold">58.0%</td>
-      </tr>
-      <tr class="total">
-        <td>รวม YTD</td>
-        <td class="right">฿3,254,922</td>
-        <td class="right">฿904,753</td>
-        <td class="right">฿400,433</td>
-        <td class="right">฿1,949,763</td>
-        <td class="right" style="color:#C9A96E;">59.9%</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- ② CHANNEL INTELLIGENCE -->
-<div class="section-title">② ช่องไหนทำเงิน? — Channel Intelligence</div>
-
-<div class="card" style="padding:18px;">
-  <div style="font-size:13px;font-weight:600;margin-bottom:8px;">Revenue Share by Channel (เม.ย.)</div>
-  <div class="channel-bar">
-    <div style="width:62.2%;background:#27ae60;" title="LINE@ 62.2%"></div>
-    <div style="width:22.6%;background:#3498db;" title="TikTok 22.6%"></div>
-    <div style="width:7.7%;background:#9b59b6;" title="Shopify 7.7%"></div>
-    <div style="width:4%;background:#e74c3c;" title="Shopee"></div>
-    <div style="width:3.5%;background:#f39c12;" title="Other"></div>
+  <div class="month-row">
+    <div class="month-name">ก.พ.</div>
+    <div class="month-bar-bg"><div class="month-bar" style="width:85.3%"></div></div>
+    <div class="month-val">฿867,332</div>
   </div>
-  <div style="display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:#666;margin-top:6px;">
-    <span>🟢 LINE@ <strong>62.2%</strong></span>
-    <span>🔵 TikTok <strong>22.6%</strong></span>
-    <span>🟣 Shopify <strong>7.7%</strong></span>
-    <span>🔴 Shopee <strong>~4%</strong></span>
-    <span>🟡 Other <strong>~3.5%</strong></span>
+  <div class="month-row">
+    <div class="month-name">มี.ค.</div>
+    <div class="month-bar-bg"><div class="month-bar" style="width:88.1%"></div></div>
+    <div class="month-val">฿896,750</div>
+  </div>
+  <div class="month-row">
+    <div class="month-name" style="color:#C9A96E">เม.ย.</div>
+    <div class="month-bar-bg"><div class="month-bar" style="width:50.1%; background: linear-gradient(90deg, #C9A96E, #e6c993);"></div></div>
+    <div class="month-val" style="color:#C9A96E">฿510,274 <span style="font-size:10px;color:#999">(MTD)</span></div>
   </div>
 </div>
 
+<!-- Top Products -->
 <div class="card">
-  <div class="card-head">
-    <span class="title">📱 Channel Breakdown</span>
-    <span class="subtitle">เม.ย. 2569</span>
+  <div class="card-title">🏆 Top Products This Week</div>
+
+  <div class="product-row">
+    <div class="product-rank">1</div>
+    <div class="product-info">
+      <div class="product-name">Carter Denim Pants Cream</div>
+      <div class="product-meta">17 ชิ้น · ฿2,344/ชิ้น avg</div>
+    </div>
+    <div class="product-rev">฿39,840 <div class="pct">20.1%</div></div>
   </div>
-  <table>
-    <thead><tr>
-      <th>ช่องทาง</th>
-      <th class="right">% Share</th>
-      <th class="right">Est. Revenue</th>
-      <th class="right">Insight</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td class="name">🟢 LINE@</td>
-        <td class="right gold">62.2%</td>
-        <td class="right revenue">~฿317,390</td>
-        <td class="right" style="font-size:12px;color:#27ae60;">Main channel — loyal base</td>
-      </tr>
-      <tr>
-        <td class="name">🔵 TikTok</td>
-        <td class="right gold">22.6%</td>
-        <td class="right revenue">~฿115,322</td>
-        <td class="right" style="font-size:12px;color:#3498db;">Growth engine — scale here</td>
-      </tr>
-      <tr>
-        <td class="name">🟣 Shopify</td>
-        <td class="right gold">7.7%</td>
-        <td class="right revenue">~฿39,291</td>
-        <td class="right" style="font-size:12px;color:#9b59b6;">DTC — highest AOV?</td>
-      </tr>
-      <tr>
-        <td class="name">🔴 Shopee / Lazada</td>
-        <td class="right gold">~7.5%</td>
-        <td class="right revenue">~฿38,271</td>
-        <td class="right" style="font-size:12px;color:#e74c3c;">Marketplace — watch fees</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <div class="product-row">
+    <div class="product-rank">2</div>
+    <div class="product-info">
+      <div class="product-name">Carter Denim Pants Faded Black</div>
+      <div class="product-meta">14 ชิ้น · ฿2,112/ชิ้น avg</div>
+    </div>
+    <div class="product-rev">฿29,571 <div class="pct">14.9%</div></div>
+  </div>
+
+  <div class="product-row">
+    <div class="product-rank">3</div>
+    <div class="product-info">
+      <div class="product-name">KODANGS Basic Pocket Tee</div>
+      <div class="product-meta">19 ชิ้น · best seller by units 🔥</div>
+    </div>
+    <div class="product-rev">฿14,753 <div class="pct">7.4%</div></div>
+  </div>
+
+  <div class="product-row">
+    <div class="product-rank">4</div>
+    <div class="product-info">
+      <div class="product-name">Carter Denim Jacket</div>
+      <div class="product-meta">5 ชิ้น · ฿2,490/ชิ้น avg</div>
+    </div>
+    <div class="product-rev">฿12,450 <div class="pct">6.3%</div></div>
+  </div>
+
+  <div class="product-row">
+    <div class="product-rank">5</div>
+    <div class="product-info">
+      <div class="product-name">Warsaw Denim Pants</div>
+      <div class="product-meta">5 ชิ้น · ฿2,190/ชิ้น avg</div>
+    </div>
+    <div class="product-rev">฿10,950 <div class="pct">5.5%</div></div>
+  </div>
+
+  <div class="product-row">
+    <div class="product-rank">6</div>
+    <div class="product-info">
+      <div class="product-name">Mini Parma Bag</div>
+      <div class="product-meta">7 ชิ้น · กระเป๋าขายดี</div>
+    </div>
+    <div class="product-rev">฿10,652 <div class="pct">5.4%</div></div>
+  </div>
+
+  <div class="product-row">
+    <div class="product-rank">7</div>
+    <div class="product-info">
+      <div class="product-name">Russell Balloon Pants</div>
+      <div class="product-meta">4 ชิ้น</div>
+    </div>
+    <div class="product-rev">฿7,560 <div class="pct">3.8%</div></div>
+  </div>
+
+  <div class="product-row">
+    <div class="product-rank">8</div>
+    <div class="product-info">
+      <div class="product-name">Carpenter Bag</div>
+      <div class="product-meta">3 ชิ้น · กระเป๋าใส่คอม</div>
+    </div>
+    <div class="product-rev">฿7,470 <div class="pct">3.8%</div></div>
+  </div>
+
+  <div class="product-row">
+    <div class="product-rank">9</div>
+    <div class="product-info">
+      <div class="product-name">Carter Pants Camo</div>
+      <div class="product-meta">2 ชิ้น</div>
+    </div>
+    <div class="product-rev">฿4,980 <div class="pct">2.5%</div></div>
+  </div>
+
+  <div class="product-row">
+    <div class="product-rank">10</div>
+    <div class="product-info">
+      <div class="product-name">Carter Denim Pants (other)</div>
+      <div class="product-meta">3 ชิ้น</div>
+    </div>
+    <div class="product-rev">฿4,980 <div class="pct">2.5%</div></div>
+  </div>
+
+  <div class="insight">
+    <strong>🔥 Carter Line ครองตลาด —</strong> Carter Denim (Cream + Faded Black + others) = 36 ชิ้น รวม ฿79,371 = <strong>40%</strong> ของยอดสัปดาห์<br>
+    <strong>💡 Bags กำลังมา —</strong> Mini Parma + Carpenter = 10 ชิ้น ฿18,122 (9.1%) → ลองดัน content กระเป๋าเพิ่ม<br>
+    <strong>📌 Pocket Tee = volume leader</strong> (19 ชิ้น) แต่ AOV ต่ำ → ดีสำหรับ entry-level customer acquisition
+  </div>
 </div>
 
-<!-- ③ PRODUCT PROFITABILITY -->
-<div class="section-title">③ สินค้าตัวไหนทำเงินจริง? — Top Products เม.ย.</div>
-
+<!-- ClickUp Tasks -->
 <div class="card">
-  <div class="card-head">
-    <span class="title">🔥 Top Sellers — April 2569</span>
-    <span class="subtitle">231 SKU · 246 units</span>
+  <div class="card-title">🔴 ClickUp · ต้องการ Noon</div>
+
+  <div class="task-item">
+    <span class="task-status stuck">STUCK</span>
+    <span class="task-name">Create Invoice for shipping 1st round</span>
+    <div class="task-detail">KDS USA · Noon + Kodangs US + Kodangs Manage</div>
   </div>
-  <table>
-    <thead><tr>
-      <th class="center">#</th>
-      <th>สินค้า</th>
-      <th class="right">ราคา</th>
-      <th class="center">จำนวน</th>
-      <th class="right">ยอดขาย</th>
-      <th class="right">กำไร</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td class="center" style="font-size:18px;">🥇</td>
-        <td class="name">Waldoe Knit Long Sleeve M สีน้ำเงินน้ำตาล</td>
-        <td class="right">฿1,890</td>
-        <td class="center"><strong>3</strong></td>
-        <td class="right revenue">฿5,043</td>
-        <td class="right profit">฿3,393</td>
-      </tr>
-      <tr>
-        <td class="center" style="font-size:18px;">🥈</td>
-        <td class="name">Waldoe Knit Long Sleeve XL สีเขียวน้ำตาล</td>
-        <td class="right">฿1,890</td>
-        <td class="center"><strong>2</strong></td>
-        <td class="right revenue">฿3,780</td>
-        <td class="right profit">฿2,680</td>
-      </tr>
-      <tr>
-        <td class="center" style="font-size:18px;">🥈</td>
-        <td class="name">Waldoe Knit Long Sleeve S สีเขียวน้ำตาล</td>
-        <td class="right">฿1,890</td>
-        <td class="center"><strong>2</strong></td>
-        <td class="right revenue">฿3,780</td>
-        <td class="right profit">฿2,680</td>
-      </tr>
-      <tr>
-        <td class="center" style="font-size:18px;">🥈</td>
-        <td class="name">Russell Balloon Pants XL สีเขียวมิ้น</td>
-        <td class="right">฿1,890</td>
-        <td class="center"><strong>2</strong></td>
-        <td class="right revenue">฿3,780</td>
-        <td class="right profit">฿2,680</td>
-      </tr>
-      <tr>
-        <td class="center" style="font-size:18px;">5️⃣</td>
-        <td class="name">Waldoe Knit Long Sleeve XL สีน้ำเงินน้ำตาล</td>
-        <td class="right">฿1,890</td>
-        <td class="center"><strong>1</strong></td>
-        <td class="right revenue">฿1,890</td>
-        <td class="right profit">฿1,340</td>
-      </tr>
-      <tr>
-        <td class="center" style="font-size:18px;">5️⃣</td>
-        <td class="name">Russell Balloon Pants XS สีเขียวมิ้น</td>
-        <td class="right">฿1,890</td>
-        <td class="center"><strong>1</strong></td>
-        <td class="right revenue">฿1,890</td>
-        <td class="right profit">฿1,340</td>
-      </tr>
-      <tr>
-        <td class="center" style="font-size:18px;">5️⃣</td>
-        <td class="name">Russell Balloon Pants M สีเขียวมิ้น</td>
-        <td class="right">฿1,890</td>
-        <td class="center"><strong>1</strong></td>
-        <td class="right revenue">฿1,890</td>
-        <td class="right profit">฿1,340</td>
-      </tr>
-      <tr>
-        <td class="center" style="font-size:18px;">8️⃣</td>
-        <td class="name">Kodangs Waldoe Knit Long Sleeve ลายทาง</td>
-        <td class="right">฿1,418</td>
-        <td class="center"><strong>1</strong></td>
-        <td class="right revenue">฿1,418</td>
-        <td class="right profit">฿868</td>
-      </tr>
-      <tr>
-        <td class="center" style="font-size:18px;">9️⃣</td>
-        <td class="name">Ratio Ring Size 8.5</td>
-        <td class="right">฿1,190</td>
-        <td class="center"><strong>1</strong></td>
-        <td class="right revenue">฿1,190</td>
-        <td class="right profit">฿1,068</td>
-      </tr>
-    </tbody>
-  </table>
-  <div style="padding:12px 18px;font-size:12px;color:#888;background:#faf8f5;">
-    💡 <strong style="color:#C9A96E;">Insight:</strong> Waldoe Knit Long Sleeve = hero product เดือนนี้ (หลาย size ขายดี) · Russell Balloon Pants ตามมาเป็นอันดับ 2 · ทั้ง 2 ตัว margin ~67-71% — ดีมาก
+
+  <div class="task-item">
+    <span class="task-status urgent">URGENT</span>
+    <span class="task-name">Eye recheck with contract again with more details</span>
+    <div class="task-detail">KDS USA · In Progress · Noon + Kodangs US</div>
+  </div>
+
+  <div class="task-item">
+    <span class="task-status urgent">URGENT</span>
+    <span class="task-name">QA: สินค้าค้างสต้อกเยอะ → ทำโปรโมชั่นด่วน</span>
+    <div class="task-detail">ห้อง STOCK · Kanjana + Noon</div>
+  </div>
+
+  <div class="task-item">
+    <span class="task-status waiting">WAITING</span>
+    <span class="task-name">RECRUIT: designer + marketing modco</span>
+    <div class="task-detail">Back End · Kanjana + Noon</div>
+  </div>
+
+  <div class="task-item">
+    <span class="task-status progress">IN PROGRESS</span>
+    <span class="task-name">prepare เอกสารแนบท้าย contract + details</span>
+    <div class="task-detail">KDS USA · Noon solo</div>
   </div>
 </div>
 
-<!-- ④ INVENTORY HEALTH -->
-<div class="section-title">④ เงินจมที่ไหน? — Inventory Health</div>
+<!-- Team Overdue -->
+<div class="card">
+  <div class="card-title">👥 Team Overdue</div>
 
-<div class="grid-2">
-  <div class="card" style="padding:18px;">
-    <div style="font-size:14px;font-weight:700;margin-bottom:12px;">📦 Stock Overview</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      <div><div style="font-size:10px;color:#95a5a6;font-weight:700;text-transform:uppercase;">Total Units</div><div style="font-size:24px;font-weight:800;">7,521</div></div>
-      <div><div style="font-size:10px;color:#95a5a6;font-weight:700;text-transform:uppercase;">Stock Value (Retail)</div><div style="font-size:24px;font-weight:800;color:#C9A96E;">฿8.7M</div></div>
-      <div><div style="font-size:10px;color:#95a5a6;font-weight:700;text-transform:uppercase;">Stock Cost</div><div style="font-size:24px;font-weight:800;">฿1.87M</div></div>
-      <div><div style="font-size:10px;color:#95a5a6;font-weight:700;text-transform:uppercase;">Potential GP</div><div style="font-size:24px;font-weight:800;color:#27ae60;">฿6.88M</div></div>
-    </div>
-    <div style="margin-top:14px;padding:10px 12px;background:#fffbf0;border-radius:8px;font-size:12px;color:#8a7d6b;">
-      ⚠️ ถ้าขายได้ avg ฿900K/เดือน → stock ปัจจุบันมีขายได้ ~9.7 เดือน<br>
-      → ตรวจสอบว่ามีตัวไหนค้างนานเกิน 60 วันมั้ย
-    </div>
-  </div>
+  <div class="team-person">🎨 2A Perspective (Designer)</div>
+  <div class="team-task">• Signage ผลิตป้ายต่างๆ <span class="overdue">URGENT · overdue</span></div>
+  <div class="team-task">• CONCEPT ของร้านและพร้อป <span class="overdue">URGENT · overdue</span></div>
+  <div class="team-task">• design pocket frank · collection plan ขาดสินค้าผู้หญิง</div>
 
-  <div class="card" style="padding:18px;">
-    <div style="font-size:14px;font-weight:700;margin-bottom:12px;">🚨 Action Items</div>
-    <div style="padding:10px 12px;background:#FEF2F2;border-radius:8px;margin-bottom:8px;">
-      <div style="font-size:12px;font-weight:700;color:#DC2626;">🔴 ตรวจ Dead Stock</div>
-      <div style="font-size:13px;color:#555;margin-top:4px;">สินค้าค้าง > 60 วัน ไม่มี movement → ทำ flash sale / bundle</div>
-      <div style="font-size:11px;color:#999;margin-top:2px;">ตรง task ClickUp "QA สินค้าค้างสต้อก" ที่ค้าง ~42 วัน</div>
-    </div>
-    <div style="padding:10px 12px;background:#FEF9C3;border-radius:8px;margin-bottom:8px;">
-      <div style="font-size:12px;font-weight:700;color:#D97706;">🟡 Restock Alert</div>
-      <div style="font-size:13px;color:#555;margin-top:4px;">Waldoe Knit + Russell Balloon = hero items → เช็คว่า stock พอมั้ย</div>
-    </div>
-    <div style="padding:10px 12px;background:#ECFDF5;border-radius:8px;">
-      <div style="font-size:12px;font-weight:700;color:#059669;">🟢 Push Top Performers</div>
-      <div style="font-size:13px;color:#555;margin-top:4px;">Waldoe Knit margin 67%+ → push บน TikTok + LINE@ เพิ่ม</div>
-    </div>
-  </div>
+  <div class="team-person">🖥 Kunyakorn (Nine)</div>
+  <div class="team-task">• ฝาก email marketing carter nd restock <span class="overdue">URGENT</span></div>
+  <div class="team-task">• ภาพปกเว็บไซต์ให้เท่ากัน <span class="overdue">HIGH</span></div>
+  <div class="team-task">• หน้าแรกใน Shopee/Lazada อัพเดท</div>
+
+  <div class="team-person">🎬 Tantai</div>
+  <div class="team-task">• สติกเกอร์ติดหน้าร้าน + โปสเตอร์ตกแต่ง store <span class="overdue">URGENT</span></div>
+  <div class="team-task">• camo ลง YouTube · อัพเดทคลิป plus size</div>
+
+  <div class="team-person">💰 FRONT + Pachaya</div>
+  <div class="team-task">• FRONT: อัพเดท project activity <span class="overdue">URGENT</span></div>
+  <div class="team-task">• Pachaya: facebook ads bill · ลงยอด the mall · รวบรวมวิธีเช็คยอดทุกสาขา</div>
 </div>
 
-<!-- ⑤ PAYMENT SPLIT -->
-<div class="section-title">⑤ ยอดตามธนาคาร — Payment Split</div>
-<div class="card" style="padding:18px;">
-  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-    <div style="flex:1;min-width:200px;">
-      <div class="channel-bar" style="height:12px;">
-        <div style="width:85.4%;background:#1a1a1a;" title="SCB 85.4%"></div>
-        <div style="width:10.5%;background:#e74c3c;" title="Lazada 10.5%"></div>
-        <div style="width:4.1%;background:#f39c12;" title="Shopee"></div>
-      </div>
-      <div style="display:flex;gap:16px;font-size:12px;color:#666;margin-top:8px;">
-        <span>⬛ ไทยพาณิชย์ <strong>85.4%</strong></span>
-        <span>🔴 Lazada <strong>10.5%</strong></span>
-        <span>🟡 Shopee <strong>~4.1%</strong></span>
-      </div>
-    </div>
-    <div style="font-size:12px;color:#888;max-width:280px;">
-      💡 SCB เป็น main — Lazada + Shopee รวม ~15% (ค่า commission ต้องคิดเข้า COGS ด้วย)
-    </div>
+<!-- Calendar -->
+<div class="card">
+  <div class="card-title">📅 Calendar · วันเสาร์ 11 เมษายน</div>
+  <div class="cal-empty">ไม่มี meeting — Weekend Rest Day 🌴<br><span style="font-size:12px;color:#aaa">สงกรานต์ใกล้แล้ว — วางแผน promo post-Songkran</span></div>
+</div>
+
+<!-- News -->
+<div class="card">
+  <div class="card-title">🌍 Market News & Trends</div>
+
+  <div class="news-item">
+    <span class="news-emoji">🛒</span> TikTok Shop = growth spike, Shopee = revenue floor — Thai brands ใช้ combo strategy ได้ดี
+  </div>
+  <div class="news-item">
+    <span class="news-emoji">🇰🇷</span> K-fashion influence แรงในไทย — 40% ของ Gen Z บอกว่า Korean style เป็น top inspiration
+  </div>
+  <div class="news-item">
+    <span class="news-emoji">👷</span> Workwear × Streetwear fusion กำลัง trend ใน wholesale 2026 — ตรง positioning ของ Kodangs พอดี
+  </div>
+  <div class="news-item">
+    <span class="news-emoji">📏</span> High-GSM fabric (240-300g tees) กำลังเป็นที่ต้องการ — buyers มองหา "substantial feel"
+  </div>
+  <div class="news-item">
+    <span class="news-emoji">🤫</span> "Quiet Luxury" เข้า wholesale sector — understated designs > loud graphics
   </div>
 </div>
 
-<div style="padding:16px;background:#fff;border-radius:14px;box-shadow:0 1px 8px rgba(0,0,0,0.07);margin-top:16px;font-size:12px;color:#999;text-align:center;">
-  📋 <em>หมายเหตุ: cost data ใน Shipnity อาจยังไม่ accurate — Noon จะ update ทีหลัง · ข้อมูลสินค้าแสดงเฉพาะ page 1 (top SKUs) · Full export ต้อง download Excel จาก Shipnity โดยตรง</em>
+<!-- Footer -->
+<div class="footer">ทำสัปดาห์หน้าให้ดีกว่า. 🤍</div>
+
 </div>
-
-</div><!-- end content -->
-</div><!-- end tab-sales -->
-
-<!-- FOOTER -->
-<div class="footer">ทำวันนี้ให้ดี. 🤍</div>
-
-<script>
-function switchTab(id, btn) {
-  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  btn.classList.add('active');
-}
-</script>
 </body>
 </html>
