@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<\!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
@@ -7,160 +7,190 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--bg:#0a0a0a;--card:#141414;--card2:#1a1a1a;--border:#222;--gold:#C9A96E;--gold-l:#e8d5a8;--gold-bg:rgba(201,169,110,.08);--text:#eee;--muted:#777;--dim:#444;--red:#ff4757;--red-bg:rgba(255,71,87,.1);--green:#2ed573;--green-bg:rgba(46,213,115,.1);--blue:#5b9aff;--blue-bg:rgba(91,154,255,.1);--yellow:#ffa502;--yellow-bg:rgba(255,165,2,.1);--purple:#a855f7;--purple-bg:rgba(168,85,247,.1)}
+:root{--bg:#0a0a0a;--card:#141414;--border:#222;--gold:#C9A96E;--gold-l:#e8d5a8;--gold-bg:rgba(201,169,110,.08);--text:#eee;--muted:#777;--dim:#444;--red:#ff4757;--red-bg:rgba(255,71,87,.1);--green:#2ed573;--green-bg:rgba(46,213,115,.1);--blue:#5b9aff;--blue-bg:rgba(91,154,255,.1);--yellow:#ffa502;--yellow-bg:rgba(255,165,2,.1);--purple:#a855f7;--purple-bg:rgba(168,85,247,.1)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
-.wrap{max-width:1280px;margin:0 auto;padding:24px 20px}
-
-/* Header */
+.w{max-width:1280px;margin:0 auto;padding:24px 20px}
 .hdr{text-align:center;padding:36px 0 28px;border-bottom:1px solid var(--border);margin-bottom:28px}
 .hdr h1{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--gold)}
-.hdr .big{font-size:32px;font-weight:300;margin-top:4px;letter-spacing:.5px}
-.hdr .big b{font-weight:700;color:var(--gold)}
+.hdr .big{font-size:32px;font-weight:300;margin-top:4px}.hdr .big b{font-weight:700;color:var(--gold)}
 .hdr .sub{font-size:13px;color:var(--muted);margin-top:6px}
 .badge{display:inline-flex;align-items:center;gap:6px;background:var(--yellow-bg);border:1px solid rgba(255,165,2,.15);color:var(--yellow);font-size:12px;padding:5px 14px;border-radius:20px;margin-top:12px;font-weight:500}
-
-/* Section */
 .sec{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--dim);margin:32px 0 12px;display:flex;align-items:center;gap:10px}
 .sec::after{content:'';flex:1;height:1px;background:var(--border)}
-
-/* Grid */
-.g{display:grid;gap:14px}
-.g2{grid-template-columns:1fr 1fr}
-.g3{grid-template-columns:1fr 1fr 1fr}
-.g4{grid-template-columns:repeat(4,1fr)}
-.g5{grid-template-columns:repeat(5,1fr)}
-.g21{grid-template-columns:2fr 1fr}
-.g12{grid-template-columns:1fr 2fr}
-.span2{grid-column:span 2}
-.spanf{grid-column:1/-1}
-
-/* Card */
-.c{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;transition:border-color .2s}
+.g{display:grid;gap:14px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}.g5{grid-template-columns:repeat(5,1fr)}
+.c{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;transition:border-color .2s;animation:fi .35s ease both}
 .c:hover{border-color:#333}
 .ct{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-
-/* KPI */
 .kpi{text-align:center;padding:18px 12px}
 .kpi .kl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.kpi .kv{font-size:28px;font-weight:800}
-.kpi .ks{font-size:11px;color:var(--muted);margin-top:4px}
+.kpi .kv{font-size:28px;font-weight:800}.kpi .ks{font-size:11px;color:var(--muted);margin-top:4px}
 .kv-gold{color:var(--gold)}.kv-red{color:var(--red)}.kv-green{color:var(--green)}.kv-blue{color:var(--blue)}.kv-dim{color:var(--dim)}
-
-/* Progress */
-.pb{background:var(--border);border-radius:6px;height:6px;overflow:hidden;margin:6px 0}
-.pf{height:100%;border-radius:6px}
-.pf-r{background:linear-gradient(90deg,var(--red),#ff6b81)}.pf-g{background:linear-gradient(90deg,var(--green),#7bed9f)}.pf-b{background:linear-gradient(90deg,var(--blue),#88b8ff)}.pf-gold{background:linear-gradient(90deg,var(--gold),var(--gold-l))}
-
-/* Table */
 .tb{width:100%;border-collapse:collapse;margin-top:10px}
 .tb th{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);font-weight:600}
-.tb td{font-size:12px;padding:9px 10px;border-bottom:1px solid var(--border)}
-.tb tr:last-child td{border-bottom:none}
-.tb tr:hover td{background:rgba(255,255,255,.015)}
+.tb td{font-size:12px;padding:9px 10px;border-bottom:1px solid var(--border)}.tb tr:last-child td{border-bottom:none}
 .tb .num{text-align:right;font-variant-numeric:tabular-nums}
-
-/* Tags */
 .tag{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px;text-transform:uppercase;letter-spacing:.3px}
 .tag-r{background:var(--red-bg);color:var(--red)}.tag-y{background:var(--yellow-bg);color:var(--yellow)}.tag-b{background:var(--blue-bg);color:var(--blue)}.tag-g{background:var(--green-bg);color:var(--green)}.tag-p{background:var(--purple-bg);color:var(--purple)}
-
-/* Stat row */
-.sr{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px}
-.sr:last-child{border-bottom:none}
-.sr .l{color:var(--muted)}.sr .v{font-weight:600;font-variant-numeric:tabular-nums}
-
-/* Insight */
-.ins{background:var(--gold-bg);border:1px solid rgba(201,169,110,.12);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:12px;color:var(--gold-l);line-height:1.6}
-.ins b{color:var(--gold)}
-
-/* Chart */
-.ch{position:relative;margin-top:6px}
-.ch-s{height:160px}.ch-m{height:210px}.ch-l{height:260px}
-
-/* Task */
-.tk{padding:10px 0;border-bottom:1px solid var(--border)}
-.tk:last-child{border-bottom:none}
-.tk-n{font-size:13px;font-weight:500;margin-bottom:3px}
-.tk-m{font-size:11px;color:var(--muted);display:flex;gap:10px}
-
-/* News */
-.nw{padding:9px 0;border-bottom:1px solid var(--border);font-size:12px;line-height:1.6}
-.nw:last-child{border-bottom:none}
-
-/* Footer */
-.ftr{text-align:center;padding:36px 0 20px;color:var(--dim);font-size:12px}
-.ftr .motto{color:var(--muted);font-size:14px;margin-bottom:6px}
-
-/* Responsive */
-@media(max-width:768px){.g2,.g3,.g4,.g5,.g21,.g12{grid-template-columns:1fr}.span2{grid-column:span 1}.kpi .kv{font-size:22px}}
-
-/* Animate */
+.sr{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px}.sr:last-child{border-bottom:none}.sr .l{color:var(--muted)}.sr .v{font-weight:600;font-variant-numeric:tabular-nums}
+.ins{background:var(--gold-bg);border:1px solid rgba(201,169,110,.12);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:12px;color:var(--gold-l);line-height:1.6}.ins b{color:var(--gold)}
+.ch{position:relative;margin-top:6px}.ch-m{height:210px}
+.tk{padding:10px 0;border-bottom:1px solid var(--border)}.tk:last-child{border-bottom:none}
+.tk-n{font-size:13px;font-weight:500;margin-bottom:3px}.tk-m{font-size:11px;color:var(--muted);display:flex;gap:10px}
+.nw{padding:9px 0;border-bottom:1px solid var(--border);font-size:12px;line-height:1.6}.nw:last-child{border-bottom:none}
+.ftr{text-align:center;padding:36px 0 20px;color:var(--dim);font-size:12px}.ftr .motto{color:var(--muted);font-size:14px;margin-bottom:6px}
+@media(max-width:768px){.g2,.g3,.g5{grid-template-columns:1fr}.kpi .kv{font-size:22px}}
 @keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.c{animation:fi .35s ease both}
-
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="w">
+<div class="hdr"><h1>Kodangs Operations</h1><div class="big">Daily <b>Ops Report</b></div><div class="sub">วันจันทร์ที่ 13 เมษายน 2569 · Monday, 13 April 2026</div><div class="badge">🎉 วันสงกรานต์ · Songkran Holiday · 13–16 เม.ย.</div></div>
 
-<!-- ===== HEADER ===== -->
-<div class="hdr">
-  <h1>Kodangs Operations</h1>
-  <div class="big">Daily <b>Ops Report</b></div>
-  <div class="sub">วันจันทร์ที่ 13 เมษายน 2569 · Monday, 13 April 2026</div>
-  <div class="badge">🎉 วันสงกรานต์ · Songkran Holiday · 13–16 เม.ย.</div>
-</div>
-
-<!-- ===== 1. KPI ROW ===== -->
 <div class="sec">💰 Revenue Overview · Shipnity All Channels</div>
 <div class="g g5">
-  <div class="c kpi"><div class="kl">Today</div><div class="kv kv-dim">฿0</div><div class="ks">Songkran</div></div>
-  <div class="c kpi"><div class="kl">MTD Revenue</div><div class="kv kv-gold">฿508K</div><div class="ks">13 days · เม.ย.</div></div>
-  <div class="c kpi"><div class="kl">Projected Pace</div><div class="kv kv-red">฿1.17M</div><div class="ks">vs เป้า ฿2.5M</div></div>
-  <div class="c kpi"><div class="kl">YTD Revenue</div><div class="kv kv-blue">฿3.26M</div><div class="ks">ม.ค.–เม.ย. 2569</div></div>
-  <div class="c kpi"><div class="kl">Units Sold MTD</div><div class="kv kv-green">248</div><div class="ks">121 SKUs</div></div>
+<div class="c kpi"><div class="kl">Today</div><div class="kv kv-dim">฿0</div><div class="ks">Songkran</div></div>
+<div class="c kpi"><div class="kl">MTD Revenue</div><div class="kv kv-gold">฿508K</div><div class="ks">13 days · เม.ย.</div></div>
+<div class="c kpi"><div class="kl">Projected Pace</div><div class="kv kv-red">฿1.17M</div><div class="ks">vs เป้า ฿2.5M</div></div>
+<div class="c kpi"><div class="kl">YTD Revenue</div><div class="kv kv-blue">฿3.26M</div><div class="ks">ม.ค.–เม.ย. 2569</div></div>
+<div class="c kpi"><div class="kl">Units Sold MTD</div><div class="kv kv-green">248</div><div class="ks">121 SKUs</div></div>
 </div>
 
-<!-- ===== 2. SALES ANALYSIS ===== -->
 <div class="sec">📊 Sales Analysis</div>
 <div class="g g2">
-  <div class="c">
-    <div class="ct">📈 Monthly Revenue Trend (2569)</div>
-    <div class="ch ch-m"><canvas id="c1"></canvas></div>
-    <div class="ins">💡 <b>ม.ค. peak ฿1.02M</b> — ก.พ.-มี.ค. ทรงตัว ~฿880K แต่ เม.ย. Songkran effect ชัด → ดู pace จริงหลังวันที่ 16</div>
-  </div>
-  <div class="c">
-    <div class="ct">🎯 Pace to Target · ฿2.5M</div>
-    <div style="display:flex;justify-content:center;padding:10px 0">
-      <div style="position:relative;width:170px;height:170px">
-        <canvas id="c2"></canvas>
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-40%);text-align:center">
-          <div style="font-size:34px;font-weight:800;color:var(--red)">47%</div>
-          <div style="font-size:10px;color:var(--muted)">of target</div>
-        </div>
-      </div>
-    </div>
-    <div class="sr"><span class="l">Daily avg needed (17 days left)</span><span class="v" style="color:var(--red)">฿117,193</span></div>
-    <div class="sr"><span class="l">Daily avg so far</span><span class="v">฿39,055</span></div>
-    <div class="sr"><span class="l">Gap to target</span><span class="v" style="color:var(--red)">-฿1.99M</span></div>
-    <div class="ins">💡 <b>ต้องทำ 3x ของ avg ปัจจุบัน</b> — focus post-Songkran promo + TikTok Live push</div>
-  </div>
+<div class="c"><div class="ct">📈 Monthly Revenue (2569)</div><div class="ch ch-m"><canvas id="c1"></canvas></div><div class="ins">💡 <b>ม.ค. peak ฿1.02M</b> — เม.ย. Songkran effect ชัด → ดู pace จริงหลังวันที่ 16</div></div>
+<div class="c"><div class="ct">🎯 Pace to Target · ฿2.5M</div><div style="display:flex;justify-content:center;padding:10px 0"><div style="position:relative;width:170px;height:170px"><canvas id="c2"></canvas><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-40%);text-align:center"><div style="font-size:34px;font-weight:800;color:var(--red)">47%</div><div style="font-size:10px;color:var(--muted)">of target</div></div></div></div>
+<div class="sr"><span class="l">Daily avg needed (17 days left)</span><span class="v" style="color:var(--red)">฿117,193</span></div>
+<div class="sr"><span class="l">Daily avg so far</span><span class="v">฿39,055</span></div>
+<div class="sr"><span class="l">Gap to target</span><span class="v" style="color:var(--red)">-฿1.99M</span></div>
+<div class="ins">💡 <b>ต้องทำ 3x ของ avg ปัจจุบัน</b> — focus post-Songkran promo + TikTok Live</div></div>
 </div>
 
-<!-- ===== 3. MONTHLY P&L ===== -->
+<div class="sec">📋 Monthly P&L</div>
 <div class="g g2">
-  <div class="c">
-    <div class="ct">📋 Monthly P&L (2569)</div>
-    <table class="tb">
-      <tr><th>เดือน</th><th class="num">Revenue</th><th class="num">Cost</th><th class="num">GP</th><th class="num">GP%</th><th class="num">Shipping</th></tr>
-      <tr><td>ม.ค.</td><td class="num" style="font-weight:700">฿1,017,696</td><td class="num">฿277,015</td><td class="num" style="color:var(--green)">฿627,096</td><td class="num"><span class="tag tag-g">62%</span></td><td class="num">฿113,585</td></tr>
-      <tr><td>ก.พ.</td><td class="num" style="font-weight:700">฿867,332</td><td class="num">฿249,970</td><td class="num" style="color:var(--green)">฿501,953</td><td class="num"><span class="tag tag-g">58%</span></td><td class="num">฿115,438</td></tr>
-      <tr><td>มี.ค.</td><td class="num" style="font-weight:700">฿896,750</td><td class="num">฿260,301</td><td class="num" style="color:var(--green)">฿524,861</td><td class="num"><span class="tag tag-g">59%</span></td><td class="num">฿111,587</td></tr>
-      <tr style="color:var(--gold)"><td><b>เม.ย. MTD</b></td><td class="num" style="font-weight:700">฿507,717</td><td class="num">฿118,548</td><td class="num" style="color:var(--green)">฿296,571</td><td class="num"><span class="tag tag-g">58%</span></td><td class="num">฿61,455</td></tr>
-    </table>
-    <div class="ins">💡 <b>GP margin stable 58-62%</b> — healthy unit economics, shipping ~12% of revenue</div>
-  </div>
-  <div class="c">
-    <div class="ct">💵 Revenue / Cost / GP Chart</div>
-    <div class="ch ch-m"><canvas id="c3">
+<div class="c"><div class="ct">📊 P&L Table (2569)</div>
+<table class="tb"><tr><th>เดือน</th><th class="num">Revenue</th><th class="num">Cost</th><th class="num">GP</th><th class="num">GP%</th><th class="num">Shipping</th></tr>
+<tr><td>ม.ค.</td><td class="num" style="font-weight:700">฿1,017,696</td><td class="num">฿277,015</td><td class="num" style="color:var(--green)">฿627,096</td><td class="num"><span class="tag tag-g">62%</span></td><td class="num">฿113,585</td></tr>
+<tr><td>ก.พ.</td><td class="num" style="font-weight:700">฿867,332</td><td class="num">฿249,970</td><td class="num" style="color:var(--green)">฿501,953</td><td class="num"><span class="tag tag-g">58%</span></td><td class="num">฿115,438</td></tr>
+<tr><td>มี.ค.</td><td class="num" style="font-weight:700">฿896,750</td><td class="num">฿260,301</td><td class="num" style="color:var(--green)">฿524,861</td><td class="num"><span class="tag tag-g">59%</span></td><td class="num">฿111,587</td></tr>
+<tr style="color:var(--gold)"><td><b>เม.ย. MTD</b></td><td class="num" style="font-weight:700">฿507,717</td><td class="num">฿118,548</td><td class="num" style="color:var(--green)">฿296,571</td><td class="num"><span class="tag tag-g">58%</span></td><td class="num">฿61,455</td></tr></table>
+<div class="ins">💡 <b>GP margin stable 58-62%</b> — healthy unit economics, shipping ~12% of revenue</div></div>
+<div class="c"><div class="ct">💵 Revenue / Cost / GP</div><div class="ch ch-m"><canvas id="c3"></canvas></div></div>
+</div>
+
+<div class="sec">🏆 Top 10 Products · MTD</div>
+<div class="c"><div class="ct">🏷 Product Performance</div>
+<table class="tb"><tr><th>#</th><th>Product</th><th class="num">Units</th><th class="num">Revenue</th><th class="num">Avg</th><th class="num">%</th></tr>
+<tr><td>1</td><td><b>Carter Jacket - Black</b></td><td class="num">14</td><td class="num" style="font-weight:700">฿58,660</td><td class="num">฿4,190</td><td class="num"><span class="tag tag-g">11.6%</span></td></tr>
+<tr><td>2</td><td><b>Carter Jacket - Olive</b></td><td class="num">12</td><td class="num" style="font-weight:700">฿50,280</td><td class="num">฿4,190</td><td class="num"><span class="tag tag-g">9.9%</span></td></tr>
+<tr><td>3</td><td><b>Carter Jacket - Sand</b></td><td class="num">11</td><td class="num" style="font-weight:700">฿46,090</td><td class="num">฿4,190</td><td class="num"><span class="tag tag-g">9.1%</span></td></tr>
+<tr><td>4</td><td>Pocket Tee - White</td><td class="num">15</td><td class="num">฿22,350</td><td class="num">฿1,490</td><td class="num">4.4%</td></tr>
+<tr><td>5</td><td>Pocket Tee - Black</td><td class="num">14</td><td class="num">฿20,860</td><td class="num">฿1,490</td><td class="num">4.1%</td></tr>
+<tr><td>6</td><td>Work Pants - Olive</td><td class="num">10</td><td class="num">฿24,900</td><td class="num">฿2,490</td><td class="num">4.9%</td></tr>
+<tr><td>7</td><td>Work Pants - Black</td><td class="num">9</td><td class="num">฿22,410</td><td class="num">฿2,490</td><td class="num">4.4%</td></tr>
+<tr><td>8</td><td>Utility Bag - Tan</td><td class="num">8</td><td class="num">฿15,920</td><td class="num">฿1,990</td><td class="num">3.1%</td></tr>
+<tr><td>9</td><td>Canvas Belt - Black</td><td class="num">12</td><td class="num">฿10,680</td><td class="num">฿890</td><td class="num">2.1%</td></tr>
+<tr><td>10</td><td>Kodangs Cap - Black</td><td class="num">18</td><td class="num">฿10,620</td><td class="num">฿590</td><td class="num">2.1%</td></tr></table>
+<div class="ins">💡 <b>Carter = 30.6% revenue</b> จาก 3 สี — hero product · Pocket Tee สูงสุดด้าน units → bundle strategy</div></div>
+
+<div class="sec">📦 Category Breakdown</div>
+<div class="g g2">
+<div class="c"><div class="ct">🍩 Revenue by Category</div><div class="ch ch-m"><canvas id="c4"></canvas></div></div>
+<div class="c"><div class="ct">📊 Key Metrics</div>
+<div class="sr"><span class="l">Pants</span><span class="v" style="color:var(--gold)">58.5%</span></div>
+<div class="sr"><span class="l">Tops</span><span class="v">24.2%</span></div>
+<div class="sr"><span class="l">Accessories</span><span class="v">17.3%</span></div>
+<div class="sr"><span class="l">AOV</span><span class="v" style="color:var(--gold)">฿1,865</span></div>
+<div class="sr"><span class="l">Carter % Revenue</span><span class="v" style="color:var(--green)">47%</span></div>
+<div class="sr"><span class="l">Top SKU Concentration</span><span class="v" style="color:var(--yellow)">30.6%</span></div>
+<div class="ins">💡 <b>Carter = hero, Pocket Tee = gateway</b> — upsell from tee to jacket/pants</div></div>
+</div>
+
+<div class="sec">🎯 Product Strategy</div>
+<div class="g g3">
+<div class="c"><div class="ct"><span class="tag tag-g">HERO</span> Carter Collection</div>
+<div class="sr"><span class="l">Revenue MTD</span><span class="v" style="color:var(--gold)">฿155K</span></div>
+<div class="sr"><span class="l">% of Total</span><span class="v">47%</span></div>
+<div class="sr"><span class="l">Units</span><span class="v">37</span></div>
+<div class="ins">⚠️ <b>Restock alert:</b> Black M/L · New colorway Q3</div></div>
+<div class="c"><div class="ct"><span class="tag tag-b">GATEWAY</span> Pocket Tee</div>
+<div class="sr"><span class="l">Units MTD</span><span class="v" style="color:var(--green)">29</span></div>
+<div class="sr"><span class="l">Revenue</span><span class="v">฿43K</span></div>
+<div class="sr"><span class="l">AOV</span><span class="v">฿1,490</span></div>
+<div class="ins">💡 <b>Highest unit mover</b> — bundle with Carter/Pants</div></div>
+<div class="c"><div class="ct"><span class="tag tag-p">GROWTH</span> Bags & Acc</div>
+<div class="sr"><span class="l">Revenue MTD</span><span class="v">฿37K</span></div>
+<div class="sr"><span class="l">% of Total</span><span class="v">17.3%</span></div>
+<div class="sr"><span class="l">Trend</span><span class="v" style="color:var(--green)">↑ Growing</span></div>
+<div class="ins">💡 <b>Utility Bag strong</b> — expand for US market</div></div>
+</div>
+
+<div class="sec">🔴 ClickUp · ต้องการ Noon</div>
+<div class="c">
+<div class="tk"><div class="tk-n"><span class="tag tag-r">STUCK</span> Create Invoice for shipping 1st round</div><div class="tk-m"><span>US List · Kodangs Manage</span><span>Noon</span></div></div>
+<div class="tk"><div class="tk-n"><span class="tag tag-r">URGENT</span> Eye recheck contract with more details</div><div class="tk-m"><span>US List</span><span>Noon, Eye</span></div></div>
+<div class="tk"><div class="tk-n"><span class="tag tag-b">IN PROGRESS</span> prepare เอกสารแนบท้าย contract</div><div class="tk-m"><span>US List</span><span>Noon (solo)</span></div></div>
+<div class="tk"><div class="tk-n"><span class="tag tag-r">URGENT</span> QA: สินค้าค้างสต๊อก — ทำโปรโมชั่นด่วน</div><div class="tk-m"><span>ห้องSTOCK</span><span>Kanjana, Noon</span></div></div>
+<div class="tk"><div class="tk-n"><span class="tag tag-y">WAITING</span> RECRUIT: designer + marketing modco</div><div class="tk-m"><span>HR</span><span>Noon</span></div></div>
+</div>
+
+<div class="sec">👥 Team Overdue</div>
+<div class="c">
+<div class="tk"><div class="tk-n">Kanjana → เช็คสต๊อก dead stock ทุกสัปดาห์</div><div class="tk-m"><span class="tag tag-r">5 วันแล้ว</span></div></div>
+<div class="tk"><div class="tk-n">แทนไท → 20 kodangslife post series</div><div class="tk-m"><span class="tag tag-y">3 วันแล้ว</span></div></div>
+<div class="tk"><div class="tk-n">Eye → ส่ง contract US draft v2</div><div class="tk-m"><span class="tag tag-y">2 วันแล้ว</span></div></div>
+</div>
+
+<div class="sec">🇺🇸 US Expansion Blockers</div>
+<div class="c" style="border-color:rgba(255,71,87,.3);background:rgba(255,71,87,.04)">
+<div class="ct" style="color:var(--red)">⚠️ Critical Blockers</div>
+<div class="tk"><div class="tk-n" style="color:var(--red)">Invoice + shipping docs — STUCK</div><div class="tk-m">ต้องจัดการก่อนส่งของรอบแรก</div></div>
+<div class="tk"><div class="tk-n" style="color:var(--yellow)">Contract pending Eye's review</div><div class="tk-m">Eye overdue 2 วัน</div></div>
+<div class="tk"><div class="tk-n" style="color:var(--muted)">Timeline risk: delay = miss US summer</div><div class="tk-m">Target ship by end April</div></div>
+</div>
+
+<div class="sec">📅 Calendar · วันนี้</div>
+<div class="c"><div style="text-align:center;padding:16px 0;font-size:15px;color:var(--muted)">ไม่มี meeting — <b style="color:var(--gold)">Deep Work Day</b> ✨ · วันสงกรานต์</div>
+<div class="ins">💡 <b>Focus:</b> US Invoice prep + Contract เอกสารแนบท้าย + Plan post-Songkran TikTok Live</div></div>
+
+<div class="sec">🌍 News & Trends</div>
+<div class="c">
+<div class="nw">📈 TikTok Shop Thailand Q1 2026 โตขึ้น 40% — โอกาส live selling</div>
+<div class="nw">🔥 Workwear trend ยังแรง US/EU — Carhartt x Nike collab กระแสดี</div>
+<div class="nw">🛒 Shopee เตรียมลด commission seller ใหม่ เริ่ม พ.ค. 2026</div>
+<div class="nw">🌱 Gen Z ให้ความสำคัญ ethical production — โอกาสสำหรับ Kodangs</div>
+</div>
+
+<div class="sec">🧭 Strategy · Risks · Goals</div>
+<div class="g g3">
+<div class="c"><div class="ct" style="color:var(--green)">✅ Strategy</div>
+<div class="nw">Post-Songkran push (17–30 เม.ย.)</div>
+<div class="nw">TikTok Live 2x/week start 17 เม.ย.</div>
+<div class="nw">Carter restock priority (Black M/L)</div>
+<div class="nw">US invoice — จัดการภายในสัปดาห์นี้</div></div>
+<div class="c"><div class="ct" style="color:var(--red)">⚠️ Risks</div>
+<div class="nw">Songkran slowdown (expected, 4 days)</div>
+<div class="nw">US timeline delay — contract + invoice</div>
+<div class="nw">Hero dependency: Carter = 47%</div>
+<div class="nw">Team bandwidth: key tasks overdue</div></div>
+<div class="c"><div class="ct" style="color:var(--blue)">🎯 Monthly Goals</div>
+<div class="sr"><span class="l">Revenue</span><span class="v" style="color:var(--gold)">฿2.5M</span></div>
+<div class="sr"><span class="l">GP Margin</span><span class="v" style="color:var(--green)">>58%</span></div>
+<div class="sr"><span class="l">US 1st Ship</span><span class="v" style="color:var(--yellow)">By Apr 30</span></div>
+<div class="sr"><span class="l">TikTok Lives</span><span class="v">2x/week</span></div></div>
+</div>
+
+<div class="ftr"><div class="motto">ทำวันนี้ให้ดี. 🤍</div><div>Generated 13 Apr 2026 · Kodangs Operations</div></div>
+</div>
+
+<script>
+const G='#C9A96E',R='#ff4757',Gr='#2ed573',B='#5b9aff',M='#777',Bd='#222';
+const df={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}};
+const sc={grid:{color:Bd},ticks:{color:M,font:{size:10}}};
+new Chart(document.getElementById('c1'),{type:'bar',data:{labels:['ม.ค.','ก.พ.','มี.ค.','เม.ย.'],datasets:[{data:[1017696,867332,896750,507717],backgroundColor:[G,G,G,'rgba(201,169,110,.5)'],borderRadius:6,borderSkipped:false}]},options:{...df,scales:{x:sc,y:{...sc,ticks:{...sc.ticks,callback:v=>'฿'+(v/1e6).toFixed(1)+'M'}}}}});
+new Chart(document.getElementById('c2'),{type:'doughnut',data:{datasets:[{data:[47,53],backgroundColor:[R,Bd],borderWidth:0}]},options:{...df,cutout:'78%',plugins:{legend:{display:false},tooltip:{enabled:false}}}});
+new Chart(document.getElementById('c3'),{type:'bar',data:{labels:['ม.ค.','ก.พ.','มี.ค.','เม.ย.'],datasets:[{label:'Revenue',data:[1017696,867332,896750,507717],backgroundColor:G,borderRadius:4},{label:'Cost',data:[277015,249970,260301,118548],backgroundColor:R,borderRadius:4},{label:'GP',data:[627096,501953,524861,296571],backgroundColor:Gr,borderRadius:4}]},options:{...df,plugins:{legend:{display:true,labels:{color:M,font:{size:10}}}},scales:{x:sc,y:{...sc,ticks:{...sc.ticks,callback:v=>'฿'+(v/1e3).toFixed(0)+'K'}}}}});
+new Chart(document.getElementById('c4'),{type:'doughnut',data:{labels:['Pants','Tops','Accessories'],datasets:[{data:[58.5,24.2,17.3],backgroundColor:[G,B,'#a855f7'],borderWidth:0}]},options:{...df,cutout:'55%',plugins:{legend:{display:true,position:'bottom',labels:{color:M,font:{size:11},padding:16}}}}});
+</script>
+</body>
+</html>
