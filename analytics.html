@@ -1,0 +1,179 @@
+<\!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodangs Analytics Framework — 14 Apr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f8f8f6;color:#1a1a1a;padding:20px;max-width:840px;margin:0 auto}
+.header{text-align:center;padding:40px 20px 30px}
+.header h1{font-size:26px;font-weight:300;margin-bottom:6px}
+.header .sub{font-size:15px;color:#C9A96E;font-weight:500;margin-bottom:4px}
+.header .date{font-size:13px;color:#888;font-weight:400}
+.card{background:#fff;border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.card-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.card-title .num{background:#C9A96E;color:#fff;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.priority-tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;margin-left:auto}
+.priority-tag.p1{background:#fde8e8;color:#c0392b}
+.priority-tag.p2{background:#fff3e0;color:#e65100}
+.priority-tag.p3{background:#e3f2fd;color:#1565c0}
+.section-desc{font-size:14px;color:#555;line-height:1.7;margin-bottom:16px}
+.compare{font-size:12px;color:#999;font-style:italic;margin-bottom:14px;padding:8px 12px;background:#faf9f7;border-radius:8px;border-left:3px solid #C9A96E}
+.metric-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.metric-item{padding:10px 12px;background:#fafafa;border-radius:10px;font-size:13px;line-height:1.5}
+.metric-item .label{font-weight:600;color:#1a1a1a;display:block;margin-bottom:2px}
+.metric-item .desc{color:#777;font-size:12px}
+.question-box{background:#fdf8ef;border-radius:10px;padding:12px 16px;font-size:13px;color:#C9A96E;font-weight:500;margin-top:8px}
+.question-box::before{content:'Q ';font-weight:700}
+.priority-table{width:100%;border-collapse:collapse;font-size:13px}
+.priority-table th{text-align:left;padding:10px 8px;border-bottom:2px solid #eee;font-weight:600;color:#888;font-size:11px;text-transform:uppercase}
+.priority-table td{padding:10px 8px;border-bottom:1px solid #f5f5f5;vertical-align:top}
+.priority-table tr:last-child td{border-bottom:none}
+.priority-table .rank{font-weight:700;color:#C9A96E;font-size:16px}
+.priority-table .cat{font-weight:600}
+.priority-table .why{color:#777;font-size:12px;line-height:1.5}
+.next-step{padding:12px 0;border-bottom:1px solid #f5f5f5}
+.next-step:last-child{border-bottom:none}
+.step-num{display:inline-block;background:#C9A96E;color:#fff;width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;font-size:11px;font-weight:700;margin-right:8px}
+.step-title{font-weight:600;font-size:14px}
+.step-desc{font-size:13px;color:#666;margin-top:4px;padding-left:30px;line-height:1.6}
+.step-timeline{font-size:11px;color:#C9A96E;font-weight:600;margin-top:4px;padding-left:30px}
+.data-source{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;margin-left:4px}
+.data-source.shipnity{background:#e8f5e9;color:#2e7d32}
+.data-source.manual{background:#fff3e0;color:#e65100}
+.data-source.new{background:#e3f2fd;color:#1565c0}
+.footer{text-align:center;padding:30px 20px;font-size:13px;color:#bbb;font-weight:300}
+@media(max-width:600px){body{padding:12px}.metric-list{grid-template-columns:1fr}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="sub">KODANGS ANALYTICS FRAMEWORK</div>
+<h1>Data ที่ต้องมี เพื่อ scale ให้ถึง 4-6M</h1>
+<div class="date">สร้างเมื่อ 14 เมษายน 2569 · inspired by ดอกสตรีม dashboard model</div>
+</div>
+
+<div class="card">
+<div class="card-title"><span class="num">1</span> Product Profitability · สินค้าไหนทำกำไร <span class="priority-tag p1">PRIORITY 1</span></div>
+<div class="compare">เทียบกับร้านอาหาร: "เมนูไหนทำเงิน เมนูไหนควรตัดออก"</div>
+<div class="metric-list">
+<div class="metric-item"><span class="label">ยอดขายต่อ SKU</span><span class="desc">ชิ้น + บาท แยกสี/ไซส์</span><span class="data-source shipnity">Shipnity</span></div>
+<div class="metric-item"><span class="label">ต้นทุนต่อ SKU</span><span class="desc">ผ้า + เย็บ + พิมพ์ + แพ็ค</span><span class="data-source manual">Manual</span></div>
+<div class="metric-item"><span class="label">กำไรขั้นต้น / SKU</span><span class="desc">บาท + % margin</span><span class="data-source new">คำนวณ</span></div>
+<div class="metric-item"><span class="label">Sell-through Rate</span><span class="desc">ผลิตเท่าไหร่ ขายได้กี่ %</span><span class="data-source shipnity">Shipnity</span></div>
+<div class="metric-item"><span class="label">Dead Stock Flag</span><span class="desc">ค้าง > 90 วัน / 180 วัน</span><span class="data-source shipnity">Shipnity</span></div>
+<div class="metric-item"><span class="label">Revenue per Style</span><span class="desc">รวมทุกสี ทุกไซส์ ต่อ design</span><span class="data-source shipnity">Shipnity</span></div>
+</div>
+<div class="question-box">ตัวไหนควรผลิตเพิ่ม ตัวไหนควรหยุด ตัวไหนควรลด markdown?</div>
+</div>
+
+<div class="card">
+<div class="card-title"><span class="num">2</span> Inventory Health · สต็อกครบไหม <span class="priority-tag p1">PRIORITY 2</span></div>
+<div class="compare">เทียบกับร้านอาหาร: "ครอสเช็คกับครัวว่าซื้อของมาครบไหม"</div>
+<div class="metric-list">
+<div class="metric-item"><span class="label">สต็อกคงเหลือ</span><span class="desc">แยก SKU / สี / ไซส์</span><span class="data-source shipnity">Shipnity</span></div>
+<div class="metric-item"><span class="label">Days of Inventory</span><span class="desc">สต็อกที่มี ขายได้อีกกี่วัน</span><span class="data-source new">คำนวณ</span></div>
+<div class="metric-item"><span class="label">Reorder Alert</span><span class="desc">ตัวไหนใกล้หมด สั่งผลิตด่วน</span><span class="data-source new">คำนวณ</span></div>
+<div class="metric-item"><span class="label">Size Curve</span><span class="desc">ไซส์ไหนหมดก่อน ไหนค้าง</span><span class="data-source shipnity">Shipnity</span></div>
+<div class="metric-item"><span class="label">Stock Reconciliation</span><span class="desc">Shipnity vs. ของจริงตรงไหม</span><span class="data-source manual">Manual</span></div>
+<div class="metric-item"><span class="label">Aging Report</span><span class="desc">สต็อกอายุ 30/60/90/180 วัน</span><span class="data-source shipnity">Shipnity</span></div>
+</div>
+<div class="question-box">S หมดทุกตัว สั่งผลิตเพิ่มได้เลย? XL เหลือเยอะ ต้องดันขาย?</div>
+</div>
+
+<div class="card">
+<div class="card-title"><span class="num">3</span> Channel Performance · ช่องทางไหนคุ้ม <span class="priority-tag p2">PRIORITY 3</span></div>
+<div class="compare">เทียบกับร้านอาหาร: "ขาย dine-in vs. delivery vs. GrabFood อันไหนกำไรจริง"</div>
+<div class="metric-list">
+<div class="metric-item"><span class="label">ยอดขายแยก Channel</span><span class="desc">Shopee / Lazada / TikTok / LINE@ / Website / หน้าร้าน</span><span class="data-source shipnity">Shipnity</span></div>
+<div class="metric-item"><span class="label">กำไรสุทธิต่อ Channel</span><span class="desc">หัก GP, ค่าส่ง, ค่าโปร</span><span class="data-source new">คำนวณ</span></div>
+<div class="metric-item"><span class="label">CAC per Channel</span><span class="desc">ต้นทุนได้ลูกค้าใหม่</span><span class="data-source manual">Manual</span></div>
+<div class="metric-item"><span class="label">Return Rate</span><span class="desc">ช่องไหนคืนสินค้าเยอะ</span><span class="data-source shipnity">Shipnity</span></div>
+</div>
+<div class="question-box">Shopee ยอดเยอะ แต่หัก GP แล้วกำไรจริงน้อยกว่า LINE@?</div>
+</div>
+
+<div class="card">
+<div class="card-title"><span class="num">4</span> Cost Breakdown · วัตถุดิบอะไรแพง <span class="priority-tag p2">PRIORITY 4</span></div>
+<div class="compare">เทียบกับร้านอาหาร: "วัตถุดิบชิ้นไหนแพงเป็นพิเศษ"</div>
+<div class="metric-list">
+<div class="metric-item"><span class="label">ต้นทุนผ้า / เมตร</span><span class="desc">แยกตาม supplier</span><span class="data-source manual">Manual</span></div>
+<div class="metric-item"><span class="label">ต้นทุนเย็บ / ตัว</span><span class="desc">แยกตามโรงงาน</span><span class="data-source manual">Manual</span></div>
+<div class="metric-item"><span class="label">Accessories Cost</span><span class="desc">ซิป, กระดุม, label, hang tag</span><span class="data-source manual">Manual</span></div>
+<div class="metric-item"><span class="label">Cost Trend M/M</span><span class="desc">เปรียบเทียบเดือนต่อเดือน</span><span class="data-source new">คำนวณ</span></div>
+</div>
+<div class="question-box">ทำไมต้นทุนเดือนนี้สูงกว่าเดือนก่อน? ผ้าล็อตไหนขึ้นราคา?</div>
+</div>
+
+<div class="card">
+<div class="card-title"><span class="num">5</span> Collection Performance · คอลฯ ไหนเวิร์ค <span class="priority-tag p3">PRIORITY 5</span></div>
+<div class="compare">เทียบกับร้านอาหาร: "เซตเมนูไหนขายดี ควร rotate ยังไง"</div>
+<div class="metric-list">
+<div class="metric-item"><span class="label">ยอดขายต่อ Collection</span><span class="desc">แยกตาม drop / season</span><span class="data-source shipnity">Shipnity</span></div>
+<div class="metric-item"><span class="label">First-Week Sell-through</span><span class="desc">สัปดาห์แรกขายได้กี่ %</span><span class="data-source shipnity">Shipnity</span></div>
+<div class="metric-item"><span class="label">Repeat Purchase</span><span class="desc">ลูกค้าซื้อซ้ำจากคอลฯ เดิม</span><span class="data-source shipnity">Shipnity</span></div>
+<div class="metric-item"><span class="label">Best & Worst per Drop</span><span class="desc">top 3 / bottom 3 SKU</span><span class="data-source new">คำนวณ</span></div>
+</div>
+<div class="question-box">Camo collection ขายดีกว่า basic 3 เท่า — ควร drop ต่อเนื่อง?</div>
+</div>
+
+<div class="card">
+<div class="card-title"><span class="num">6</span> Production & Supplier · โรงงานส่งตรงเวลาไหม <span class="priority-tag p3">PRIORITY 6</span></div>
+<div class="compare">เทียบกับร้านอาหาร: "supplier ส่งวัตถุดิบตรงเวลาไหม คุณภาพโอเคไหม"</div>
+<div class="metric-list">
+<div class="metric-item"><span class="label">Lead Time จริง vs. สัญญา</span><span class="desc">สั่งวันไหน ได้ของวันไหน</span><span class="data-source manual">Manual</span></div>
+<div class="metric-item"><span class="label">Defect Rate</span><span class="desc">ของเสียกี่ % ต่อ supplier</span><span class="data-source manual">Manual</span></div>
+<div class="metric-item"><span class="label">Cost Comparison</span><span class="desc">เทียบราคาระหว่าง supplier</span><span class="data-source manual">Manual</span></div>
+</div>
+<div class="question-box">โรงงาน A ส่งช้าแต่ของดี vs. โรงงาน B เร็วแต่ defect เยอะ — เลือกใคร?</div>
+</div>
+
+<div class="card">
+<div class="card-title">สรุป Priority</div>
+<table class="priority-table">
+<thead><tr><th>#</th><th>หมวด</th><th>ทำไมสำคัญ</th><th>แหล่งข้อมูล</th></tr></thead>
+<tbody>
+<tr><td class="rank">1</td><td class="cat">Product Profitability</td><td class="why">รู้ว่าตัวไหนทำเงิน ตัวไหนตัด — ตัดสินใจผลิตได้เลย</td><td><span class="data-source shipnity">Shipnity</span> + <span class="data-source manual">Manual</span></td></tr>
+<tr><td class="rank">2</td><td class="cat">Inventory Health</td><td class="why">สต็อกหมด = เสียยอด / สต็อกค้าง = จมทุน</td><td><span class="data-source shipnity">Shipnity</span></td></tr>
+<tr><td class="rank">3</td><td class="cat">Channel Performance</td><td class="why">รู้ว่าควรเทแรงช่องไหน</td><td><span class="data-source shipnity">Shipnity</span></td></tr>
+<tr><td class="rank">4</td><td class="cat">Cost Breakdown</td><td class="why">ควบคุม margin ละเอียดขึ้น</td><td><span class="data-source manual">Manual</span></td></tr>
+<tr><td class="rank">5</td><td class="cat">Collection Performance</td><td class="why">วางแผน drop ถัดไปแม่นขึ้น</td><td><span class="data-source shipnity">Shipnity</span></td></tr>
+<tr><td class="rank">6</td><td class="cat">Production Tracking</td><td class="why">scale ไปต้องมี แต่ยังไม่เร่ง</td><td><span class="data-source manual">Manual</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<div class="card-title">Next Steps · สิ่งที่ต้องทำต่อ</div>
+<div class="next-step">
+<span class="step-num">1</span><span class="step-title">ดึง Export ข้อมูลจาก Shipnity</span>
+<div class="step-desc">export รายงานสินค้า (ยอดขาย + สต็อก) ออกมาเป็น CSV/Excel เพื่อให้ Claude วิเคราะห์ SKU profitability + inventory health ได้ทันที</div>
+<div class="step-timeline">สัปดาห์นี้</div>
+</div>
+<div class="next-step">
+<span class="step-num">2</span><span class="step-title">จัดทำ Cost Sheet ต่อ SKU</span>
+<div class="step-desc">รวบรวมต้นทุนจริงต่อตัว (ผ้า + เย็บ + accessories + แพ็ค) ใส่ Google Sheet — อันนี้ Shipnity ไม่มี ต้อง input เอง แต่ทำครั้งเดียวใช้ได้ตลอด</div>
+<div class="step-timeline">สัปดาห์นี้ – สัปดาห์หน้า</div>
+</div>
+<div class="next-step">
+<span class="step-num">3</span><span class="step-title">สร้าง Live Dashboard รอบแรก</span>
+<div class="step-desc">เอาข้อมูลจากข้อ 1 + 2 มาสร้าง dashboard จริง — เริ่มจาก Product Profitability + Inventory Health ก่อน เพราะ impact สูงสุด</div>
+<div class="step-timeline">สัปดาห์หน้า</div>
+</div>
+<div class="next-step">
+<span class="step-num">4</span><span class="step-title">เพิ่ม Channel Performance</span>
+<div class="step-desc">ดึงยอดขายแยก channel จาก Shipnity + ใส่ค่า GP/commission ต่อ platform เพื่อเห็นกำไรจริงต่อช่อง</div>
+<div class="step-timeline">ภายในเดือน เม.ย.</div>
+</div>
+<div class="next-step">
+<span class="step-num">5</span><span class="step-title">ผูก Auto-Update เข้า Morning Brief</span>
+<div class="step-desc">พอ dashboard เสถียร ให้ดึงข้อมูล key metrics ใส่ morning brief อัตโนมัติ — เห็นทุกเช้าโดยไม่ต้องเปิดหลายหน้า</div>
+<div class="step-timeline">พ.ค. 2569</div>
+</div>
+</div>
+
+<div class="footer">Kodangs Analytics Framework · 14 เม.ย. 2569<br>สร้างโดย Claude สำหรับ Noon</div>
+</body>
+</html>
