@@ -1,208 +1,149 @@
-<!DOCTYPE html>
+<\!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morning Brief · 14 เม.ย. 2569</title>
+<title>Morning Brief - 14 Apr 2569</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: #f8f8f6; color: #1a1a1a; padding: 20px; max-width: 800px; margin: 0 auto; }
-.header { text-align: center; padding: 40px 20px 30px; }
-.header h1 { font-size: 28px; font-weight: 300; margin-bottom: 6px; }
-.header .date { font-size: 14px; color: #888; font-weight: 400; }
-.card { background: #fff; border-radius: 16px; padding: 24px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-.card-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 16px; }
-
-/* Tabs */
-.tabs { display: flex; gap: 4px; margin-bottom: 16px; }
-.tab { padding: 8px 16px; border: none; background: #f0f0f0; border-radius: 8px 8px 0 0; cursor: pointer; font-size: 13px; font-weight: 500; font-family: 'Inter', sans-serif; color: #666; transition: all 0.2s; }
-.tab.active { background: #C9A96E; color: white; }
-.tab:hover:not(.active) { background: #e5e5e5; }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-
-/* Sales */
-.sales-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-.sales-item { text-align: center; }
-.sales-label { font-size: 12px; color: #999; margin-bottom: 4px; }
-.sales-value { font-size: 28px; font-weight: 700; }
-.sales-value.small { font-size: 22px; }
-.pace-bar-container { background: #f0f0f0; border-radius: 12px; height: 24px; overflow: hidden; position: relative; margin-top: 8px; }
-.pace-bar { height: 100%; border-radius: 12px; transition: width 0.8s ease; }
-.pace-bar.red { background: linear-gradient(90deg, #e74c3c, #c0392b); }
-.pace-text { font-size: 12px; color: #888; margin-top: 6px; text-align: center; }
-.pace-status { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-left: 6px; }
-.pace-status.red { background: #fde8e8; color: #c0392b; }
-
-/* Detail table */
-.detail-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.detail-table th { text-align: left; padding: 8px 6px; border-bottom: 2px solid #eee; font-weight: 600; color: #888; font-size: 11px; text-transform: uppercase; }
-.detail-table td { padding: 8px 6px; border-bottom: 1px solid #f5f5f5; }
-.detail-table tr.current { background: #fdf8ef; }
-.detail-table tr.current td { font-weight: 600; color: #C9A96E; }
-.detail-table tr.total { border-top: 2px solid #C9A96E; }
-.detail-table tr.total td { font-weight: 700; padding-top: 12px; }
-.detail-table .num { text-align: right; font-variant-numeric: tabular-nums; }
-.detail-note { font-size: 11px; color: #bbb; margin-top: 10px; font-style: italic; }
-
-/* Tasks */
-.task-item { padding: 10px 0; border-bottom: 1px solid #f5f5f5; }
-.task-item:last-child { border-bottom: none; }
-.task-status { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 6px; margin-right: 6px; }
-.task-status.stuck { background: #fde8e8; color: #c0392b; }
-.task-status.urgent { background: #fff3e0; color: #e65100; }
-.task-status.progress { background: #e3f2fd; color: #1565c0; }
-.task-name { font-size: 14px; font-weight: 500; }
-.task-meta { font-size: 11px; color: #999; margin-top: 2px; }
-.overdue-tag { font-size: 10px; color: #c0392b; font-weight: 600; }
-
-.team-section { margin-top: 8px; }
-.team-person { font-weight: 600; font-size: 13px; color: #C9A96E; margin-top: 10px; }
-.team-task { font-size: 13px; color: #555; padding: 4px 0 4px 12px; border-left: 2px solid #f0f0f0; margin-top: 4px; }
-
-/* Calendar */
-.calendar-empty { text-align: center; padding: 20px; }
-.calendar-empty .emoji { font-size: 28px; margin-bottom: 8px; }
-.calendar-empty .text { font-size: 15px; color: #555; }
-.calendar-empty .suggestion { font-size: 12px; color: #999; margin-top: 6px; }
-
-/* News */
-.news-item { padding: 8px 0; border-bottom: 1px solid #f5f5f5; font-size: 13px; line-height: 1.5; }
-.news-item:last-child { border-bottom: none; }
-.news-emoji { margin-right: 6px; }
-
-.footer { text-align: center; padding: 30px 20px; font-size: 14px; color: #bbb; font-weight: 300; }
-
-@media (max-width: 600px) {
-  body { padding: 12px; }
-  .sales-value { font-size: 22px; }
-  .sales-value.small { font-size: 18px; }
-  .header h1 { font-size: 22px; }
-  .detail-table { font-size: 11px; }
-  .detail-table th, .detail-table td { padding: 6px 4px; }
-}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f8f8f6;color:#1a1a1a;padding:20px;max-width:800px;margin:0 auto}
+.header{text-align:center;padding:40px 20px 30px}
+.header h1{font-size:28px;font-weight:300;margin-bottom:6px}
+.header .date{font-size:14px;color:#888;font-weight:400}
+.card{background:#fff;border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.card-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:16px}
+.tabs{display:flex;gap:4px;margin-bottom:16px}
+.tab{padding:8px 16px;border:none;background:#f0f0f0;border-radius:8px 8px 0 0;cursor:pointer;font-size:13px;font-weight:500;font-family:'Inter',sans-serif;color:#666;transition:all 0.2s}
+.tab.active{background:#C9A96E;color:white}
+.tab:hover:not(.active){background:#e5e5e5}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.sales-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.sales-item{text-align:center}
+.sales-label{font-size:12px;color:#999;margin-bottom:4px}
+.sales-value{font-size:28px;font-weight:700}
+.sales-value.small{font-size:22px}
+.pace-bar-container{background:#f0f0f0;border-radius:12px;height:24px;overflow:hidden;margin-top:8px}
+.pace-bar{height:100%;border-radius:12px}
+.pace-bar.red{background:linear-gradient(90deg,#e74c3c,#c0392b)}
+.pace-text{font-size:12px;color:#888;margin-top:6px;text-align:center}
+.pace-status{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-left:6px}
+.pace-status.red{background:#fde8e8;color:#c0392b}
+.detail-table{width:100%;border-collapse:collapse;font-size:13px}
+.detail-table th{text-align:left;padding:8px 6px;border-bottom:2px solid #eee;font-weight:600;color:#888;font-size:11px;text-transform:uppercase}
+.detail-table td{padding:8px 6px;border-bottom:1px solid #f5f5f5}
+.detail-table tr.current{background:#fdf8ef}
+.detail-table tr.current td{font-weight:600;color:#C9A96E}
+.detail-table tr.total{border-top:2px solid #C9A96E}
+.detail-table tr.total td{font-weight:700;padding-top:12px}
+.detail-table .num{text-align:right;font-variant-numeric:tabular-nums}
+.detail-note{font-size:11px;color:#bbb;margin-top:10px;font-style:italic}
+.task-item{padding:10px 0;border-bottom:1px solid #f5f5f5}
+.task-item:last-child{border-bottom:none}
+.task-status{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:6px;margin-right:6px}
+.task-status.stuck{background:#fde8e8;color:#c0392b}
+.task-status.urgent{background:#fff3e0;color:#e65100}
+.task-status.progress{background:#e3f2fd;color:#1565c0}
+.task-name{font-size:14px;font-weight:500}
+.task-meta{font-size:11px;color:#999;margin-top:2px}
+.overdue-tag{font-size:10px;color:#c0392b;font-weight:600}
+.team-section{margin-top:8px}
+.team-person{font-weight:600;font-size:13px;color:#C9A96E;margin-top:10px}
+.team-task{font-size:13px;color:#555;padding:4px 0 4px 12px;border-left:2px solid #f0f0f0;margin-top:4px}
+.cal-empty{text-align:center;padding:20px}
+.cal-empty .emoji{font-size:28px;margin-bottom:8px}
+.cal-empty .text{font-size:15px;color:#555}
+.cal-empty .sug{font-size:12px;color:#999;margin-top:6px}
+.news-item{padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:13px;line-height:1.5}
+.news-item:last-child{border-bottom:none}
+.footer{text-align:center;padding:30px 20px;font-size:14px;color:#bbb;font-weight:300}
+@media(max-width:600px){body{padding:12px}.sales-value{font-size:22px}.sales-value.small{font-size:18px}.header h1{font-size:22px}.detail-table{font-size:11px}.detail-table th,.detail-table td{padding:6px 4px}}
 </style>
 </head>
 <body>
-
 <div class="header">
-  <h1>Good morning, Noon. ☀️</h1>
-  <div class="date">วันอังคารที่ 14 เมษายน 2569 · Tuesday, April 14, 2026</div>
+<h1>Good morning, Noon.</h1>
+<div class="date">วันอังคารที่ 14 เมษายน 2569 · Tuesday, April 14, 2026</div>
 </div>
-
-<!-- Sales — Tabbed -->
 <div class="card">
-  <div class="card-title">📊 Sales · ยอดขาย</div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab('overview')">Overview</button>
-    <button class="tab" onclick="switchTab('detail')">Shipnity Detail</button>
-  </div>
-
-  <!-- Tab 1: Overview -->
-  <div id="overview" class="tab-content active">
-    <div class="sales-grid">
-      <div class="sales-item">
-        <div class="sales-label">วันนี้</div>
-        <div class="sales-value">฿10,144</div>
-      </div>
-      <div class="sales-item">
-        <div class="sales-label">เดือนนี้ MTD (14 วัน)</div>
-        <div class="sales-value small">฿520,380</div>
-      </div>
-    </div>
-    <div class="sales-label" style="margin-bottom:6px;">Pace to ฿2,500,000 target</div>
-    <div class="pace-bar-container">
-      <div class="pace-bar red" style="width: 44.6%;"></div>
-    </div>
-    <div class="pace-text">
-      Projected: ฿1,115,100
-      <span class="pace-status red">🔴 44.6% — ต้องเร่ง</span>
-    </div>
-  </div>
-
-  <!-- Tab 2: Shipnity Detail -->
-  <div id="detail" class="tab-content">
-    <table class="detail-table">
-      <thead>
-        <tr>
-          <th>เดือน</th>
-          <th class="num">ยอดขายรวม</th>
-          <th class="num">ต้นทุน</th>
-          <th class="num">ค่าส่ง</th>
-          <th class="num">กำไรขั้นต้น</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>ม.ค.</td>
-          <td class="num">1,017,696</td>
-          <td class="num">277,015</td>
-          <td class="num">113,585</td>
-          <td class="num">627,096</td>
-        </tr>
-        <tr>
-          <td>ก.พ.</td>
-          <td class="num">867,332</td>
-          <td class="num">249,970</td>
-          <td class="num">115,438</td>
-          <td class="num">501,953</td>
-        </tr>
-        <tr>
-          <td>มี.ค.</td>
-          <td class="num">896,750</td>
-          <td class="num">260,301</td>
-          <td class="num">111,587</td>
-          <td class="num">524,861</td>
-        </tr>
-        <tr class="current">
-          <td>เม.ย. ⬅️</td>
-          <td class="num">476,574</td>
-          <td class="num">118,548</td>
-          <td class="num">61,455</td>
-          <td class="num">296,571</td>
-        </tr>
-        <tr class="total">
-          <td>YTD 2569</td>
-          <td class="num">3,258,351</td>
-          <td class="num">905,834</td>
-          <td class="num">402,066</td>
-          <td class="num">1,950,481</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="detail-note">ข้อมูลจาก Shipnity — cross-check กับต้นทุนจริง</div>
-  </div>
+<div class="card-title">Sales · ยอดขาย</div>
+<div class="tabs">
+<button class="tab active" onclick="switchTab('overview')">Overview</button>
+<button class="tab" onclick="switchTab('detail')">Shipnity Detail</button>
 </div>
-
-<!-- Noon's Tasks -->
+<div id="overview" class="tab-content active">
+<div class="sales-grid">
+<div class="sales-item"><div class="sales-label">วันนี้</div><div class="sales-value">&#3647;10,144</div></div>
+<div class="sales-item"><div class="sales-label">เดือนนี้ MTD (14 วัน)</div><div class="sales-value small">&#3647;520,380</div></div>
+</div>
+<div class="sales-label" style="margin-bottom:6px">Pace to &#3647;2,500,000 target</div>
+<div class="pace-bar-container"><div class="pace-bar red" style="width:44.6%"></div></div>
+<div class="pace-text">Projected: &#3647;1,115,100 <span class="pace-status red">44.6% — ต้องเร่ง</span></div>
+</div>
+<div id="detail" class="tab-content">
+<table class="detail-table">
+<thead><tr><th>เดือน</th><th class="num">ยอดขายรวม</th><th class="num">ต้นทุน</th><th class="num">ค่าส่ง</th><th class="num">กำไรขั้นต้น</th></tr></thead>
+<tbody>
+<tr><td>ม.ค.</td><td class="num">1,017,696</td><td class="num">277,015</td><td class="num">113,585</td><td class="num">627,096</td></tr>
+<tr><td>ก.พ.</td><td class="num">867,332</td><td class="num">249,970</td><td class="num">115,438</td><td class="num">501,953</td></tr>
+<tr><td>มี.ค.</td><td class="num">896,750</td><td class="num">260,301</td><td class="num">111,587</td><td class="num">524,861</td></tr>
+<tr class="current"><td>เม.ย.</td><td class="num">476,574</td><td class="num">118,548</td><td class="num">61,455</td><td class="num">296,571</td></tr>
+<tr class="total"><td>YTD 2569</td><td class="num">3,258,351</td><td class="num">905,834</td><td class="num">402,066</td><td class="num">1,950,481</td></tr>
+</tbody>
+</table>
+<div class="detail-note">ข้อมูลจาก Shipnity — cross-check กับต้นทุนจริง</div>
+</div>
+</div>
 <div class="card">
-  <div class="card-title">🔴 ClickUp · ต้องการ Noon</div>
-
-  <div class="task-item">
-    <span class="task-status stuck">STUCK</span>
-    <span class="task-name">Create Invoice for shipping 1st round</span>
-    <div class="task-meta">List · Kodangs Manage, Kodangs US <span class="overdue-tag">· 26 วันแล้ว</span></div>
-  </div>
-
-  <div class="task-item">
-    <span class="task-status urgent">URGENT</span>
-    <span class="task-name">Eye recheck with contract — more details</span>
-    <div class="task-meta">List · Kodangs US <span class="overdue-tag">· 25 วันแล้ว</span></div>
-  </div>
-
-  <div class="task-item">
-    <span class="task-status progress">IN PROGRESS</span>
-    <span class="task-name">prepare เอกสารแนบท้าย contract + details</span>
-    <div class="task-meta">List · Noon solo <span class="overdue-tag">· 26 วันแล้ว</span></div>
-  </div>
-
-  <div class="task-item">
-    <span class="task-status progress">IN PROGRESS</span>
-    <span class="task-name">PROJECT : INTERN 2026</span>
-    <div class="task-meta">Back End · Kanjana, Tantai <span class="overdue-tag">· 12 วันแล้ว</span></div>
-  </div>
-
-  <div class="task-item">
-    <span class="task-status urgent">URGENT</span>
-    <span class="task-name">QA : สินค้าค้างสต้อกเยอะไหม — ทำโ�
+<div class="card-title">ClickUp · ต้องการ Noon</div>
+<div class="task-item"><span class="task-status stuck">STUCK</span><span class="task-name">Create Invoice for shipping 1st round</span><div class="task-meta">List · Kodangs Manage, Kodangs US <span class="overdue-tag">· 26 วันแล้ว</span></div></div>
+<div class="task-item"><span class="task-status urgent">URGENT</span><span class="task-name">Eye recheck with contract — more details</span><div class="task-meta">List · Kodangs US <span class="overdue-tag">· 25 วันแล้ว</span></div></div>
+<div class="task-item"><span class="task-status progress">IN PROGRESS</span><span class="task-name">prepare เอกสารแนบท้าย contract + details</span><div class="task-meta">List · Noon solo <span class="overdue-tag">· 26 วันแล้ว</span></div></div>
+<div class="task-item"><span class="task-status progress">IN PROGRESS</span><span class="task-name">PROJECT : INTERN 2026</span><div class="task-meta">Back End · Kanjana, Tantai <span class="overdue-tag">· 12 วันแล้ว</span></div></div>
+<div class="task-item"><span class="task-status urgent">URGENT</span><span class="task-name">QA : สินค้าค้างสต้อกเยอะไหม — ทำโปรด่วน</span><div class="task-meta">ห้องSTOCK · Kanjana <span class="overdue-tag">· 75 วันแล้ว</span></div></div>
+</div>
+<div class="card">
+<div class="card-title">Team Overdue</div>
+<div class="team-section">
+<div class="team-person">Kunyakorn</div>
+<div class="team-task">ฝากemail marketing carter &amp; restock <span class="overdue-tag">URGENT · overdue</span></div>
+<div class="team-task">ภาพปกขนาดเท่ากัน website <span class="overdue-tag">HIGH · overdue</span></div>
+<div class="team-person">FRONT</div>
+<div class="team-task">ฝากติดตามงานในหมวดนี้ <span class="overdue-tag">URGENT · overdue</span></div>
+<div class="team-task">อัพเดท project activity <span class="overdue-tag">URGENT · overdue</span></div>
+<div class="team-person">Tantai</div>
+<div class="team-task">สติกเกอร์ติดหน้าร้าน <span class="overdue-tag">URGENT · overdue</span></div>
+<div class="team-task">camo ลง youtube + catch up vdo <span class="overdue-tag">overdue</span></div>
+<div class="team-person">2A Perspective</div>
+<div class="team-task">Signage ผลิตป้ายต่างๆ <span class="overdue-tag">URGENT · overdue</span></div>
+<div class="team-task">collection plan : สินค้าผู้หญิง วัยรุ่น <span class="overdue-tag">overdue</span></div>
+</div>
+</div>
+<div class="card">
+<div class="card-title">Calendar</div>
+<div class="cal-empty">
+<div class="emoji">&#10024;</div>
+<div class="text">ไม่มี meeting — Deep Work Day</div>
+<div class="sug">Focus: จัดการ Invoice + Contract เอกสารที่ค้างอยู่</div>
+</div>
+</div>
+<div class="card">
+<div class="card-title">News &amp; Trends</div>
+<div class="news-item">K-fashion กำลังโต 40%+ วัยรุ่นไทยเลือก Korean style เป็น top inspiration — คู่แข่งเพิ่ม แต่ Kodangs positioning ต่างชัด</div>
+<div class="news-item">"Quiet Luxury" มาแรงใน wholesale 2026 — branding แบบ understated, ไม่ใช่ loud graphics — ตรง Kodangs DNA</div>
+<div class="news-item">Hybrid workwear-streetwear ("city-to-trail") trending globally — utility jackets, technical fabrics, detachable pockets</div>
+<div class="news-item">Color: Spice tones (cinnamon, chili, saffron) + earthy neutrals dominate · High-GSM fabrics (240-300 GSM tees) กำลังเป็นที่ต้องการ</div>
+</div>
+<div class="footer">ทำวันนี้ให้ดี.</div>
+<script>
+function switchTab(id){
+document.querySelectorAll('.tab-content').forEach(function(e){e.style.display='none';e.classList.remove('active')});
+document.querySelectorAll('.tab').forEach(function(e){e.classList.remove('active')});
+document.getElementById(id).style.display='block';
+document.getElementById(id).classList.add('active');
+event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
