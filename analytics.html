@@ -1,179 +1,529 @@
-<\!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kodangs Analytics Framework — 14 Apr 2026</title>
+<title>Kodangs CEO Dashboard — 15 April 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:#f8f8f6;color:#1a1a1a;padding:20px;max-width:840px;margin:0 auto}
-.header{text-align:center;padding:40px 20px 30px}
-.header h1{font-size:26px;font-weight:300;margin-bottom:6px}
-.header .sub{font-size:15px;color:#C9A96E;font-weight:500;margin-bottom:4px}
-.header .date{font-size:13px;color:#888;font-weight:400}
-.card{background:#fff;border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
-.card-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.card-title .num{background:#C9A96E;color:#fff;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
-.priority-tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;margin-left:auto}
-.priority-tag.p1{background:#fde8e8;color:#c0392b}
-.priority-tag.p2{background:#fff3e0;color:#e65100}
-.priority-tag.p3{background:#e3f2fd;color:#1565c0}
-.section-desc{font-size:14px;color:#555;line-height:1.7;margin-bottom:16px}
-.compare{font-size:12px;color:#999;font-style:italic;margin-bottom:14px;padding:8px 12px;background:#faf9f7;border-radius:8px;border-left:3px solid #C9A96E}
-.metric-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.metric-item{padding:10px 12px;background:#fafafa;border-radius:10px;font-size:13px;line-height:1.5}
-.metric-item .label{font-weight:600;color:#1a1a1a;display:block;margin-bottom:2px}
-.metric-item .desc{color:#777;font-size:12px}
-.question-box{background:#fdf8ef;border-radius:10px;padding:12px 16px;font-size:13px;color:#C9A96E;font-weight:500;margin-top:8px}
-.question-box::before{content:'Q ';font-weight:700}
-.priority-table{width:100%;border-collapse:collapse;font-size:13px}
-.priority-table th{text-align:left;padding:10px 8px;border-bottom:2px solid #eee;font-weight:600;color:#888;font-size:11px;text-transform:uppercase}
-.priority-table td{padding:10px 8px;border-bottom:1px solid #f5f5f5;vertical-align:top}
-.priority-table tr:last-child td{border-bottom:none}
-.priority-table .rank{font-weight:700;color:#C9A96E;font-size:16px}
-.priority-table .cat{font-weight:600}
-.priority-table .why{color:#777;font-size:12px;line-height:1.5}
-.next-step{padding:12px 0;border-bottom:1px solid #f5f5f5}
-.next-step:last-child{border-bottom:none}
-.step-num{display:inline-block;background:#C9A96E;color:#fff;width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;font-size:11px;font-weight:700;margin-right:8px}
-.step-title{font-weight:600;font-size:14px}
-.step-desc{font-size:13px;color:#666;margin-top:4px;padding-left:30px;line-height:1.6}
-.step-timeline{font-size:11px;color:#C9A96E;font-weight:600;margin-top:4px;padding-left:30px}
-.data-source{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;margin-left:4px}
-.data-source.shipnity{background:#e8f5e9;color:#2e7d32}
-.data-source.manual{background:#fff3e0;color:#e65100}
-.data-source.new{background:#e3f2fd;color:#1565c0}
-.footer{text-align:center;padding:30px 20px;font-size:13px;color:#bbb;font-weight:300}
-@media(max-width:600px){body{padding:12px}.metric-list{grid-template-columns:1fr}.header h1{font-size:22px}}
+body{font-family:'Inter',sans-serif;background:#f5f5f0;color:#1a1a1a;line-height:1.6;padding:20px}
+.container{max-width:1200px;margin:0 auto}
+.header{text-align:center;padding:32px 0 24px;border-bottom:2px solid #C9A96E;margin-bottom:24px}
+.header h1{font-size:28px;font-weight:700;letter-spacing:-0.5px}
+.header .date{color:#888;font-size:14px;margin-top:4px}
+.header .subtitle{color:#C9A96E;font-size:13px;font-weight:500;margin-top:2px}
+
+/* Tab Navigation */
+.tab-nav{display:flex;gap:4px;margin-bottom:24px;background:#e8e8e3;padding:4px;border-radius:12px;flex-wrap:wrap}
+.tab-btn{padding:10px 18px;border:none;background:transparent;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#666;cursor:pointer;border-radius:8px;transition:all .2s;white-space:nowrap}
+.tab-btn.active{background:#C9A96E;color:#fff;font-weight:600}
+.tab-btn:hover:not(.active){background:#ddd}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* Cards */
+.card{background:#fff;border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card h2{font-size:18px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.card h3{font-size:15px;font-weight:600;margin:16px 0 8px;color:#1a1a1a}
+
+/* Sales Overview */
+.sales-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px}
+.sales-metric{background:#fafaf7;border-radius:12px;padding:16px;text-align:center}
+.sales-metric .label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.5px}
+.sales-metric .value{font-size:22px;font-weight:700;margin-top:4px}
+.sales-metric .sub{font-size:11px;color:#888;margin-top:2px}
+.gold{color:#C9A96E}
+
+/* Monthly Table */
+.month-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+.month-table th{text-align:left;padding:8px 12px;background:#fafaf7;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#888;border-bottom:1px solid #eee}
+.month-table td{padding:8px 12px;border-bottom:1px solid #f0f0f0}
+.month-table tr:last-child td{border-bottom:none;font-weight:600;background:#fafaf7}
+
+/* Analytics Categories */
+.analytics-cat{margin-bottom:20px;border-left:3px solid #C9A96E;padding-left:16px}
+.analytics-cat h3{margin-top:0;font-size:16px}
+.analytics-cat .desc{font-size:13px;color:#555;margin-bottom:8px}
+.metric-list{list-style:none;padding:0}
+.metric-list li{font-size:13px;padding:6px 0;border-bottom:1px solid #f5f5f0;display:flex;justify-content:space-between;align-items:center}
+.metric-list li:last-child{border-bottom:none}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.tag-shipnity{background:#e8f5e9;color:#2e7d32}
+.tag-shopee{background:#fff3e0;color:#e65100}
+.tag-ig{background:#fce4ec;color:#c62828}
+.tag-manual{background:#e3f2fd;color:#1565c0}
+.tag-tiktok{background:#f3e5f5;color:#6a1b9a}
+.priority-high{background:#fff0f0;color:#d32f2f;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600}
+.priority-med{background:#fff8e1;color:#f9a825;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600}
+.priority-low{background:#f0f0f0;color:#666;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600}
+
+/* CEO Recommendations */
+.reco{background:#fafaf7;border-radius:12px;padding:16px;margin-bottom:12px;border-left:4px solid #C9A96E}
+.reco .reco-title{font-weight:600;font-size:14px;margin-bottom:6px}
+.reco .reco-why{font-size:12px;color:#888;margin-bottom:6px}
+.reco .reco-action{font-size:13px;color:#1a1a1a}
+.reco .reco-impact{font-size:11px;color:#C9A96E;font-weight:600;margin-top:6px}
+
+/* Task Section */
+.task-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f0f0f0}
+.task-item:last-child{border-bottom:none}
+.task-status{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;white-space:nowrap;margin-top:2px}
+.status-stuck{background:#ffebee;color:#c62828}
+.status-urgent{background:#fff3e0;color:#e65100}
+.status-progress{background:#e3f2fd;color:#1565c0}
+.status-todo{background:#f5f5f5;color:#666}
+.task-info{flex:1}
+.task-name{font-size:13px;font-weight:500}
+.task-meta{font-size:11px;color:#888;margin-top:2px}
+.task-name a{color:#1a1a1a;text-decoration:none}
+.task-name a:hover{color:#C9A96E}
+
+/* Team Overdue */
+.team-member{margin-bottom:12px}
+.team-member .member-name{font-size:13px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.team-member .member-name .count{background:#ffebee;color:#c62828;font-size:10px;padding:1px 6px;border-radius:10px}
+.overdue-task{font-size:12px;color:#555;padding:3px 0 3px 16px;border-left:2px solid #ffcdd2}
+
+/* News */
+.news-item{padding:10px 0;border-bottom:1px solid #f0f0f0}
+.news-item:last-child{border-bottom:none}
+.news-item .news-tag{font-size:10px;font-weight:600;color:#C9A96E;text-transform:uppercase;letter-spacing:.5px}
+.news-item .news-title{font-size:13px;font-weight:500;margin-top:2px}
+.news-item .news-relevance{font-size:12px;color:#666;margin-top:2px}
+
+/* Footer */
+.footer{text-align:center;padding:24px 0;color:#bbb;font-size:11px;border-top:1px solid #eee;margin-top:24px}
 </style>
 </head>
 <body>
+<div class="container">
+
 <div class="header">
-<div class="sub">KODANGS ANALYTICS FRAMEWORK</div>
-<h1>Data ที่ต้องมี เพื่อ scale ให้ถึง 4-6M</h1>
-<div class="date">สร้างเมื่อ 14 เมษายน 2569 · inspired by ดอกสตรีม dashboard model</div>
+  <h1>KODANGS CEO Dashboard</h1>
+  <div class="date">Wednesday, 15 April 2026</div>
+  <div class="subtitle">Analytics Framework + Operations Overview</div>
 </div>
 
-<div class="card">
-<div class="card-title"><span class="num">1</span> Product Profitability · สินค้าไหนทำกำไร <span class="priority-tag p1">PRIORITY 1</span></div>
-<div class="compare">เทียบกับร้านอาหาร: "เมนูไหนทำเงิน เมนูไหนควรตัดออก"</div>
-<div class="metric-list">
-<div class="metric-item"><span class="label">ยอดขายต่อ SKU</span><span class="desc">ชิ้น + บาท แยกสี/ไซส์</span><span class="data-source shipnity">Shipnity</span></div>
-<div class="metric-item"><span class="label">ต้นทุนต่อ SKU</span><span class="desc">ผ้า + เย็บ + พิมพ์ + แพ็ค</span><span class="data-source manual">Manual</span></div>
-<div class="metric-item"><span class="label">กำไรขั้นต้น / SKU</span><span class="desc">บาท + % margin</span><span class="data-source new">คำนวณ</span></div>
-<div class="metric-item"><span class="label">Sell-through Rate</span><span class="desc">ผลิตเท่าไหร่ ขายได้กี่ %</span><span class="data-source shipnity">Shipnity</span></div>
-<div class="metric-item"><span class="label">Dead Stock Flag</span><span class="desc">ค้าง > 90 วัน / 180 วัน</span><span class="data-source shipnity">Shipnity</span></div>
-<div class="metric-item"><span class="label">Revenue per Style</span><span class="desc">รวมทุกสี ทุกไซส์ ต่อ design</span><span class="data-source shipnity">Shipnity</span></div>
-</div>
-<div class="question-box">ตัวไหนควรผลิตเพิ่ม ตัวไหนควรหยุด ตัวไหนควรลด markdown?</div>
+<!-- Tab Navigation -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('sales')">Sales Overview</button>
+  <button class="tab-btn" onclick="switchTab('analytics')">Analytics Framework</button>
+  <button class="tab-btn" onclick="switchTab('ceo')">CEO Strategy</button>
+  <button class="tab-btn" onclick="switchTab('tasks')">My Tasks</button>
+  <button class="tab-btn" onclick="switchTab('team')">Team Overdue</button>
+  <button class="tab-btn" onclick="switchTab('news')">News & Trends</button>
 </div>
 
-<div class="card">
-<div class="card-title"><span class="num">2</span> Inventory Health · สต็อกครบไหม <span class="priority-tag p1">PRIORITY 2</span></div>
-<div class="compare">เทียบกับร้านอาหาร: "ครอสเช็คกับครัวว่าซื้อของมาครบไหม"</div>
-<div class="metric-list">
-<div class="metric-item"><span class="label">สต็อกคงเหลือ</span><span class="desc">แยก SKU / สี / ไซส์</span><span class="data-source shipnity">Shipnity</span></div>
-<div class="metric-item"><span class="label">Days of Inventory</span><span class="desc">สต็อกที่มี ขายได้อีกกี่วัน</span><span class="data-source new">คำนวณ</span></div>
-<div class="metric-item"><span class="label">Reorder Alert</span><span class="desc">ตัวไหนใกล้หมด สั่งผลิตด่วน</span><span class="data-source new">คำนวณ</span></div>
-<div class="metric-item"><span class="label">Size Curve</span><span class="desc">ไซส์ไหนหมดก่อน ไหนค้าง</span><span class="data-source shipnity">Shipnity</span></div>
-<div class="metric-item"><span class="label">Stock Reconciliation</span><span class="desc">Shipnity vs. ของจริงตรงไหม</span><span class="data-source manual">Manual</span></div>
-<div class="metric-item"><span class="label">Aging Report</span><span class="desc">สต็อกอายุ 30/60/90/180 วัน</span><span class="data-source shipnity">Shipnity</span></div>
-</div>
-<div class="question-box">S หมดทุกตัว สั่งผลิตเพิ่มได้เลย? XL เหลือเยอะ ต้องดันขาย?</div>
+<!-- TAB 1: Sales Overview -->
+<div id="tab-sales" class="tab-content active">
+  <div class="card">
+    <h2>Sales Performance — YTD 2026</h2>
+    <div class="sales-grid">
+      <div class="sales-metric">
+        <div class="label">YTD Revenue</div>
+        <div class="value gold">3.26M</div>
+        <div class="sub">THB</div>
+      </div>
+      <div class="sales-metric">
+        <div class="label">YTD Profit</div>
+        <div class="value">1.95M</div>
+        <div class="sub">59.8% margin</div>
+      </div>
+      <div class="sales-metric">
+        <div class="label">YTD Cost</div>
+        <div class="value">906K</div>
+        <div class="sub">27.8% of revenue</div>
+      </div>
+      <div class="sales-metric">
+        <div class="label">YTD Shipping</div>
+        <div class="value">402K</div>
+        <div class="sub">12.3% of revenue</div>
+      </div>
+      <div class="sales-metric">
+        <div class="label">Apr (MTD)</div>
+        <div class="value gold">477K</div>
+        <div class="sub">15 days in</div>
+      </div>
+      <div class="sales-metric">
+        <div class="label">Apr Projection</div>
+        <div class="value">953K</div>
+        <div class="sub">at current pace</div>
+      </div>
+    </div>
+
+    <h3>Monthly Breakdown (Shipnity)</h3>
+    <table class="month-table">
+      <tr><th>Month</th><th>Revenue</th><th>COGS</th><th>Shipping</th><th>Profit</th><th>Margin</th></tr>
+      <tr><td>Jan</td><td>1,017,696</td><td>277,015</td><td>113,585</td><td>627,096</td><td>61.6%</td></tr>
+      <tr><td>Feb</td><td>867,332</td><td>249,970</td><td>115,438</td><td>501,953</td><td>57.9%</td></tr>
+      <tr><td>Mar</td><td>896,750</td><td>260,301</td><td>111,587</td><td>524,861</td><td>58.5%</td></tr>
+      <tr><td>Apr (MTD)</td><td>476,574</td><td>118,548</td><td>61,455</td><td>296,571</td><td>62.2%</td></tr>
+      <tr><td>YTD Total</td><td>3,258,351</td><td>905,834</td><td>402,066</td><td>1,950,481</td><td>59.8%</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Key Insights</h2>
+    <div class="analytics-cat">
+      <h3>Revenue Trend</h3>
+      <p class="desc">Jan was the peak at 1.02M. Feb & Mar dipped ~13% but stabilized. April is tracking at ~953K projected — a slight recovery. To hit 4M/mo target, revenue needs to 4x from current levels.</p>
+    </div>
+    <div class="analytics-cat">
+      <h3>Margin Health</h3>
+      <p class="desc">April margin is the strongest at 62.2% — COGS ratio improved. Shipping cost ratio also dropped from 13.3% (Feb) to 12.9% (Apr). Good sign for profitability as you scale.</p>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<div class="card-title"><span class="num">3</span> Channel Performance · ช่องทางไหนคุ้ม <span class="priority-tag p2">PRIORITY 3</span></div>
-<div class="compare">เทียบกับร้านอาหาร: "ขาย dine-in vs. delivery vs. GrabFood อันไหนกำไรจริง"</div>
-<div class="metric-list">
-<div class="metric-item"><span class="label">ยอดขายแยก Channel</span><span class="desc">Shopee / Lazada / TikTok / LINE@ / Website / หน้าร้าน</span><span class="data-source shipnity">Shipnity</span></div>
-<div class="metric-item"><span class="label">กำไรสุทธิต่อ Channel</span><span class="desc">หัก GP, ค่าส่ง, ค่าโปร</span><span class="data-source new">คำนวณ</span></div>
-<div class="metric-item"><span class="label">CAC per Channel</span><span class="desc">ต้นทุนได้ลูกค้าใหม่</span><span class="data-source manual">Manual</span></div>
-<div class="metric-item"><span class="label">Return Rate</span><span class="desc">ช่องไหนคืนสินค้าเยอะ</span><span class="data-source shipnity">Shipnity</span></div>
-</div>
-<div class="question-box">Shopee ยอดเยอะ แต่หัก GP แล้วกำไรจริงน้อยกว่า LINE@?</div>
+<!-- TAB 2: Analytics Framework -->
+<div id="tab-analytics" class="tab-content">
+  <div class="card">
+    <h2>Kodangs Analytics Framework</h2>
+    <p style="font-size:13px;color:#666;margin-bottom:20px;">6 categories of data analysis to understand profitability, optimize products, and scale smartly — inspired by the Dok Stream restaurant model.</p>
+
+    <!-- Category 1 -->
+    <div class="analytics-cat">
+      <h3>1. Product Profitability Analysis — สินค้าตัวไหนทำกำไรจริง</h3>
+      <p class="desc">Which SKUs actually make money after all costs? Which should be cut or promoted harder?</p>
+      <ul class="metric-list">
+        <li><span>Gross profit per SKU (revenue - COGS - shipping allocated)</span> <span class="tag tag-shipnity">Shipnity</span></li>
+        <li><span>Sell-through rate per product (units sold / units produced)</span> <span class="tag tag-shipnity">Shipnity</span></li>
+        <li><span>Revenue concentration — top 10 SKUs % of total revenue</span> <span class="tag tag-shipnity">Shipnity</span></li>
+        <li><span>Dead stock identification (>90 days, low movement)</span> <span class="tag tag-shipnity">Shipnity</span></li>
+        <li><span>Profit per category (pants, tees, bags, accessories)</span> <span class="tag tag-manual">Manual</span></li>
+      </ul>
+    </div>
+
+    <!-- Category 2 -->
+    <div class="analytics-cat">
+      <h3>2. Channel Performance — ช่องทางไหนคุ้มค่าที่สุด</h3>
+      <p class="desc">Compare ROI across all sales channels to know where to invest more.</p>
+      <ul class="metric-list">
+        <li><span>Revenue & margin by channel (IG, TikTok, Shopee, Laz, offline stores)</span> <span class="tag tag-shipnity">Shipnity</span></li>
+        <li><span>Customer acquisition cost (CAC) per channel</span> <span class="tag tag-manual">Manual</span></li>
+        <li><span>Ad spend vs. revenue by platform (ROAS)</span> <span class="tag tag-ig">IG/TikTok</span></li>
+        <li><span>Offline store revenue per sq.m. (Song Wat, Gaysorn, Tres)</span> <span class="tag tag-manual">Manual</span></li>
+        <li><span>Wholesale margin vs. retail margin comparison</span> <span class="tag tag-manual">Manual</span></li>
+      </ul>
+    </div>
+
+    <!-- Category 3 -->
+    <div class="analytics-cat">
+      <h3>3. Customer Behavior — ลูกค้าเป็นยังไง</h3>
+      <p class="desc">Who buys, how often, and what makes them come back?</p>
+      <ul class="metric-list">
+        <li><span>Repeat purchase rate (% customers buying 2+ times)</span> <span class="tag tag-shipnity">Shipnity</span></li>
+        <li><span>Average order value (AOV) trend over time</span> <span class="tag tag-shipnity">Shipnity</span></li>
+        <li><span>Customer lifetime value (CLV) estimate</span> <span class="tag tag-manual">Manual</span></li>
+        <li><span>Size distribution (which sizes sell fastest, which sit)</span> <span class="tag tag-shipnity">Shipnity</span></li>
+        <li><span>Cart abandonment rate by platform</span> <span class="tag tag-shopee">Shopee/Laz</span></li>
+      </ul>
+    </div>
+
+    <!-- Category 4 -->
+    <div class="analytics-cat">
+      <h3>4. Inventory & Production — ผลิตเท่าไหร่ถึงพอดี</h3>
+      <p class="desc">Produce the right amount. Avoid dead stock. Keep bestsellers in stock.</p>
+      <ul class="metric-list">
+        <li><span>Stock turnover ratio per SKU</span> <span class="tag tag-shipnity">Shipnity</span></li>
+        <li><span>Days of inventory remaining (current stock / daily sales rate)</span> <span class="tag tag-shipnity">Shipnity</span></li>
+        <li><span>Stockout frequency (how often bestsellers go OOS)</span> <span class="tag tag-shipnity">Shipnity</span></li>
+        <li><span>Production lead time vs. sell-through speed</span> <span class="tag tag-manual">Manual</span></li>
+        <li><span>Dead stock value (THB tied up in slow movers)</span> <span class="tag tag-shipnity">Shipnity</span></li>
+      </ul>
+    </div>
+
+    <!-- Category 5 -->
+    <div class="analytics-cat">
+      <h3>5. Marketing & Content ROI — คอนเทนต์ตัวไหนขายได้จริง</h3>
+      <p class="desc">Link content performance to actual sales conversions.</p>
+      <ul class="metric-list">
+        <li><span>Content-to-sale conversion (which posts drive orders)</span> <span class="tag tag-ig">IG/TikTok</span></li>
+        <li><span>Live selling revenue per session</span> <span class="tag tag-tiktok">TikTok</span></li>
+        <li><span>Influencer ROI (cost vs. revenue attributed)</span> <span class="tag tag-manual">Manual</span></li>
+        <li><span>Email/LINE broadcast conversion rate</span> <span class="tag tag-manual">Manual</span></li>
+        <li><span>Engagement rate vs. sales correlation</span> <span class="tag tag-ig">IG/TikTok</span></li>
+      </ul>
+    </div>
+
+    <!-- Category 6 -->
+    <div class="analytics-cat">
+      <h3>6. Financial Health & Scaling — พร้อมสเกลแค่ไหน</h3>
+      <p class="desc">Are you financially ready to 3-4x? What needs to be true?</p>
+      <ul class="metric-list">
+        <li><span>Monthly burn rate vs. cash reserves</span> <span class="tag tag-manual">Manual</span></li>
+        <li><span>Revenue growth rate (MoM, QoQ)</span> <span class="tag tag-shipnity">Shipnity</span></li>
+        <li><span>Operating expense ratio (opex / revenue)</span> <span class="tag tag-manual">Manual</span></li>
+        <li><span>Break-even per store location</span> <span class="tag tag-manual">Manual</span></li>
+        <li><span>Wholesale revenue as % of total (diversification)</span> <span class="tag tag-shipnity">Shipnity</span></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<div class="card-title"><span class="num">4</span> Cost Breakdown · วัตถุดิบอะไรแพง <span class="priority-tag p2">PRIORITY 4</span></div>
-<div class="compare">เทียบกับร้านอาหาร: "วัตถุดิบชิ้นไหนแพงเป็นพิเศษ"</div>
-<div class="metric-list">
-<div class="metric-item"><span class="label">ต้นทุนผ้า / เมตร</span><span class="desc">แยกตาม supplier</span><span class="data-source manual">Manual</span></div>
-<div class="metric-item"><span class="label">ต้นทุนเย็บ / ตัว</span><span class="desc">แยกตามโรงงาน</span><span class="data-source manual">Manual</span></div>
-<div class="metric-item"><span class="label">Accessories Cost</span><span class="desc">ซิป, กระดุม, label, hang tag</span><span class="data-source manual">Manual</span></div>
-<div class="metric-item"><span class="label">Cost Trend M/M</span><span class="desc">เปรียบเทียบเดือนต่อเดือน</span><span class="data-source new">คำนวณ</span></div>
-</div>
-<div class="question-box">ทำไมต้นทุนเดือนนี้สูงกว่าเดือนก่อน? ผ้าล็อตไหนขึ้นราคา?</div>
+<!-- TAB 3: CEO Strategy & Recommendations -->
+<div id="tab-ceo" class="tab-content">
+  <div class="card">
+    <h2>CEO Strategic Recommendations</h2>
+    <p style="font-size:13px;color:#666;margin-bottom:20px;">What you should focus on, look out for, and consider — based on current data and market conditions.</p>
+
+    <div class="reco">
+      <div class="reco-title">1. Dead Stock is Your Silent Cash Drain — Audit & Liquidate Now</div>
+      <div class="reco-why">WHY THIS MATTERS</div>
+      <div class="reco-action">You have a ClickUp task flagged URGENT about stock sitting too long. At ~600-700 THB cost per unit, even 200 dead units = 120-140K THB trapped. Run a Shipnity report filtering items with <5 units sold in 90 days. Bundle them into a "warehouse sale" on TikTok Live or a flash sale event — recover cash, free up warehouse space. Don't discount on main channels (protects brand).</div>
+      <div class="reco-impact">Potential Impact: Recover 100-200K THB in trapped inventory capital</div>
+    </div>
+
+    <div class="reco">
+      <div class="reco-title">2. April Revenue Is Tracking Low — You Need a Mid-Month Push</div>
+      <div class="reco-why">WHY THIS MATTERS</div>
+      <div class="reco-action">477K at day 15 projects to ~953K for April — below Jan's 1.02M peak. Consider: (A) Schedule 2-3 TikTok Live sessions this week focusing on bestsellers, (B) Push a "Songkran Special" bundle deal on Shopee/Laz while the holiday traffic is high, (C) Activate LINE broadcast to your existing customer base — they convert 3-5x better than cold traffic. The goal isn't just more sales — it's keeping monthly momentum above 1M.</div>
+      <div class="reco-impact">Potential Impact: +150-300K THB if you activate all 3 channels this week</div>
+    </div>
+
+    <div class="reco">
+      <div class="reco-title">3. US Expansion: Contract & Invoice Are STUCK — Unblock This Week</div>
+      <div class="reco-why">WHY THIS MATTERS</div>
+      <div class="reco-action">Your shipping invoice is STUCK and the Eye contract recheck is URGENT. These are blocking your first wholesale shipment to the US. Recommendation: (A) Dedicate tomorrow to finalizing the contract attachments — you're the only one who can sign off, (B) Get Thai lawyer review completed ASAP — don't ship without legal protection, (C) Once invoice is done, set a recurring monthly wholesale cycle so this doesn't bottleneck again. The US wholesale channel could add 200-400K THB/month once flowing.</div>
+      <div class="reco-impact">Potential Impact: Unlock recurring 200-400K THB/month wholesale revenue stream</div>
+    </div>
+
+    <div class="reco">
+      <div class="reco-title">4. Flagship Store Strategy — Know Your Break-Even Before Committing</div>
+      <div class="reco-why">WHY THIS MATTERS</div>
+      <div class="reco-action">Song Wat store is in planning. Before committing to build-out costs, calculate: rent + utilities + staff (2 people min) + inventory for display = your monthly fixed cost. If that's 80-120K/month, you need 150-200K/month revenue from the store just to break even. Look at Gaysorn and Tres performance — what's their revenue per square meter? Use that as your benchmark. If offline stores aren't hitting 2x their fixed costs, focus online scaling first.</div>
+      <div class="reco-impact">Potential Impact: Avoid 500K-1M THB build-out risk if unit economics don't work</div>
+    </div>
+
+    <div class="reco">
+      <div class="reco-title">5. Hire a Marketing/Content Lead — You Can't Scale and Create Alone</div>
+      <div class="reco-why">WHY THIS MATTERS</div>
+      <div class="reco-action">You have a RECRUIT task for designer + marketing at ModCo that's been waiting. Your content drives sales, but you're the bottleneck. To go from 1.5M to 4-6M, you need someone who can: run TikTok Live sessions independently, manage Shopee/Laz listings and promotions, coordinate with Tantai on content. Consider: hire 1 strong marketing person at 25-35K/month. If they generate even 200K additional monthly revenue, the ROI is 5-8x. Start with a 3-month trial.</div>
+      <div class="reco-impact">Potential Impact: Free 15-20 hours/week of your time + potential 200K+/month revenue lift</div>
+    </div>
+
+    <div class="reco">
+      <div class="reco-title">6. Wholesale Pattern — Build a Repeatable System Now</div>
+      <div class="reco-why">WHY THIS MATTERS</div>
+      <div class="reco-action">Your "pattern การทำ wholesale with client" task has been sitting. As you onboard OFO Malaysia and KDS USA, every shipment is currently manual and high-friction. Build a simple SOP: (1) monthly stock report auto-generated, (2) standard order form, (3) fixed shipping schedule (1st and 15th of each month), (4) payment terms template. This turns wholesale from a project into a channel. The global trend is shorter wholesale lead times (263 days in 2019 → 102 days in 2024) — lean into this.</div>
+      <div class="reco-impact">Potential Impact: Scale to 3-5 wholesale partners without proportional effort increase</div>
+    </div>
+
+    <div class="reco">
+      <div class="reco-title">7. TikTok Score 3.7 → 4.5 — This Directly Affects Sales Visibility</div>
+      <div class="reco-why">WHY THIS MATTERS</div>
+      <div class="reco-action">Kanjana has a task to improve TikTok score from 3.7 to 4.5. On TikTok Shop, seller rating affects search ranking, ad costs, and buyer trust. Focus on: (A) Response time — aim for <1 hour during business hours, (B) Shipping speed — dispatch within 24 hours, (C) Resolve any open disputes immediately. A jump from 3.7 to 4.5 can increase organic visibility by 20-40% on TikTok Shop.</div>
+      <div class="reco-impact">Potential Impact: 20-40% increase in TikTok organic discovery + lower ad costs</div>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<div class="card-title"><span class="num">5</span> Collection Performance · คอลฯ ไหนเวิร์ค <span class="priority-tag p3">PRIORITY 5</span></div>
-<div class="compare">เทียบกับร้านอาหาร: "เซตเมนูไหนขายดี ควร rotate ยังไง"</div>
-<div class="metric-list">
-<div class="metric-item"><span class="label">ยอดขายต่อ Collection</span><span class="desc">แยกตาม drop / season</span><span class="data-source shipnity">Shipnity</span></div>
-<div class="metric-item"><span class="label">First-Week Sell-through</span><span class="desc">สัปดาห์แรกขายได้กี่ %</span><span class="data-source shipnity">Shipnity</span></div>
-<div class="metric-item"><span class="label">Repeat Purchase</span><span class="desc">ลูกค้าซื้อซ้ำจากคอลฯ เดิม</span><span class="data-source shipnity">Shipnity</span></div>
-<div class="metric-item"><span class="label">Best & Worst per Drop</span><span class="desc">top 3 / bottom 3 SKU</span><span class="data-source new">คำนวณ</span></div>
-</div>
-<div class="question-box">Camo collection ขายดีกว่า basic 3 เท่า — ควร drop ต่อเนื่อง?</div>
+<!-- TAB 4: My Tasks (Noon's ClickUp) -->
+<div id="tab-tasks" class="tab-content">
+  <div class="card">
+    <h2>Noon's Priority Tasks</h2>
+    <p style="font-size:12px;color:#888;margin-bottom:16px;">Filtered from ClickUp — tasks assigned to you with due dates up to today</p>
+
+    <div class="task-item">
+      <span class="task-status status-stuck">STUCK</span>
+      <div class="task-info">
+        <div class="task-name"><a href="https://app.clickup.com/t/86c72h7nj" target="_blank">Create Invoice for shipping 1st round</a></div>
+        <div class="task-meta">US Expansion · Due: 17 Dec 2024 (overdue) · with Kodangs Manage, Kodangs US</div>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <span class="task-status status-urgent">URGENT</span>
+      <div class="task-info">
+        <div class="task-name"><a href="https://app.clickup.com/t/86c7bq25z" target="_blank">Eye recheck with contract again with more details</a></div>
+        <div class="task-meta">US Expansion · Due: 18 Dec 2024 (overdue) · with Kodangs US</div>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <span class="task-status status-urgent">URGENT</span>
+      <div class="task-info">
+        <div class="task-name"><a href="https://app.clickup.com/t/86c7wbjaa" target="_blank">QA: สินค้าค้างสต็อก — ทำโปรโมชั่นด่วน</a></div>
+        <div class="task-meta">Stock Room · Due: 30 Jan 2026 (overdue) · with Kanjana</div>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <span class="task-status status-progress">IN PROGRESS</span>
+      <div class="task-info">
+        <div class="task-name"><a href="https://app.clickup.com/t/86c8y2gbp" target="_blank">Prepare เอกสารแนบท้าย contract + details</a></div>
+        <div class="task-meta">US Expansion · Due: 17 Dec 2024 (overdue)</div>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <span class="task-status status-progress">IN PROGRESS</span>
+      <div class="task-info">
+        <div class="task-name"><a href="https://app.clickup.com/t/86c7bq2qe" target="_blank">THAI LAWYER — legal review</a></div>
+        <div class="task-meta">US Expansion · Due: 15 Jan 2026</div>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <span class="task-status status-progress">IN PROGRESS</span>
+      <div class="task-info">
+        <div class="task-name"><a href="https://app.clickup.com/t/86c7vy3vq" target="_blank">PROJECT: INTERN 2026</a></div>
+        <div class="task-meta">Back End · Due: 31 Jul 2026 · with Kanjana, Tantai</div>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <span class="task-status status-progress">IN PROGRESS</span>
+      <div class="task-info">
+        <div class="task-name"><a href="https://app.clickup.com/t/86c2tjzma" target="_blank">Project: Coffee Everywhere</a></div>
+        <div class="task-meta">Back End · HIGH priority · with Kanjana, FRONT</div>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <span class="task-status status-todo">TO DO</span>
+      <div class="task-info">
+        <div class="task-name"><a href="https://app.clickup.com/t/86c7bq365" target="_blank">LOGO register at USA</a></div>
+        <div class="task-meta">US Expansion · Due: 30 Jan 2026 (overdue)</div>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <span class="task-status status-todo">TO DO</span>
+      <div class="task-info">
+        <div class="task-name"><a href="https://app.clickup.com/t/86c7ef8b9" target="_blank">Project Coffee — USA</a></div>
+        <div class="task-meta">US Expansion · Due: 22 Dec 2024 · with Kanjana, Panpornpach, Kodangs US</div>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <span class="task-status status-todo">TO DO</span>
+      <div class="task-info">
+        <div class="task-name"><a href="https://app.clickup.com/t/86c6agqj2" target="_blank">Pattern การทำ wholesale with client</a></div>
+        <div class="task-meta">Back End · Due: 7 Mar 2026 (overdue)</div>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <span class="task-status status-todo">TO DO</span>
+      <div class="task-info">
+        <div class="task-name"><a href="https://app.clickup.com/t/86c383rq4" target="_blank">STORE EXPERIENCE UPGRADE สั่งผลิต</a></div>
+        <div class="task-meta">Tantai list · Due: 15 May 2025 · with Kanjana, Tantai</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<div class="card-title"><span class="num">6</span> Production & Supplier · โรงงานส่งตรงเวลาไหม <span class="priority-tag p3">PRIORITY 6</span></div>
-<div class="compare">เทียบกับร้านอาหาร: "supplier ส่งวัตถุดิบตรงเวลาไหม คุณภาพโอเคไหม"</div>
-<div class="metric-list">
-<div class="metric-item"><span class="label">Lead Time จริง vs. สัญญา</span><span class="desc">สั่งวันไหน ได้ของวันไหน</span><span class="data-source manual">Manual</span></div>
-<div class="metric-item"><span class="label">Defect Rate</span><span class="desc">ของเสียกี่ % ต่อ supplier</span><span class="data-source manual">Manual</span></div>
-<div class="metric-item"><span class="label">Cost Comparison</span><span class="desc">เทียบราคาระหว่าง supplier</span><span class="data-source manual">Manual</span></div>
-</div>
-<div class="question-box">โรงงาน A ส่งช้าแต่ของดี vs. โรงงาน B เร็วแต่ defect เยอะ — เลือกใคร?</div>
+<!-- TAB 5: Team Overdue -->
+<div id="tab-team" class="tab-content">
+  <div class="card">
+    <h2>Team Overdue Tasks</h2>
+    <p style="font-size:12px;color:#888;margin-bottom:16px;">Team members with tasks past due date that are still open</p>
+
+    <div class="team-member">
+      <div class="member-name">Kunyakorn <span class="count">18+ tasks</span></div>
+      <div class="overdue-task">LINE broadcast (recurring monthly — multiple instances overdue since Jan)</div>
+      <div class="overdue-task">20 kodangslife posts (recurring — multiple overdue since Jan)</div>
+      <div class="overdue-task">Email marketing Carter & restock items — URGENT</div>
+      <div class="overdue-task">Website cover images — HIGH priority</div>
+    </div>
+
+    <div class="team-member">
+      <div class="member-name">FRONT <span class="count">3 tasks</span></div>
+      <div class="overdue-task">ฝากติดตามงานในหมวดนี้ — URGENT</div>
+      <div class="overdue-task">รบกวนอัพเดท project activity — URGENT</div>
+      <div class="overdue-task">ประชุม draft 1 (with Kanjana)</div>
+    </div>
+
+    <div class="team-member">
+      <div class="member-name">Tantai <span class="count">5 tasks</span></div>
+      <div class="overdue-task">สติกเกอร์ติดหน้าร้าน — URGENT</div>
+      <div class="overdue-task">โปสเตอร์ตกแต่ง store — URGENT</div>
+      <div class="overdue-task">CONCEPT ของร้านและพร้อป — URGENT (with 2A Perspective)</div>
+      <div class="overdue-task">ฝากอัพเดทคลิป plus size on website</div>
+      <div class="overdue-task">Camo ลง YouTube</div>
+    </div>
+
+    <div class="team-member">
+      <div class="member-name">2A Perspective <span class="count">3 tasks</span></div>
+      <div class="overdue-task">Signage ผลิตป้ายต่างๆ — URGENT</div>
+      <div class="overdue-task">Design pocket frank — NORMAL</div>
+      <div class="overdue-task">Collection plan: ขาดสินค้าผู้หญิง วัยรุ่น ราคาดี</div>
+    </div>
+
+    <div class="team-member">
+      <div class="member-name">Pachaya <span class="count">3 tasks</span></div>
+      <div class="overdue-task">Facebook ads bill</div>
+      <div class="overdue-task">รวบรวมวิธีเช็คยอดทุกสาขา</div>
+      <div class="overdue-task">ลงยอด The Mall + ส่งบิล</div>
+    </div>
+
+    <div class="team-member">
+      <div class="member-name">Kanjana <span class="count">2 tasks</span></div>
+      <div class="overdue-task">Print catalog to all stores — IN PROGRESS</div>
+      <div class="overdue-task">TikTok score 3.7 → 4.5 — IN PROGRESS</div>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<div class="card-title">สรุป Priority</div>
-<table class="priority-table">
-<thead><tr><th>#</th><th>หมวด</th><th>ทำไมสำคัญ</th><th>แหล่งข้อมูล</th></tr></thead>
-<tbody>
-<tr><td class="rank">1</td><td class="cat">Product Profitability</td><td class="why">รู้ว่าตัวไหนทำเงิน ตัวไหนตัด — ตัดสินใจผลิตได้เลย</td><td><span class="data-source shipnity">Shipnity</span> + <span class="data-source manual">Manual</span></td></tr>
-<tr><td class="rank">2</td><td class="cat">Inventory Health</td><td class="why">สต็อกหมด = เสียยอด / สต็อกค้าง = จมทุน</td><td><span class="data-source shipnity">Shipnity</span></td></tr>
-<tr><td class="rank">3</td><td class="cat">Channel Performance</td><td class="why">รู้ว่าควรเทแรงช่องไหน</td><td><span class="data-source shipnity">Shipnity</span></td></tr>
-<tr><td class="rank">4</td><td class="cat">Cost Breakdown</td><td class="why">ควบคุม margin ละเอียดขึ้น</td><td><span class="data-source manual">Manual</span></td></tr>
-<tr><td class="rank">5</td><td class="cat">Collection Performance</td><td class="why">วางแผน drop ถัดไปแม่นขึ้น</td><td><span class="data-source shipnity">Shipnity</span></td></tr>
-<tr><td class="rank">6</td><td class="cat">Production Tracking</td><td class="why">scale ไปต้องมี แต่ยังไม่เร่ง</td><td><span class="data-source manual">Manual</span></td></tr>
-</tbody>
-</table>
+<!-- TAB 6: News & Trends -->
+<div id="tab-news" class="tab-content">
+  <div class="card">
+    <h2>Industry News & Trends</h2>
+    <p style="font-size:12px;color:#888;margin-bottom:16px;">What's happening in fashion that affects Kodangs — April 2026</p>
+
+    <div class="news-item">
+      <div class="news-tag">Thai Market</div>
+      <div class="news-title">Bangkok streetwear scene shifting toward vintage × modern mixing + tailored workwear</div>
+      <div class="news-relevance">Directly aligned with Kodangs positioning. Siam Square remains the launchpad for Thai streetwear — consider pop-up presence there.</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-tag">Global Wholesale</div>
+      <div class="news-title">Wholesale lead times collapsed from 263 days (2019) to 102 days (2024) — in-season buying rising in 2026</div>
+      <div class="news-relevance">Advantage for Kodangs: shorter commitment cycles mean less risk for US/Malaysia partners. Position your wholesale as "quick replenishment" rather than seasonal buys.</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-tag">US Market</div>
+      <div class="news-title">"Quiet Luxury" and "Sustainable Minimalism" dominating wholesale buyer priorities in 2026</div>
+      <div class="news-relevance">Kodangs' minimal, detail-driven aesthetic fits this trend. Use "quiet luxury" language in US wholesale pitches and catalog descriptions.</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-tag">Malaysia</div>
+      <div class="news-title">Malaysia fashion market growing with modest fashion + athleisure convergence, omnichannel expected</div>
+      <div class="news-relevance">For OFO Malaysia partnership: consider curating a modest-friendly selection (longer cuts, neutral palettes). Athleisure crossover with workwear is a sweet spot.</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-tag">Climate Trend</div>
+      <div class="news-title">Climate-adaptive fabrics becoming a top wholesale buyer requirement across Southeast Asia</div>
+      <div class="news-relevance">Bangkok's heat makes breathable, moisture-wicking fabrics essential. If you're not already using climate-adaptive materials in production, start testing — it's becoming a table stakes requirement for buyers.</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-tag">SE Asia</div>
+      <div class="news-title">35 must-know Southeast Asian fashion labels gaining global attention in 2026</div>
+      <div class="news-relevance">Competition and opportunity. Kodangs should be on this kind of list. Consider reaching out to Tatler Asia, Hypebeast Asia, or similar editorial outlets for brand features.</div>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<div class="card-title">Next Steps · สิ่งที่ต้องทำต่อ</div>
-<div class="next-step">
-<span class="step-num">1</span><span class="step-title">ดึง Export ข้อมูลจาก Shipnity</span>
-<div class="step-desc">export รายงานสินค้า (ยอดขาย + สต็อก) ออกมาเป็น CSV/Excel เพื่อให้ Claude วิเคราะห์ SKU profitability + inventory health ได้ทันที</div>
-<div class="step-timeline">สัปดาห์นี้</div>
-</div>
-<div class="next-step">
-<span class="step-num">2</span><span class="step-title">จัดทำ Cost Sheet ต่อ SKU</span>
-<div class="step-desc">รวบรวมต้นทุนจริงต่อตัว (ผ้า + เย็บ + accessories + แพ็ค) ใส่ Google Sheet — อันนี้ Shipnity ไม่มี ต้อง input เอง แต่ทำครั้งเดียวใช้ได้ตลอด</div>
-<div class="step-timeline">สัปดาห์นี้ – สัปดาห์หน้า</div>
-</div>
-<div class="next-step">
-<span class="step-num">3</span><span class="step-title">สร้าง Live Dashboard รอบแรก</span>
-<div class="step-desc">เอาข้อมูลจากข้อ 1 + 2 มาสร้าง dashboard จริง — เริ่มจาก Product Profitability + Inventory Health ก่อน เพราะ impact สูงสุด</div>
-<div class="step-timeline">สัปดาห์หน้า</div>
-</div>
-<div class="next-step">
-<span class="step-num">4</span><span class="step-title">เพิ่ม Channel Performance</span>
-<div class="step-desc">ดึงยอดขายแยก channel จาก Shipnity + ใส่ค่า GP/commission ต่อ platform เพื่อเห็นกำไรจริงต่อช่อง</div>
-<div class="step-timeline">ภายในเดือน เม.ย.</div>
-</div>
-<div class="next-step">
-<span class="step-num">5</span><span class="step-title">ผูก Auto-Update เข้า Morning Brief</span>
-<div class="step-desc">พอ dashboard เสถียร ให้ดึงข้อมูล key metrics ใส่ morning brief อัตโนมัติ — เห็นทุกเช้าโดยไม่ต้องเปิดหลายหน้า</div>
-<div class="step-timeline">พ.ค. 2569</div>
-</div>
+<div class="footer">
+  KODANGS CEO Dashboard · Auto-generated 15 April 2026 · Data: Shipnity + ClickUp + Web Research
 </div>
 
-<div class="footer">Kodangs Analytics Framework · 14 เม.ย. 2569<br>สร้างโดย Claude สำหรับ Noon</div>
+</div>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
 </body>
 </html>
