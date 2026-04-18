@@ -3,385 +3,253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morning Brief · 17 เม.ย. 2569</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Morning Brief · 18 เม.ย. 2569</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    background: #fafafa;
-    color: #1a1a1a;
-    line-height: 1.6;
-    padding: 32px 16px;
-    min-height: 100vh;
-  }
-  .container { max-width: 780px; margin: 0 auto; }
-  .header {
-    margin-bottom: 32px;
-    text-align: left;
-  }
-  .header h1 {
-    font-size: 32px;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    margin-bottom: 6px;
-  }
-  .header .date {
-    color: #888;
-    font-size: 14px;
-    font-weight: 400;
-  }
-  .card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 24px;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    border: 1px solid #f0f0f0;
-  }
-  .card-title {
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: #888;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .metric-row {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-  }
-  .metric { flex: 1; min-width: 140px; }
-  .metric-label {
-    font-size: 12px;
-    color: #888;
-    margin-bottom: 4px;
-  }
-  .metric-value {
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: -0.3px;
-  }
-  .metric-sub { font-size: 12px; color: #aaa; margin-top: 2px; }
-  .pace-bar-wrapper {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid #f0f0f0;
-  }
-  .pace-bar-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #666;
-    margin-bottom: 6px;
-  }
-  .pace-bar {
-    height: 8px;
-    background: #f0f0f0;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .pace-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #C9A96E, #D4B97C);
-    border-radius: 4px;
-    transition: width 0.6s ease;
-  }
-  .pace-bar-red .pace-bar-fill { background: #e85d5d; }
-  .pace-bar-yellow .pace-bar-fill { background: #e8a33b; }
-  .pace-bar-green .pace-bar-fill { background: #5eb97b; }
-  .tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid #f0f0f0;
-  }
-  .tab {
-    padding: 8px 16px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 500;
-    color: #888;
-    border-radius: 8px 8px 0 0;
-    font-family: inherit;
-    transition: all 0.2s;
-  }
-  .tab:hover { color: #1a1a1a; }
-  .tab.active { background: #C9A96E; color: #fff; }
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-  .detail-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin-top: 8px;
-  }
-  .detail-table th {
-    text-align: right;
-    padding: 8px 10px;
-    background: #fafafa;
-    font-weight: 500;
-    color: #888;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .detail-table th:first-child, .detail-table td:first-child {
-    text-align: left;
-    font-weight: 500;
-  }
-  .detail-table td {
-    padding: 10px;
-    text-align: right;
-    border-bottom: 1px solid #f5f5f5;
-  }
-  .detail-table tr.current {
-    background: #fdf8ee;
-    font-weight: 600;
-  }
-  .detail-table tr.total {
-    background: #1a1a1a;
-    color: #fff;
-    font-weight: 600;
-  }
-  .detail-table tr.total td { border: none; }
-  .note {
-    font-size: 11px;
-    color: #aaa;
-    font-style: italic;
-    margin-top: 10px;
-  }
-  .task-item {
-    padding: 10px 0;
-    border-bottom: 1px solid #f5f5f5;
-    font-size: 14px;
-  }
-  .task-item:last-child { border-bottom: none; }
-  .task-status {
-    display: inline-block;
-    padding: 2px 8px;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 4px;
-    margin-right: 8px;
-    letter-spacing: 0.5px;
-  }
-  .status-urgent { background: #ffe5e5; color: #c73838; }
-  .status-progress { background: #fff4d9; color: #b77b00; }
-  .status-stuck { background: #ffe0d6; color: #c75a1a; }
-  .task-meta { font-size: 12px; color: #aaa; margin-top: 2px; }
-  .news-item {
-    padding: 12px 0;
-    border-bottom: 1px solid #f5f5f5;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  .news-item:last-child { border-bottom: none; }
-  .news-item a {
-    color: #1a1a1a;
-    text-decoration: none;
-    border-bottom: 1px dotted #ccc;
-  }
-  .news-item a:hover { border-color: #C9A96E; }
-  .grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
-  .empty-state {
-    color: #888;
-    font-size: 14px;
-    text-align: center;
-    padding: 20px 0;
-  }
-  .empty-state strong { color: #1a1a1a; }
-  .footer {
-    text-align: center;
-    color: #aaa;
-    font-size: 13px;
-    margin-top: 32px;
-    padding: 24px 0;
-  }
-  .dashboard-link {
-    display: inline-block;
-    margin-top: 12px;
-    color: #C9A96E;
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    border-bottom: 1px solid #C9A96E;
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', 'Sarabun', -apple-system, sans-serif;
+  background: #fafafa;
+  color: #1a1a1a;
+  line-height: 1.6;
+  padding: 24px 16px 48px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.header { margin-bottom: 32px; }
+.header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 4px; }
+.header .date { font-size: 13px; color: #888; font-weight: 500; }
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+  border: 1px solid #f0f0f0;
+}
+.card-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: #888; margin-bottom: 16px; }
+.sales-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.metric { padding: 12px 0; }
+.metric .label { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.metric .value { font-size: 24px; font-weight: 700; color: #1a1a1a; }
+.metric .sub { font-size: 12px; color: #888; margin-top: 2px; }
+.pace-bar { margin-top: 16px; padding-top: 16px; border-top: 1px solid #f0f0f0; }
+.pace-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: #666; margin-bottom: 8px; }
+.bar { height: 8px; background: #f0f0f0; border-radius: 8px; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #C9A96E, #d4b378); border-radius: 8px; transition: width 0.6s ease; }
+.tabs { display: flex; gap: 4px; margin-bottom: 16px; border-bottom: 1px solid #f0f0f0; }
+.tab { padding: 8px 16px; border: none; background: transparent; color: #888; cursor: pointer; font-size: 13px; font-weight: 500; font-family: inherit; border-bottom: 2px solid transparent; }
+.tab.active { color: #1a1a1a; border-bottom-color: #C9A96E; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: right; padding: 8px 10px; border-bottom: 1px solid #f5f5f5; }
+th { color: #888; font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+th:first-child, td:first-child { text-align: left; }
+.highlight-row { background: #fdf7ec; font-weight: 600; }
+.highlight-row td { color: #8B6F3A; }
+.task-item { padding: 12px 0; border-bottom: 1px solid #f5f5f5; font-size: 14px; }
+.task-item:last-child { border-bottom: none; }
+.task-status { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 10px; font-weight: 600; text-transform: uppercase; margin-right: 8px; letter-spacing: 0.3px; }
+.status-stuck { background: #fff0f0; color: #c0392b; }
+.status-urgent { background: #fff4e6; color: #d66a1a; }
+.status-progress { background: #eef6ff; color: #1a6cc0; }
+.status-todo { background: #f0f0f0; color: #666; }
+.status-waiting { background: #fef7e0; color: #a07a1a; }
+.task-meta { display: block; font-size: 11px; color: #999; margin-top: 4px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 640px) { .grid-2, .sales-grid { grid-template-columns: 1fr; } }
+.empty { color: #999; font-size: 13px; font-style: italic; padding: 8px 0; }
+.news-item { padding: 10px 0; border-bottom: 1px solid #f5f5f5; font-size: 14px; line-height: 1.5; }
+.news-item:last-child { border-bottom: none; }
+.news-item a { color: #1a1a1a; text-decoration: none; border-bottom: 1px dotted #C9A96E; }
+.news-item a:hover { color: #C9A96E; }
+.footer { text-align: center; color: #999; font-size: 13px; margin-top: 32px; padding-top: 16px; }
+.note { font-size: 11px; color: #aaa; margin-top: 12px; font-style: italic; }
+.calendar-event { padding: 10px 0; font-size: 14px; border-bottom: 1px solid #f5f5f5; }
+.calendar-event:last-child { border-bottom: none; }
+.calendar-time { font-weight: 600; color: #C9A96E; margin-right: 8px; }
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <h1>Good morning, Noon. ☀️</h1>
-    <div class="date">วันศุกร์ที่ 17 เมษายน 2569 · Friday, April 17, 2026</div>
+
+<div class="header">
+  <h1>Good morning, Noon. ☀️</h1>
+  <div class="date">วันเสาร์ที่ 18 เมษายน 2569 · Saturday, April 18, 2026</div>
+</div>
+
+<div class="card">
+  <div class="card-title">📊 Sales</div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab(event, 'overview')">Overview</button>
+    <button class="tab" onclick="switchTab(event, 'detail')">Shipnity Detail</button>
   </div>
 
-  <!-- SALES CARD -->
-  <div class="card">
-    <div class="card-title">📊 Sales</div>
-    <div class="tabs">
-      <button class="tab active" onclick="switchTab(event,'overview')">Overview</button>
-      <button class="tab" onclick="switchTab(event,'detail')">Shipnity Detail</button>
-    </div>
-
-    <div id="overview" class="tab-content active">
-      <div class="metric-row">
-        <div class="metric">
-          <div class="metric-label">ยอดขายวันนี้</div>
-          <div class="metric-value">฿1,596</div>
-          <div class="metric-sub">all channels</div>
-        </div>
-        <div class="metric">
-          <div class="metric-label">MTD · 17 วัน</div>
-          <div class="metric-value">฿574,434</div>
-          <div class="metric-sub">เม.ย. 2569</div>
-        </div>
-        <div class="metric">
-          <div class="metric-label">Pace (projection)</div>
-          <div class="metric-value">฿1.01M</div>
-          <div class="metric-sub">daily avg × 30</div>
-        </div>
+  <div id="overview" class="tab-content active">
+    <div class="sales-grid">
+      <div class="metric">
+        <div class="label">ยอดายวันนี้</div>
+        <div class="value">฿6,640</div>
+        <div class="sub">เสาร์เช้า · ยังต้นวัน</div>
       </div>
-      <div class="pace-bar-wrapper pace-bar-red">
-        <div class="pace-bar-label">
-          <span>Pace vs ฿2.5M target</span>
-          <span>40.5%</span>
-        </div>
-        <div class="pace-bar">
-          <div class="pace-bar-fill" style="width: 40.5%"></div>
-        </div>
-        <div class="note">🔴 Pace ต่ำกว่า target — ดูที่ CEO dashboard สำหรับ strategic moves</div>
+      <div class="metric">
+        <div class="label">MTD · เดือน เม.ย. (18 วัน)</div>
+        <div class="value">฿620,397</div>
+        <div class="sub">เฉลี่ยวันละ ฿34,466</div>
       </div>
     </div>
-
-    <div id="detail" class="tab-content">
-      <table class="detail-table">
-        <thead>
-          <tr>
-            <th>เดือน</th>
-            <th>ยอดขายรวม</th>
-            <th>ต้นทุน</th>
-            <th>ค่าส่ง</th>
-            <th>กำไรขั้นต้น</th>
-            <th>GP %</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ม.ค. 2569</td>
-            <td>1,017,696</td>
-            <td>277,015</td>
-            <td>113,585</td>
-            <td>627,096</td>
-            <td>61.6%</td>
-          </tr>
-          <tr>
-            <td>ก.พ. 2569</td>
-            <td>867,332</td>
-            <td>249,970</td>
-            <td>115,438</td>
-            <td>501,953</td>
-            <td>57.9%</td>
-          </tr>
-          <tr>
-            <td>มี.ค. 2569</td>
-            <td>896,750</td>
-            <td>260,301</td>
-            <td>111,587</td>
-            <td>524,861</td>
-            <td>58.5%</td>
-          </tr>
-          <tr class="current">
-            <td>เม.ย. 2569 (MTD)</td>
-            <td>574,434</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-          </tr>
-          <tr class="total">
-            <td>YTD 2569</td>
-            <td>3,298,942</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="note">ข้อมูลจาก Shipnity — cross-check กับต้นทุนจริง · April MTD ยังไม่มี breakdown เต็ม</div>
-    </div>
-  </div>
-
-  <!-- CLICKUP + TEAM OVERDUE -->
-  <div class="grid-2">
-    <div class="card">
-      <div class="card-title">🔴 ClickUp · Needs Noon</div>
-      <div class="empty-state">
-        <strong>ClickUp ไม่ได้เชื่อมต่อวันนี้</strong><br>
-        <span style="font-size:12px">เช็ค task list ใน ClickUp เองนะ — ใช้เวลา 5 นาที review งานค้าง</span>
+    <div class="pace-bar">
+      <div class="pace-bar-label">
+        <span>Projection เดือนนี้ ≈ ฿1.03M</span>
+        <span>Target 4M · 25.8%</span>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-title">👥 Team Overdue</div>
-      <div class="empty-state">
-        <strong>ต้องเช็คเอง</strong><br>
-        <span style="font-size:12px">ClickUp data ไม่ได้ pull วันนี้ — ping ทีมเรื่อง overdue</span>
-      </div>
+      <div class="bar"><div class="bar-fill" style="width:25.8%"></div></div>
+      <div class="note">Pace ใกล้เคียง ม.ค. peak (฿1.02M). Gap to 4M ≈ ฿2.97M/เดือน</div>
     </div>
   </div>
 
-  <!-- CALENDAR -->
-  <div class="card">
-    <div class="card-title">📅 Calendar</div>
-    <div class="empty-state">
-      <strong>ไม่มี meeting — Deep Work Day ✨</strong><br>
-      <span style="font-size:12px">โฟกัส 3 อย่าง: (1) วิเคราะห์ทำไม April pace drop (2) flagship Song Wat next step (3) content plan สัปดาห์หน้า</span>
-    </div>
-  </div>
-
-  <!-- NEWS -->
-  <div class="card">
-    <div class="card-title">🌍 News & Trends</div>
-    <div class="news-item">
-      🧵 <a href="https://stealdeal.com/blogs/news/how-streetwear-is-evolving-in-2026-top-wholesale-trends-retailers-should-watch" target="_blank">Streetwear 2026: ย้ายเข้าสู่ boxy fits + high-GSM fabrics (240–300 GSM tee)</a> — เกี่ยวกับ Kodangs: positioning heavyweight ได้เปรียบ
-    </div>
-    <div class="news-item">
-      🏗️ <a href="https://theapparelfactory.com/blog/2026-wholesale-apparel-trends-top-10-insights-for-buyers/" target="_blank">Workwear × Streetwear fusion เป็น trend ใหญ่ของ 2026</a> (Carhartt WIP wave) — perfect timing สำหรับ Kodangs expand US/Malaysia
-    </div>
-    <div class="news-item">
-      🤫 <a href="https://www.complex.com/style/a/mike-destefano/10-fashion-trends-we-think-will-run-streetwear-2026" target="_blank">"Quiet Luxury" ยังครอง — branding whispering, not shouting</a> — ตรงกับ Kodangs DNA
-    </div>
-    <div class="news-item">
-      📱 <a href="https://www.thaipr.net/en/entertain_en/3476804" target="_blank">TikTok Shop × Thai fashion บน global runway (Em District)</a> — โอกาส inventory flow ใหม่
-    </div>
-  </div>
-
-  <div class="footer">
-    ทำวันนี้ให้ดี. 🤍<br>
-    <a class="dashboard-link" href="https://chanipanimakorn-crypto.github.io/kodangs-dashboard/analytics.html">→ เปิด CEO Analytics Dashboard</a>
+  <div id="detail" class="tab-content">
+    <table>
+      <thead>
+        <tr>
+          <th>เดือน</th>
+          <th>ยอดรวม</th>
+          <th>ต้นทุนสินค้า</th>
+          <th>ค่าส่ง</th>
+          <th>GP</th>
+          <th>Margin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ม.ค. 2569</td>
+          <td>1,017,696</td>
+          <td>277,015</td>
+          <td>113,585</td>
+          <td>627,096</td>
+          <td>61.6%</td>
+        </tr>
+        <tr>
+          <td>ก.พ. 2569</td>
+          <td>867,332</td>
+          <td>249,970</td>
+          <td>115,438</td>
+          <td>501,953</td>
+          <td>57.9%</td>
+        </tr>
+        <tr>
+          <td>มี.ค. 2569</td>
+          <td>894,591</td>
+          <td>258,994</td>
+          <td>111,587</td>
+          <td>524,010</td>
+          <td>58.6%</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>เม.ย. 2569 (MTD)</td>
+          <td>620,397</td>
+          <td>~152,000</td>
+          <td>~85,000</td>
+          <td>~383,000</td>
+          <td>~61.7%</td>
+        </tr>
+        <tr style="border-top: 2px solid #C9A96E;">
+          <td><strong>YTD Total</strong></td>
+          <td><strong>3,400,015</strong></td>
+          <td>937,978</td>
+          <td>425,610</td>
+          <td><strong>2,036,059</strong></td>
+          <td><strong>59.9%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">ข้อมูลจาก Shipnity — รวมทุกช่องทาง (Shopee, Lazada, TikTok, LINE, IG, FB, website). Cross-check กับต้นทุนจริง.</div>
   </div>
 </div>
+
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title">🔴 ClickUp · ต้องการ Noon</div>
+    <div class="task-item">
+      <span class="task-status status-urgent">urgent</span>
+      Eye recheck with contract · more details
+      <span class="task-meta">List · Noon + Kodangs US</span>
+    </div>
+    <div class="task-item">
+      <span class="task-status status-urgent">urgent</span>
+      QA: เช็คสต็อกค้างเยอะไหม — ทำโปรด่วน
+      <span class="task-meta">📦ห้อง STOCK · Noon + Kanjana</span>
+    </div>
+    <div class="task-item">
+      <span class="task-status status-stuck">stuck</span>
+      Create Invoice for shipping 1st round
+      <span class="task-meta">List · Noon + Kodangs US · ค้าง ~47 วัน</span>
+    </div>
+    <div class="task-item">
+      <span class="task-status status-progress">in progress</span>
+      Prepare เอกสารแนบท้าย contract
+      <span class="task-meta">List · Noon only</span>
+    </div>
+    <div class="task-item">
+      <span class="task-status status-progress">in progress</span>
+      PROJECT: INTERN 2026
+      <span class="task-meta">Back End · Noon + Kanjana + Tantai</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">👥 Team Overdue</div>
+    <div class="task-item">
+      <strong>Kanjana</strong> → Tiktok คะแนน 3.7 → 4.5
+      <span class="task-meta">ค้าง 261 วัน · กระทบ ranking</span>
+    </div>
+    <div class="task-item">
+      <strong>Kunyakorn</strong> → Line broadcast + email marketing
+      <span class="task-meta">ค้าง 10+ วัน · ช่องหลัก retention</span>
+    </div>
+    <div class="task-item">
+      <strong>Pachaya</strong> → Facebook ads bill + สัญญา factory
+      <span class="task-meta">ค้าง ~108 วัน · การเงิน/compliance</span>
+    </div>
+    <div class="task-item">
+      <strong>2A Perspective</strong> → Collection plan: ผู้หญิงวัยรุ่น
+      <span class="task-meta">ค้าง ~140 วัน · missing segment</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">📅 Calendar</div>
+  <div class="calendar-event">
+    <span class="calendar-time">ทั้งวัน</span>
+    Stay at Renaissance Pattaya Resort & Spa (18–20 เม.ย.)
+  </div>
+  <div class="note">Weekend trip · ให้พัก แต่ไม่ลืมว่า Shipnity ยังเดินทุกวัน — Shopee/Lazada live ไม่หยุด</div>
+</div>
+
+<div class="card">
+  <div class="card-title">🌍 News & Trends</div>
+  <div class="news-item">
+    🇹🇭 <a href="https://www.thaipr.net/en/life_en/3700062" target="_blank">TikTok Shop Run Freshtival 2026</a> — Thai rising brands (Mc Jeans) ขยาย active/lifestyle. Opportunity: Kodangs เข้าร่วม #TikTokShopThaiRisers ได้ไหม?
+  </div>
+  <div class="news-item">
+    🧢 <a href="https://stealdeal.com/blogs/news/how-streetwear-is-evolving-in-2026-top-wholesale-trends-retailers-should-watch" target="_blank">Streetwear Evolution 2026</a> — Workwear × streetwear fusion = core trend. Kodangs positioning แม่นอยู่แล้ว — ย้ำ story นี้ในคอนเทนต์ช่วงนี้
+  </div>
+  <div class="news-item">
+    🌱 <a href="https://www.globalsources.com/knowledge/2024-fashion-trends-streetwear/" target="_blank">Sustainable streetwear</a> — ผู้บริโภคย้ายจาก loud logos → clean, intentional design + recycled materials. สอดรับ Kodangs DNA.
+  </div>
+</div>
+
+<div class="footer">ทำวันนี้ให้ดี. 🤍</div>
 
 <script>
 function switchTab(e, id) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  e.target.classList.add('active');
+  e.currentTarget.classList.add('active');
 }
 </script>
 </body>
