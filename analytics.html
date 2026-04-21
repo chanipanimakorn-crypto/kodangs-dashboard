@@ -3,396 +3,350 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kodangs CEO Dashboard · 19 เม.ย. 69</title>
+<title>Kodangs CEO Dashboard · 21 เม.ย. 2569</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter','IBM Plex Sans Thai',sans-serif;background:#fafafa;color:#1a1a1a;line-height:1.6;padding:24px;max-width:1100px;margin:0 auto}
-.header{margin-bottom:24px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
-.header h1{font-size:26px;font-weight:600;letter-spacing:-0.5px}
-.header .date{color:#888;font-size:13px}
-.header .pill{background:#C9A96E;color:white;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
-.tabs-nav{display:flex;gap:4px;margin-bottom:16px;overflow-x:auto;padding-bottom:2px}
-.tab-btn{padding:10px 16px;border:none;background:#f0f0f0;border-radius:10px 10px 0 0;cursor:pointer;font-size:13px;font-weight:500;font-family:inherit;white-space:nowrap;color:#666}
-.tab-btn.active{background:#C9A96E;color:white}
-.tab-panel{display:none}
-.tab-panel.active{display:block}
-.card{background:#fff;border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border:1px solid #f0f0f0}
-.card h3{font-size:15px;font-weight:600;margin-bottom:14px}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-@media(max-width:800px){.grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}.grid-2{grid-template-columns:1fr}}
-@media(max-width:500px){.grid-4{grid-template-columns:1fr}}
-.kpi-box{background:#fff;border-radius:12px;padding:16px;border:1px solid #f0f0f0}
-.kpi-box .label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
-.kpi-box .val{font-size:22px;font-weight:700;color:#1a1a1a;letter-spacing:-0.5px}
-.kpi-box .sub{font-size:12px;color:#666;margin-top:4px}
-.kpi-box.gold{background:#fdf8ee;border-color:#ecd9ab}
-.kpi-box.gold .val{color:#b8894a}
-.kpi-box.red{background:#fef0f0;border-color:#fcc}
-.kpi-box.red .val{color:#c33}
-.kpi-box.green{background:#f0f9f2;border-color:#c5e6cf}
-.kpi-box.green .val{color:#2d8b4e}
-.pace-bar{background:#f0f0f0;border-radius:999px;height:12px;overflow:hidden;margin-top:16px}
-.pace-bar .fill{background:linear-gradient(90deg,#C9A96E,#d9bc80);height:100%;border-radius:999px}
-.pace-note{font-size:12px;color:#666;margin-top:8px;display:flex;justify-content:space-between}
-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
-th,td{padding:10px 12px;text-align:right;border-bottom:1px solid #f5f5f5}
-th:first-child,td:first-child{text-align:left}
-th{font-weight:500;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;background:#fafafa}
-.highlight-row{background:#fdf8ee}
-.highlight-row td{font-weight:600}
-.task-item{padding:12px 0;border-bottom:1px solid #f5f5f5;font-size:13px}
-.task-item:last-child{border:none}
-.task-item .status{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;margin-right:6px;text-transform:uppercase;letter-spacing:0.5px}
-.status.urgent{background:#fee;color:#c00}
-.status.stuck{background:#ffe4b0;color:#b45}
-.status.progress{background:#e0f0ff;color:#0870c8}
-.status.todo{background:#f0f0f0;color:#666}
-.task-item .meta{color:#999;font-size:11px;margin-top:4px}
-.news-item{padding:14px 0;border-bottom:1px solid #f5f5f5;font-size:13px;line-height:1.65}
-.news-item:last-child{border:none}
-.news-item .topic{font-weight:600;color:#1a1a1a;margin-bottom:4px}
-.news-item a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #ccc;font-weight:500}
-.news-item a:hover{border-bottom-style:solid;color:#C9A96E}
-.rec-card{padding:16px;margin-bottom:12px;background:#fafafa;border-radius:12px;border-left:3px solid #C9A96E}
-.rec-card .title{font-weight:600;font-size:14px;margin-bottom:6px}
-.rec-card .desc{font-size:13px;color:#555;line-height:1.6}
-.rec-card.red{border-left-color:#c33;background:#fef8f8}
-.rec-card.gold{border-left-color:#C9A96E;background:#fdf8ee}
-.framework-item{padding:14px;background:#fafafa;border-radius:12px;margin-bottom:10px}
-.framework-item .title{font-weight:600;color:#C9A96E;font-size:13px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
-.framework-item .content{font-size:13px;color:#333;line-height:1.6}
-.footer{text-align:center;color:#999;font-size:12px;margin-top:32px;padding:20px}
-.link-nav{margin-top:14px;text-align:center;font-size:13px}
-.link-nav a{color:#666;text-decoration:none;border-bottom:1px dotted #ccc}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #fafafa; color: #1a1a1a; padding: 32px 20px; line-height: 1.55; }
+.wrap { max-width: 960px; margin: 0 auto; }
+.header { margin-bottom: 28px; }
+.title { font-size: 30px; font-weight: 600; letter-spacing: -0.5px; }
+.subtitle { font-size: 14px; color: #888; margin-top: 4px; }
+.card { background: white; border-radius: 16px; padding: 24px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03); }
+.main-tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 1px solid #eee; flex-wrap: wrap; background: white; border-radius: 12px 12px 0 0; padding: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.main-tab { padding: 10px 16px; border: none; background: transparent; cursor: pointer; font-size: 13px; font-weight: 500; color: #666; border-radius: 10px; font-family: inherit; transition: all 0.15s; }
+.main-tab:hover { background: #faf8f3; }
+.main-tab.active { background: #C9A96E; color: white; }
+.panel { display: none; }
+.panel.active { display: block; }
+.section-title { font-size: 15px; font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; }
+.kpi { background: #faf8f3; border-radius: 12px; padding: 16px; }
+.kpi-label { font-size: 11px; color: #888; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.3px; }
+.kpi-value { font-size: 22px; font-weight: 600; letter-spacing: -0.5px; }
+.kpi-sub { font-size: 11px; color: #666; margin-top: 4px; }
+.up { color: #1a7a3a; }
+.down { color: #c04040; }
+.flat { color: #888; }
+.pace-bar { background: #f0f0f0; height: 10px; border-radius: 5px; overflow: hidden; margin: 10px 0 6px; }
+.pace-fill { background: linear-gradient(90deg, #C9A96E, #8b7340); height: 100%; }
+.pace-label { font-size: 12px; color: #666; display: flex; justify-content: space-between; }
+.task { padding: 10px 0; border-bottom: 1px solid #f2f2f2; font-size: 13px; }
+.task:last-child { border-bottom: none; }
+.status-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; margin-right: 8px; text-transform: uppercase; letter-spacing: 0.3px; }
+.status-stuck { background: #ffe0e0; color: #c03030; }
+.status-urgent { background: #fff0d6; color: #c06800; }
+.status-inprog { background: #e0f0ff; color: #1a6ca0; }
+.status-solo { background: #f0e6ff; color: #6a4aa0; }
+.task-meta { font-size: 11px; color: #888; margin-top: 2px; }
+.note { font-size: 12px; color: #555; padding: 12px 14px; background: #faf8f3; border-radius: 8px; margin-top: 12px; border-left: 3px solid #C9A96E; }
+.framework-item { padding: 14px; background: #faf8f3; border-radius: 10px; margin-bottom: 10px; border-left: 3px solid #C9A96E; }
+.framework-item h4 { font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #1a1a1a; }
+.framework-item p { font-size: 13px; color: #555; }
+.strategy { padding: 16px; background: white; border: 1px solid #eee; border-radius: 10px; margin-bottom: 12px; }
+.strategy h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #1a1a1a; display: flex; align-items: center; gap: 6px;}
+.strategy p { font-size: 13px; color: #444; margin-bottom: 6px; }
+.strategy ul { margin-left: 20px; font-size: 13px; color: #444; }
+.strategy li { margin-bottom: 4px; }
+.strategy .tag { display: inline-block; font-size: 10px; padding: 2px 8px; background: #faf8f3; color: #8b7340; border-radius: 10px; margin-right: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px;}
+.news-item { padding: 14px 0; font-size: 13.5px; border-bottom: 1px solid #f2f2f2; line-height: 1.6; }
+.news-item:last-child { border-bottom: none; }
+.news-item a { color: #1a1a1a; text-decoration: none; border-bottom: 1px dotted #ccc; font-weight: 500; }
+.news-item a:hover { border-bottom-color: #C9A96E; }
+.news-item .news-desc { font-size: 12.5px; color: #666; margin-top: 4px; }
+.footer { text-align: center; color: #aaa; font-size: 13px; padding: 24px 0 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th { text-align: left; padding: 8px 10px; background: #faf8f3; font-weight: 600; color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px; }
+td { padding: 10px; border-bottom: 1px solid #f2f2f2; }
+.current-row { background: #fff8ea; font-weight: 600; }
+.amount { font-variant-numeric: tabular-nums; text-align: right; }
+.target-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+.target-card { padding: 14px; background: white; border: 1.5px solid #C9A96E; border-radius: 12px; }
+.target-label { font-size: 12px; color: #888; margin-bottom: 4px; }
+.target-value { font-size: 20px; font-weight: 600; color: #1a1a1a; }
+.target-sub { font-size: 11px; color: #666; margin-top: 4px; }
+@media (max-width: 640px) { .kpi-grid { grid-template-columns: 1fr; } .target-grid { grid-template-columns: 1fr; } .title { font-size: 24px; } .main-tab { padding: 8px 12px; font-size: 12px; }}
 </style>
 </head>
 <body>
+<div class="wrap">
 
 <div class="header">
-  <div>
-    <h1>Kodangs · CEO Analytics</h1>
-    <div class="date">วันอาทิตย์ที่ 19 เมษายน 2569 · Sunday, April 19, 2026</div>
-  </div>
-  <div class="pill">CEO Dashboard</div>
+  <div class="title">Kodangs CEO Dashboard</div>
+  <div class="subtitle">วันอังคารที่ 21 เมษายน 2569 · Tuesday, April 21, 2026</div>
 </div>
 
-<div class="tabs-nav">
-  <button class="tab-btn active" onclick="switchTab(event,'sales')">📊 Sales Overview</button>
-  <button class="tab-btn" onclick="switchTab(event,'framework')">🧠 Analytics Framework</button>
-  <button class="tab-btn" onclick="switchTab(event,'strategy')">🎯 CEO Strategy</button>
-  <button class="tab-btn" onclick="switchTab(event,'mytasks')">🔴 My Tasks</button>
-  <button class="tab-btn" onclick="switchTab(event,'team')">👥 Team Overdue</button>
-  <button class="tab-btn" onclick="switchTab(event,'news')">🌍 News &amp; Trends</button>
+<div class="main-tabs">
+  <button class="main-tab active" onclick="showPanel(event,'sales')">📊 Sales Overview</button>
+  <button class="main-tab" onclick="showPanel(event,'framework')">🧠 Analytics Framework</button>
+  <button class="main-tab" onclick="showPanel(event,'strategy')">🎯 CEO Strategy</button>
+  <button class="main-tab" onclick="showPanel(event,'mytasks')">🔴 My Tasks</button>
+  <button class="main-tab" onclick="showPanel(event,'team')">👥 Team Overdue</button>
+  <button class="main-tab" onclick="showPanel(event,'news')">🌍 News & Trends</button>
 </div>
 
 <!-- SALES OVERVIEW -->
-<div id="sales" class="tab-panel active">
+<div id="sales" class="panel active">
   <div class="card">
-    <h3>📈 ภาพรวมยอดขาย เม.ย. 2569</h3>
-    <div class="grid-4">
-      <div class="kpi-box">
-        <div class="label">ยอดขายวันนี้ (ประมาณ)</div>
-        <div class="val">฿33,355</div>
-        <div class="sub">Daily avg จาก MTD ÷ 19 วัน</div>
+    <div class="section-title">📊 Kodangs Sales Pace</div>
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-label">ยอดขายวันนี้ (ประมาณ)</div>
+        <div class="kpi-value">฿33,350</div>
+        <div class="kpi-sub">ค่าเฉลี่ย MTD ÷ 21 วัน</div>
       </div>
-      <div class="kpi-box gold">
-        <div class="label">ยอดเดือนสะสม (MTD)</div>
-        <div class="val">฿633,750</div>
-        <div class="sub">เดือน เม.ย. วันที่ 19</div>
+      <div class="kpi">
+        <div class="kpi-label">ยอดเดือนสะสม (MTD)</div>
+        <div class="kpi-value">฿700,330</div>
+        <div class="kpi-sub">21 วันของเม.ย. 69</div>
       </div>
-      <div class="kpi-box">
-        <div class="label">คาดการณ์ทั้งเดือน</div>
-        <div class="val">฿1,000,657</div>
-        <div class="sub">ถ้ารักษา pace เดิม</div>
+      <div class="kpi">
+        <div class="kpi-label">คาดการณ์ทั้งเดือน</div>
+        <div class="kpi-value">฿1,000,500</div>
+        <div class="kpi-sub">pace × 30 วัน</div>
       </div>
-      <div class="kpi-box green">
-        <div class="label">กำไรเดือนสะสม</div>
-        <div class="val">฿365,642</div>
-        <div class="sub">Margin 61.3%</div>
+      <div class="kpi">
+        <div class="kpi-label">กำไรเดือนสะสม</div>
+        <div class="kpi-value">฿396,383</div>
+        <div class="kpi-sub">GP margin ~61.4%</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">เทียบเดือน ม.ค. (peak)</div>
+        <div class="kpi-value down">-1.7%</div>
+        <div class="kpi-sub">ม.ค. 69 = ฿1.02M (best)</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">YTD รวม (4 เดือน)</div>
+        <div class="kpi-value">฿3.43M</div>
+        <div class="kpi-sub">เฉลี่ย ~฿857K/เดือน</div>
       </div>
     </div>
 
-    <div class="pace-bar"><div class="fill" style="width:25%"></div></div>
-    <div class="pace-note">
-      <span>Pace vs Target ฿4M · 🔴 25%</span>
-      <span>Gap ~฿3M/เดือน ที่ต้องปิด</span>
-    </div>
-  </div>
+    <div style="font-size:13px; color:#444; margin-bottom:6px;">Pace vs ฿2.5M target (short-term)</div>
+    <div class="pace-bar"><div class="pace-fill" style="width:40%;"></div></div>
+    <div class="pace-label"><span>คาดการณ์ ฿1.00M</span><span>40%</span></div>
 
-  <div class="grid-2">
-    <div class="card">
-      <h3>⚖️ เทียบเดือน ม.ค. (peak)</h3>
-      <div class="grid-2">
-        <div class="kpi-box">
-          <div class="label">ม.ค. 69 (peak)</div>
-          <div class="val" style="font-size:18px">฿1,017,696</div>
-          <div class="sub">กำไร ฿627K · margin 61.6%</div>
-        </div>
-        <div class="kpi-box red">
-          <div class="label">Projection เม.ย.</div>
-          <div class="val" style="font-size:18px">฿1,000,657</div>
-          <div class="sub">ต่ำกว่า ม.ค. 1.7% (-฿17K)</div>
-        </div>
+    <div class="target-grid">
+      <div class="target-card">
+        <div class="target-label">Target Gap · ฿4M/เดือน</div>
+        <div class="target-value">ขาด ฿3.00M/เดือน</div>
+        <div class="target-sub">ต้อง push ยอดเป็น 4× ของ pace ปัจจุบัน</div>
       </div>
-      <p style="font-size:12px;color:#666;margin-top:12px;line-height:1.6">
-        ยอดเดือน เม.ย. มีแนวโน้มใกล้เคียง ม.ค. — แต่ <strong>ยังห่างจาก target 4M ถึง 3 เท่า</strong> ต้องเปิดช่องทางใหม่ ไม่ใช่แค่ optimize ช่องทางเดิม
-      </p>
+      <div class="target-card">
+        <div class="target-label">Target Gap · ฿6M/เดือน</div>
+        <div class="target-value">ขาด ฿5.00M/เดือน</div>
+        <div class="target-sub">ต้อง scale 6× — ต้องมี channel ใหม่</div>
+      </div>
     </div>
-
-    <div class="card">
-      <h3>🎯 Target Gap สู่ ฿4–6M</h3>
-      <div class="kpi-box red" style="margin-bottom:10px">
-        <div class="label">Gap to ฿4M</div>
-        <div class="val" style="font-size:20px">฿3,000,000</div>
-        <div class="sub">ต้องเพิ่ม 3× จาก pace ปัจจุบัน</div>
-      </div>
-      <div class="kpi-box red">
-        <div class="label">Gap to ฿6M</div>
-        <div class="val" style="font-size:20px">฿5,000,000</div>
-        <div class="sub">ต้องเพิ่ม 5× จาก pace ปัจจุบัน</div>
-      </div>
-      <p style="font-size:12px;color:#666;margin-top:12px;line-height:1.6">
-        Gap นี้ไม่ปิดด้วย incremental marketing — ต้องมาจาก <strong>Flagship Store</strong> + <strong>Wholesale US/Malaysia</strong> + <strong>TikTok Live scale</strong>
-      </p>
-    </div>
+    <div class="note">เดือนเม.ย. tracking คล้าย ก.พ.-มี.ค. (~฿870-900K). ยังไม่ถึง ม.ค. peak. อยากเข้า 4M ต้อง unlock channel ใหม่ (flagship + wholesale + US)</div>
   </div>
 
   <div class="card">
-    <h3>📊 ตารางยอดรายเดือน (Shipnity)</h3>
+    <div class="section-title">📅 Monthly History (2569)</div>
     <table>
       <thead>
-        <tr><th>เดือน</th><th>ยอดขายรวม</th><th>ต้นทุน</th><th>ค่าส่ง</th><th>กำไรขั้นต้น</th><th>Margin %</th></tr>
+        <tr>
+          <th>เดือน</th>
+          <th class="amount">ยอดขาย</th>
+          <th class="amount">ต้นทุน</th>
+          <th class="amount">ค่าส่ง</th>
+          <th class="amount">กำไรขั้นต้น</th>
+          <th class="amount">GP %</th>
+        </tr>
       </thead>
       <tbody>
-        <tr><td>ม.ค. 69 · peak</td><td>฿1,017,696</td><td>฿277,015</td><td>฿113,585</td><td>฿627,096</td><td>61.6%</td></tr>
-        <tr><td>ก.พ. 69</td><td>฿867,332</td><td>฿249,970</td><td>฿115,438</td><td>฿501,953</td><td>57.9%</td></tr>
-        <tr><td>มี.ค. 69</td><td>฿894,591</td><td>฿258,994</td><td>฿111,587</td><td>฿524,010</td><td>58.6%</td></tr>
-        <tr class="highlight-row"><td>เม.ย. 69 · MTD 19 วัน</td><td>฿596,117</td><td>฿150,389</td><td>฿80,085</td><td>฿365,642</td><td>61.3%</td></tr>
-        <tr style="border-top:2px solid #C9A96E"><td><strong>YTD รวม</strong></td><td><strong>฿3,375,735</strong></td><td>฿936,368</td><td>฿420,695</td><td><strong>฿2,018,701</strong></td><td>59.8%</td></tr>
+        <tr><td>ม.ค. 69</td><td class="amount">1,017,696</td><td class="amount">277,015</td><td class="amount">113,585</td><td class="amount">627,096</td><td class="amount">61.6%</td></tr>
+        <tr><td>ก.พ. 69</td><td class="amount">871,810</td><td class="amount">251,170</td><td class="amount">115,842</td><td class="amount">504,827</td><td class="amount">57.9%</td></tr>
+        <tr><td>มี.ค. 69</td><td class="amount">894,591</td><td class="amount">258,994</td><td class="amount">111,587</td><td class="amount">524,010</td><td class="amount">58.6%</td></tr>
+        <tr class="current-row"><td>เม.ย. 69 (MTD)</td><td class="amount">645,455</td><td class="amount">162,004</td><td class="amount">87,068</td><td class="amount">396,383</td><td class="amount">61.4%</td></tr>
       </tbody>
     </table>
-    <p style="font-size:11px;color:#888;margin-top:10px">ข้อมูลจาก Shipnity · ทุกช่องทาง (Shopee, Lazada, TikTok, LINE@, website, หน้าร้าน) · cross-check ต้นทุนจริงก่อนตัดสินใจ</p>
   </div>
 </div>
 
 <!-- ANALYTICS FRAMEWORK -->
-<div id="framework" class="tab-panel">
+<div id="framework" class="panel">
   <div class="card">
-    <h3>🧠 กรอบคิด CEO ที่ใช้อ่าน dashboard นี้</h3>
+    <div class="section-title">🧠 CEO Analytics Framework</div>
+    <p style="font-size: 13px; color: #555; margin-bottom: 16px;">Framework สำหรับมองธุรกิจเป็น system ไม่ใช่ just sales number</p>
+
     <div class="framework-item">
-      <div class="title">1 · Revenue Quality</div>
-      <div class="content">ไม่ใช่แค่ดูยอดรวม แต่ดู <strong>margin</strong>, <strong>ช่องทาง</strong>, และ <strong>ความสม่ำเสมอ</strong>. Kodangs margin 60% ถือว่าดี แต่ pace ลดจาก ม.ค. → กำลังถาม: เกิดจาก demand ลด หรือ effort ลด?</div>
+      <h4>1. Revenue Pace Framework — "เราโตพอไหม?"</h4>
+      <p>วัด pace ทุกวัน (MTD ÷ days elapsed × 30) เทียบกับ peak month. เม.ย. pace ~฿1M ตาม ม.ค. peak แต่ยังห่าง 4-6M target มาก. ต้องหา growth lever ใหม่</p>
     </div>
+
     <div class="framework-item">
-      <div class="title">2 · Growth Levers (2 แกน)</div>
-      <div class="content"><strong>แกน A · Scale เดิม:</strong> optimize Shopee/TikTok ads, conversion rate, retention. <strong>แกน B · ช่องทางใหม่:</strong> Flagship Song Wat, Wholesale US/Malaysia, TikTok Live. — แกน B คือตัวปิด gap ถึง 4M, แกน A ปิด gap ไปถึง 2M ได้</div>
+      <h4>2. Channel Mix Analysis — "revenue มาจากไหน?"</h4>
+      <p>ปัจจุบัน Shipnity รวมทุก channel (Shopee, Lazada, TikTok, LINE@, Facebook Live, website). ต้องแยกดู % แต่ละช่องทาง — เพื่อ invest ในช่องทางที่ ROI สูงสุด</p>
     </div>
+
     <div class="framework-item">
-      <div class="title">3 · Constraint Thinking</div>
-      <div class="content">ถามทุกสัปดาห์: bottleneck ตอนนี้คืออะไร? (1) Team capacity · (2) Product assortment · (3) Marketing reach · (4) Cash flow · แล้วโฟกัสที่ bottleneck เดียว ไม่ spread</div>
+      <h4>3. GP Margin Framework — "กำไรจริงเท่าไหร่?"</h4>
+      <p>GP margin ม.ค. 61.6% → ก.พ. 57.9% → มี.ค. 58.6% → เม.ย. 61.4%. Volatility เกิดจาก product mix + discount. ต้อง target GP ≥60% ตลอด — protect margin เวลา scale</p>
     </div>
+
     <div class="framework-item">
-      <div class="title">4 · Unit Economics</div>
-      <div class="content">Retail ~฿2,490 · Cost ~฿650 · Gross ฿1,840/ตัว. ที่ target ฿4M = ~1,625 ตัว/เดือน = 54 ตัว/วัน. วันนี้ทำ ~14 ตัว/วัน → ต้อง 4× volume หรือ raise AOV</div>
+      <h4>4. Unit Economics — "ขาย 1 ชิ้นกำไรเท่าไหร่?"</h4>
+      <p>Retail ~฿2,490 · Cost ~฿600-700. Gross contribution ~฿1,800/piece. MTD ประมาณ 359 pieces (700K ÷ 2,490 avg). ต้อง push volume 2-3× ถ้าจะถึง 4M target</p>
     </div>
+
     <div class="framework-item">
-      <div class="title">5 · Leading vs Lagging Indicators</div>
-      <div class="content"><strong>Lagging:</strong> ยอดขาย, profit, margin. <strong>Leading:</strong> TikTok views, IG reach, live viewership, wholesale samples ส่งไปกี่ลูกค้า, store traffic. — Noon อ่าน leading ทุกวัน, อ่าน lagging ทุกสัปดาห์</div>
+      <h4>5. Target Gap Framework — "เหลืออีกเท่าไหร่ถึงเป้า?"</h4>
+      <p>4M target = ขาด ฿3M/เดือน = ฿100K/วัน incremental. ต้องเพิ่ม order ~40 ชิ้น/วัน. Solution: flagship store + wholesale deal + TikTok live scale</p>
+    </div>
+
+    <div class="framework-item">
+      <h4>6. Risk & Diversification — "เสี่ยงตรงไหน?"</h4>
+      <p>Channel concentration risk: Shopee/TikTok fee ขึ้น (tech fee 5%) → margin drop. ต้อง diversify เข้า direct channels (website, LINE@, flagship) เพื่อ protect margin</p>
     </div>
   </div>
 </div>
 
 <!-- CEO STRATEGY -->
-<div id="strategy" class="tab-panel">
+<div id="strategy" class="panel">
   <div class="card">
-    <h3>🎯 สิ่งที่ Noon ควรทำในฐานะ CEO · This Week</h3>
+    <div class="section-title">🎯 CEO Strategy — Noon Focus</div>
+    <p style="font-size: 13px; color: #555; margin-bottom: 16px;">คำแนะนำระดับ CEO — สิ่งที่ Noon ควรทำ, มอง, หรือแก้ เพื่อ push ธุรกิจไปที่ ฿4-6M/เดือน</p>
 
-    <div class="rec-card red">
-      <div class="title">🚨 URGENT · ปิด Eye contract ให้จบวันจันทร์</div>
-      <div class="desc">
-        Task "Eye recheck with contract" ค้างมา 33 วัน + "prepare เอกสารแนบท้าย contract" ค้าง 34 วัน + "Create Invoice for shipping 1st round" stuck 34 วัน — <strong>ทั้ง 3 ตัวคือ US wholesale deal เดียวกัน</strong>. ถ้าไม่ปิดสัปดาห์นี้ จะกลายเป็น pattern ให้ partner รู้สึกว่าเราไม่ professional. <br><em>CEO action: block 2 ชม.เช้าวันจันทร์, call KDS US, revise contract, ส่ง invoice</em>
-      </div>
+    <div class="strategy">
+      <h4><span class="tag">Growth</span>Unlock ช่องทาง Wholesale ให้เร็วขึ้น</h4>
+      <p>Wholesale (US + Malaysia) คือ leverage สูงสุด — 1 deal = หลักแสน. ตอนนี้ "Create Invoice for shipping 1st round" ยัง stuck และ "Eye recheck contract" urgent. สอง tasks นี้คือ bottleneck ของ 4M target</p>
+      <ul>
+        <li>Block calendar 2 ชม. สัปดาห์นี้ — clear 3 urgent US contract tasks พร้อมกัน</li>
+        <li>Hire freelance lawyer ช่วย review contract (THAI LAWYER ยัง solo + stuck อยู่ที่ Noon)</li>
+        <li>Set deadline: Invoice ส่งภายใน 25 เม.ย. — ให้ Iris ได้รับสินค้าใน พ.ค.</li>
+      </ul>
     </div>
 
-    <div class="rec-card gold">
-      <div class="title">💰 Gap Closing Plan · ให้เห็นทางปิด 3M gap</div>
-      <div class="desc">
-        ที่ pace ปัจจุบัน (฿1M/เดือน) เรายังห่าง target ฿4M ถึง 3 เท่า. <strong>ไม่มีทางปิด gap ด้วยการ optimize ช่องทางเดิม</strong>. ต้องเลือก bet 1 ตัวใน Q2:
-        <ul style="margin:8px 0 0 20px;line-height:1.8">
-          <li><strong>Bet A · Flagship Song Wat</strong> → target เปิดกลาง Q2, ดัน offline ถึง ฿500K/เดือน</li>
-          <li><strong>Bet B · Wholesale US + Malaysia</strong> → ปิด Eye + หา 2 ลูกค้าใหม่ = ฿1-2M/เดือน</li>
-          <li><strong>Bet C · TikTok Live scale</strong> → จ้าง live seller เพิ่ม 2 คน, live 6 วัน/สัปดาห์, target ฿800K/เดือน</li>
-        </ul>
-        <em style="display:block;margin-top:8px">CEO action: อาทิตย์นี้ตัดสินใจว่า bet ไหนคือ priority แล้ว commit resource</em>
-      </div>
+    <div class="strategy">
+      <h4><span class="tag">Cash</span>Dead Stock → Cash Flow</h4>
+      <p>Urgent QA task: "สินค้าชิ้นไหนค้างสต๊อก" ยังไม่ได้แก้. มูลค่าสต็อก ฿8.7M — ถ้า 10% เป็น dead stock = ฿870K cash ติดอยู่. Push promo 30-40% off เฉพาะ SKU ค้างนาน</p>
+      <ul>
+        <li>ดึง list SKU ขายน้อยกว่า 5 ชิ้น/เดือน ใน 3 เดือนที่ผ่านมา</li>
+        <li>Flash sale 3-5 วัน เฉพาะ dead stock → clear ฿500K cash</li>
+        <li>ใช้ cash นั้น invest ใน top-seller restock + flagship launch</li>
+      </ul>
     </div>
 
-    <div class="rec-card">
-      <div class="title">🏪 Flagship Song Wat · unblock ด่วน</div>
-      <div class="desc">
-        มี URGENT tasks 3 ตัวค้างเกือบปี: <strong>CONCEPT ร้านและพร้อป</strong> (2A+Tantai), <strong>สติกเกอร์หน้าร้าน</strong> (Tantai), <strong>Signage</strong> (2A). ถ้า flagship คือ bet ของปี ต้อง escalate ให้มีคน own ทั้งหมดภายในสัปดาห์นี้ — อาจต้อง hire contractor ถ้า team in-house ไม่ push ออก
-      </div>
+    <div class="strategy">
+      <h4><span class="tag">Team</span>Designer + Marketing Hire Now</h4>
+      <p>"RECRUIT: designer + marketing modco" urgent แต่ยัง waiting for catch up. ทีมไม่ครบ = Noon กลายเป็น bottleneck. นี่คือ org scale issue</p>
+      <ul>
+        <li>กำหนด deadline หา 2 ตำแหน่งภายใน 2 สัปดาห์ — delegate recruiting ให้ Kanjana</li>
+        <li>Draft offer letter ก่อน สำหรับ speed — เจอ candidate ที่ใช่ปิดใน 48 ชม.</li>
+        <li>Marketing role = priority #1 เพราะ growth ต้องการ content + paid ads</li>
+      </ul>
     </div>
 
-    <div class="rec-card">
-      <div class="title">📦 Carter Pants สีดำ · ใครดูแล?</div>
-      <div class="desc">
-        Task "Carter Pants สีดำ" อยู่ in progress แต่<strong>ไม่มี assignee</strong>. Product launch ค้างในระบบแบบนี้ = ยอดขายหาย. CEO action: 10 นาทีวันจันทร์ ไล่หา owner, ถ้าไม่มี — ตัดสินใจ kill หรือ relaunch
-      </div>
+    <div class="strategy">
+      <h4><span class="tag">Margin</span>Defend Margin จาก Marketplace Fees</h4>
+      <p>Shopee tech fee 5% ขึ้น ก.พ. 69 + commission 2-6% = margin hit ~7-8%. ถ้าขายบน Shopee เยอะ GP จะ drop ต่อเนื่อง. ต้อง push traffic เข้า direct channels</p>
+      <ul>
+        <li>LINE@ broadcast (overdue 4 ครั้ง/เดือน ยังไม่ได้ทำ) — retention channel, 0 fee</li>
+        <li>Website: discount 5% if shop direct vs marketplace</li>
+        <li>Flagship Song Wat: offline = 0 platform fee + brand experience</li>
+      </ul>
     </div>
 
-    <div class="rec-card">
-      <div class="title">📢 Kunyakorn · Line broadcast ค้าง 23 วัน</div>
-      <div class="desc">
-        Line broadcast เป็น recurring task เดือนละ 4 ครั้ง แต่ของเดือน มี.ค. ยังไม่เสร็จ. นี่คือ leading indicator ของ marketing discipline — ถ้า recurring basic หลุด แปลว่า system ไม่ work. CEO action: ถามหา root cause (capacity? priority? unclear ownership?)
-      </div>
+    <div class="strategy">
+      <h4><span class="tag">Brand</span>Ride "Quiet Luxury" + "City-to-Trail" Trend</h4>
+      <p>2026 trend report แล้ว Kodangs positioning (minimal workwear × streetwear) ตรงกับตลาด. ควรใช้ insight นี้ใน content + product launch ทันที</p>
+      <ul>
+        <li>Content angle: "understated detail" — push video slow, editorial, ไม่ loud</li>
+        <li>Next drop: pitch "city-to-trail" — utility workwear ที่ใส่เข้าเมืองได้</li>
+        <li>Fabric upgrade: tee เพิ่มเป็น 240-260 GSM ขาย premium tier (+30% price)</li>
+      </ul>
     </div>
 
-    <div class="rec-card gold">
-      <div class="title">🔍 สิ่งที่ต้องมอง (ต้นสัปดาห์นี้)</div>
-      <div class="desc">
-        <strong>1. เช็ค dead stock:</strong> task "QA สินค้าค้างสต๊อก" ค้างตั้งแต่ ม.ค. — มูลค่าสต๊อก ฿8.73M ถ้ามี dead stock 10% = cash ติด ฿870K<br>
-        <strong>2. เช็ค margin drop:</strong> margin ก.พ.-มี.ค. ต่ำกว่า ม.ค. 3-4% — เกิดจาก promotion? ค่าส่ง? supplier? ต้องหา root cause<br>
-        <strong>3. INTERN 2026 project:</strong> ค้างมา 20 วัน — ถ้า intern pipeline ไม่ขยับ Q3 จะขาดคน
-      </div>
+    <div class="strategy">
+      <h4><span class="tag">Flagship</span>Song Wat Store — Launch Readiness</h4>
+      <p>Store-related tasks (signage, concept, props, poster) ยัง urgent/to-do มา 6+ เดือน. Flagship = brand moment + revenue channel ใหม่. Momentum กำลังหายไป</p>
+      <ul>
+        <li>Set hard launch date (60 วันจากวันนี้) — ไม่มี launch date ก็ไม่มี urgency</li>
+        <li>แต่งคน 1 คน own flagship project end-to-end (Kanjana หรือ hire ใหม่)</li>
+        <li>PR push: เชิญ media + influencer วันเปิด — ROI ระยะสั้น</li>
+      </ul>
     </div>
   </div>
 </div>
 
 <!-- MY TASKS -->
-<div id="mytasks" class="tab-panel">
+<div id="mytasks" class="panel">
   <div class="card">
-    <h3>🔴 Noon · งานที่ค้างอยู่</h3>
-    <div class="task-item">
-      <span class="status urgent">URGENT</span>
-      Eye recheck with contract again with more details
-      <div class="meta">กับ Kodangs US · ค้าง 33 วัน · due 17 มี.ค. · <strong>US wholesale deal blocker</strong></div>
-    </div>
-    <div class="task-item">
-      <span class="status stuck">STUCK</span>
-      Create Invoice for shipping 1st round
-      <div class="meta">Noon + Kodangs Manage + Kodangs US · ค้าง 34 วัน · due 16 มี.ค. · <strong>ไม่มี invoice = partner ไม่จ่าย</strong></div>
-    </div>
-    <div class="task-item">
-      <span class="status progress">IN PROGRESS</span>
-      prepare เอกสารแนบท้าย contract + details
-      <div class="meta">Noon (solo) · ค้าง 34 วัน · due 16 มี.ค. · คู่กับ Eye contract</div>
-    </div>
-    <div class="task-item">
-      <span class="status progress">IN PROGRESS</span>
-      PROJECT : INTERN 2026
-      <div class="meta">Noon + Kanjana + Tantai · ค้าง 20 วัน · due 30 มี.ค. · ต้องมี pipeline ก่อน Q3</div>
-    </div>
-    <div class="task-item">
-      <span class="status todo">TO DO</span>
-      Project coffee - USA
-      <div class="meta">Noon + Kanjana + Panpornpach + Kodangs US · ค้าง 29 วัน · due 21 มี.ค.</div>
-    </div>
-    <div class="task-item">
-      <span class="status todo">TO DO</span>
-      LOGO register at USA
-      <div class="meta">Noon (solo) · blocker สำหรับ trademark protection ใน US</div>
-    </div>
-    <div class="task-item">
-      <span class="status progress">IN PROGRESS</span>
-      THAI LAWYER
-      <div class="meta">Noon (solo) · กฎหมายทั่วไป · ถ้าเกี่ยวกับ US contracts ควร speed up</div>
-    </div>
+    <div class="section-title">🔴 ต้องการ Noon — Today</div>
+    <div class="task"><span class="status-badge status-stuck">Stuck</span>Create Invoice for shipping 1st round<div class="task-meta">List · Noon + Kodangs US + Kodangs Manage · 27 วันแล้ว · US wholesale bottleneck</div></div>
+    <div class="task"><span class="status-badge status-urgent">Urgent</span>QA: สินค้าชิ้นไหนค้างสต๊อกเยอะ — ทำโปรโมชั่นด่วน<div class="task-meta">📦ห้อง STOCK · Noon + Kanjana · cash flow issue</div></div>
+    <div class="task"><span class="status-badge status-urgent">Urgent</span>Eye recheck contract (USA) - more details<div class="task-meta">List · Noon + Kodangs US · blocking US expansion</div></div>
+    <div class="task"><span class="status-badge status-urgent">Urgent</span>RECRUIT: designer + marketing modco<div class="task-meta">Back End · Noon + Kanjana · org scaling</div></div>
+    <div class="task"><span class="status-badge status-solo">Solo</span>THAI LAWYER<div class="task-meta">List · Noon only · legal review for contracts</div></div>
+    <div class="task"><span class="status-badge status-solo">Solo</span>LOGO register at USA<div class="task-meta">List · Noon only · IP protection</div></div>
+    <div class="task"><span class="status-badge status-solo">Solo</span>prepare เอกสารแนบท้าย contract + details<div class="task-meta">List · Noon only · wholesale deal</div></div>
+    <div class="task"><span class="status-badge status-solo">Solo</span>pattern การทำ wholesale with client<div class="task-meta">Back End · Noon only · process standardization</div></div>
   </div>
 </div>
 
 <!-- TEAM OVERDUE -->
-<div id="team" class="tab-panel">
+<div id="team" class="panel">
   <div class="card">
-    <h3>👥 Team · งานค้างที่ Noon ไม่ได้ถือ</h3>
-    <div class="task-item">
-      <strong>Kunyakorn Sintawichai</strong> → line broadcast เดือนละ 4 ครั้ง
-      <div class="meta">ค้าง 23 วัน · due 27 มี.ค. · recurring basic marketing</div>
-    </div>
-    <div class="task-item">
-      <strong>⚠️ ไม่มีคนดูแล</strong> → Carter Pants สีดำ (in progress)
-      <div class="meta">ค้าง 50 วัน · due 28 ก.พ. · product launch ไม่มี owner — ต้อง assign ด่วน</div>
-    </div>
-    <div class="task-item">
-      <strong>Kunyakorn</strong> → ฝาก email marketing carter nd restock item <span class="status urgent" style="margin-left:6px">URGENT</span>
-      <div class="meta">in progress · ค้างมากกว่า 6 เดือน</div>
-    </div>
-    <div class="task-item">
-      <strong>Tantai</strong> → สติกเกอร์ติดหน้าร้าน <span class="status urgent" style="margin-left:6px">URGENT</span>
-      <div class="meta">Flagship Song Wat blocker · ค้างนาน</div>
-    </div>
-    <div class="task-item">
-      <strong>2A + Tantai</strong> → CONCEPT ของร้านและพร้อป <span class="status urgent" style="margin-left:6px">URGENT</span>
-      <div class="meta">Flagship blocker — ถ้าไม่ unblock, store เปิดไม่ได้</div>
-    </div>
-    <div class="task-item">
-      <strong>2A Perspective</strong> → Signage ผลิตป้ายต่างๆ <span class="status urgent" style="margin-left:6px">URGENT</span>
-      <div class="meta">Flagship blocker · ค้างตั้งแต่ Q4 ปีก่อน</div>
-    </div>
-    <div class="task-item">
-      <strong>FRONT + Kanjana</strong> → ฝากติดตามงาน Back End <span class="status urgent" style="margin-left:6px">URGENT</span>
-      <div class="meta">ไม่ชัดเจน ownership · ค้างตั้งแต่ Q4</div>
-    </div>
-    <div class="task-item">
-      <strong>Panpornpach</strong> → steps to do <span class="status urgent" style="margin-left:6px">URGENT</span>
-      <div class="meta">ค้างตั้งแต่ พ.ค. 2568 — ควรพิจารณา kill ถ้ายัง relevant</div>
-    </div>
+    <div class="section-title">👥 Team Overdue — ต้องติดตาม</div>
+    <div class="task"><strong>Kunyakorn</strong> → line broadcast เดือนละ 4 ครั้ง<div class="task-meta">16 วันแล้ว · ช่องทาง retention ฟรี กำลังโดนเสีย</div></div>
+    <div class="task"><strong>2A Perspective</strong> → collection plan: ขาดสินค้าผู้หญิง วัยรุ่น ราคาดี<div class="task-meta">113 วันแล้ว · growth opportunity missing</div></div>
+    <div class="task"><strong>Tantai</strong> → แทนไท clip by AI (kodangsหลัก)<div class="task-meta">166 วันแล้ว · content backlog</div></div>
+    <div class="task"><strong>Pachaya</strong> → Facebook ads bill<div class="task-meta">113 วันแล้ว · Finance overdue</div></div>
+    <div class="task"><strong>Kanjana</strong> → TikTok คะแนน 3.7 อยากอัพ 4.5<div class="task-meta">ยังค้าง · กระทบ algorithm + ยอดขาย TikTok</div></div>
+    <div class="task"><strong>2A Perspective + Tantai</strong> → STORE EXPERIENCE UPGRADE (signage, concept, poster)<div class="task-meta">Flagship ready delay · urgent 5 tasks stacking</div></div>
+    <div class="note" style="margin-top:16px;">💡 Pattern: งาน content + flagship ค้างเยอะ — อาจจะเป็น signal ว่าต้อง restructure ownership หรือ hire marketing ที่เร็วกว่านี้</div>
   </div>
 </div>
 
 <!-- NEWS -->
-<div id="news" class="tab-panel">
+<div id="news" class="panel">
   <div class="card">
-    <h3>🌍 News &amp; Trends · สำหรับ CEO decision-making</h3>
+    <div class="section-title">🌍 News & Market Trends</div>
 
     <div class="news-item">
-      <div class="topic">🎯 TikTok Shop Thailand · Run Freshtival @ CentralWorld</div>
-      TikTok Shop จัดงานใหญ่ ดึง 5,000+ คน, Bangkok governor เป็น guest of honor. Campaign <strong>#TikTokShopThaiRisers</strong> คัด 50 brands Thai เข้า program (MC Jeans เป็นหนึ่งใน). <em>Implication: Kodangs ควร apply เข้า program รอบถัดไป — marketing boost ฟรี</em>.<br>
-      <a href="https://www.thaipr.net/en/life_en/3700062" target="_blank">อ่านเพิ่มเติม → ThaiPR.NET</a>
+      🏷️ <a href="https://digitalinasia.com/2026/04/19/shopee-lazada-tiktok-shop-fees-2026/" target="_blank">Shopee Thailand ขึ้น Technical Support Fee เป็น 5% (มีผล ก.พ. 69)</a>
+      <div class="news-desc">ทุก seller ที่ขายใน Shopee โดนหมด รวมทั้ง cross-border, warehouse. Plus commission 2-6% + transaction fee 2.18%. ทำให้ margin ลดลง ~7-8% — ต้อง shift traffic เข้า direct channels</div>
     </div>
 
     <div class="news-item">
-      <div class="topic">👕 Streetwear 2026 · Oversized + High-GSM กลับมา</div>
-      Slim fit ตาย, 90s nostalgia + skater aesthetic คือ direction หลัก. T-shirts: 150 GSM → 240-300 GSM. Hoodies: ≥450 GSM. Carhartt-style workwear × streetwear คือ sweet spot. <em>Implication: assortment Q3 ควรมี heavyweight staples ไม่ใช่ basic 180gsm tee</em>.<br>
-      <a href="https://stealdeal.com/blogs/news/how-streetwear-is-evolving-in-2026-top-wholesale-trends-retailers-should-watch" target="_blank">อ่านเพิ่มเติม → Steal Deal Wholesale Trends</a>
+      ✨ <a href="https://stealdeal.com/blogs/news/how-streetwear-is-evolving-in-2026-top-wholesale-trends-retailers-should-watch" target="_blank">"Quiet Luxury" ครองปี 2026 — understated &gt; loud graphics</a>
+      <div class="news-desc">Buyers หันจาก loud oversized graphics มาหา understated elegance. Kodangs positioning (minimal, detail-driven) ตรงกับ direction นี้ — push content angle editorial, ไม่ loud</div>
     </div>
 
     <div class="news-item">
-      <div class="topic">🤫 Quiet Luxury · ขาขึ้นใน B2B wholesale</div>
-      Wholesale buyers 2026 หนีจาก loud graphics → ต้องการ understated elegance, sustainable materials, high-quality basics. <em>Implication: Kodangs positioning (minimal, editorial, detail-driven) ตรง trend — US pitch ควรเน้นจุดนี้มากกว่า graphic-heavy collection</em>.<br>
-      <a href="https://theapparelfactory.com/blog/2026-wholesale-apparel-trends-top-10-insights-for-buyers/" target="_blank">อ่านเพิ่มเติม → The Apparel Factory 2026 Trends</a>
+      🧵 <a href="https://theapparelfactory.com/blog/2026-wholesale-apparel-trends-top-10-insights-for-buyers/" target="_blank">High-GSM Fabrics เป็นที่ต้องการ — tees 240-300 GSM, hoodies 450+ GSM</a>
+      <div class="news-desc">ผู้บริโภคต้องการผ้าหนาขึ้น รู้สึก "substantial" มากขึ้น. Opportunity: Kodangs สามารถออก premium line ด้วยผ้า high-GSM ขายราคาสูงกว่าเดิม 30%</div>
     </div>
 
     <div class="news-item">
-      <div class="topic">🛍 Thai Consumer Path-to-Purchase</div>
-      Journey: <strong>TikTok discover → LINE chat → Shopee compare → physical validate → IG reinforce</strong>. ทุก touchpoint สำคัญ. <em>Implication: การ drop IG content คุณภาพต่ำ = จุดอ่อนที่ทำ conversion ตก แม้ TikTok จะ hot</em>.<br>
-      <a href="https://iconicthai.com/thailand-trends/" target="_blank">อ่านเพิ่มเติม → Iconic Thai Consumer Trends</a>
+      🔧 <a href="https://www.complex.com/style/a/mike-destefano/10-fashion-trends-we-think-will-run-streetwear-2026" target="_blank">"City-to-Trail" — Workwear × Outdoor กลับมา</a>
+      <div class="news-desc">Menswear รวม workwear + outdoor: work jackets, technical blousons, suit pants, tailored shorts. Kodangs DNA ตรงเลย — จะ leverage trend นี้ใน collection ถัดไปได้</div>
     </div>
 
     <div class="news-item">
-      <div class="topic">🧵 Techwear &amp; Utility · Fusion คือ future</div>
-      Detachable pockets, magnetic closures, temperature-adaptive fabric. "City-to-trail" cross-over กำลังมา. <em>Implication: collection ถัดไปลองเพิ่ม utility details ที่ใช้จริง (ไม่ใช่แค่ design) — เข้ากับ brand Kodangs พอดี</em>.<br>
-      <a href="https://www.complex.com/style/a/mike-destefano/10-fashion-trends-we-think-will-run-streetwear-2026" target="_blank">อ่านเพิ่มเติม → Complex Streetwear Trends 2026</a>
+      🎨 <a href="https://www.globalsources.com/knowledge/2024-fashion-trends-streetwear/" target="_blank">Spice Tones: Cinnamon, Chili, Paprika, Saffron, Mustard</a>
+      <div class="news-desc">Palette ปี 2026 รวยขึ้น, อบอุ่นขึ้น — ไม่ใช่แค่สีเอิร์ธทั่วไป. เหมาะกับ next drop ของ Kodangs โดยเฉพาะชุด workwear ที่ใช้สีเข้มแบบนี้จะขายดี</div>
+    </div>
+
+    <div class="news-item">
+      📱 <a href="https://www.tiktok.com/discover/local-thai-brands-street-wear" target="_blank">Thai Streetwear Scene บน TikTok Shop กำลัง Active</a>
+      <div class="news-desc">Matter Makers, Aimer, Freak Store, Kem2Hand เป็น local brand ที่ขายดี. ELLE Fashion Fever ICONSIAM (มี.ค.) รวม 30+ Thai brands. Kodangs ต้อง push TikTok presence ให้แรงกว่านี้</div>
     </div>
   </div>
 </div>
 
-<div class="footer">
-  Kodangs · CEO Dashboard · Generated 19 Apr 2026<br>
-  <div class="link-nav"><a href="index.html">← กลับไป Morning Brief</a></div>
+<div class="footer">ทำวันนี้ให้ดี. 🤍</div>
+
 </div>
 
 <script>
-function switchTab(e,id){
-  document.querySelectorAll('.tab-panel').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));
+function showPanel(e, id) {
+  document.querySelectorAll('.panel').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.main-tab').forEach(el => el.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   e.target.classList.add('active');
 }
 </script>
-
 </body>
 </html>
