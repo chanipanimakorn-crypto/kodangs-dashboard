@@ -3,163 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morning Brief · 23 เมษายน 2569</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Morning Brief · 24 เม.ย. 2569</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',sans-serif;background:#fafafa;color:#1a1a1a;line-height:1.6;padding:24px;max-width:960px;margin:0 auto}
-  .header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid #eee}
-  .header h1{font-size:28px;font-weight:600;letter-spacing:-0.5px}
-  .header .date{color:#666;font-size:14px;margin-top:4px}
-  .card{background:#fff;border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border:1px solid #f0f0f0}
-  .card-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-  .metric{font-size:32px;font-weight:700;letter-spacing:-1px;color:#1a1a1a}
-  .metric-sub{font-size:13px;color:#666;margin-top:4px}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-  @media(max-width:640px){.row{grid-template-columns:1fr}}
-  .tabs{display:flex;gap:4px;margin-bottom:16px;border-bottom:1px solid #eee;padding-bottom:0}
-  .tab{padding:8px 16px;border:none;background:#f0f0f0;border-radius:8px 8px 0 0;cursor:pointer;font-size:13px;font-weight:500;font-family:inherit;color:#666}
-  .tab.active{background:#C9A96E;color:white}
-  .tab-content{display:none}
-  .tab-content.active{display:block}
-  .pace-bar{height:8px;background:#f0f0f0;border-radius:4px;overflow:hidden;margin-top:12px}
-  .pace-fill{height:100%;background:linear-gradient(90deg,#C9A96E,#b8945a);border-radius:4px}
-  table{width:100%;border-collapse:collapse;font-size:13px}
-  table th{text-align:left;padding:10px 8px;border-bottom:2px solid #eee;color:#666;font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:0.5px}
-  table td{padding:10px 8px;border-bottom:1px solid #f5f5f5}
-  table tr.current-month{background:#fef9f0;font-weight:600}
-  .task-item{padding:12px 0;border-bottom:1px solid #f5f5f5;display:flex;flex-direction:column;gap:4px}
-  .task-item:last-child{border-bottom:none}
-  .task-status{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-right:8px}
-  .status-stuck{background:#fee;color:#c33}
-  .status-urgent{background:#fec;color:#d80}
-  .status-progress{background:#e8f4fd;color:#06c}
-  .status-todo{background:#f0f0f0;color:#666}
-  .task-meta{font-size:12px;color:#999}
-  .news-item{padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:14px}
-  .news-item:last-child{border-bottom:none}
-  .footer{text-align:center;color:#999;font-size:13px;padding:32px 0 16px;font-style:italic}
-  .empty{color:#999;font-style:italic;padding:8px 0}
-  .note{font-size:11px;color:#999;margin-top:8px;font-style:italic}
-  .green{color:#0a8}
-  .yellow{color:#d80}
-  .red{color:#c33}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:#fafafa;color:#1a1a1a;line-height:1.6;padding:24px;max-width:900px;margin:0 auto}
+.header{margin-bottom:32px}
+.header h1{font-size:28px;font-weight:700;margin-bottom:4px}
+.header .date{color:#666;font-size:14px}
+.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.06)}
+.card h2{font-size:16px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.grid-full{grid-column:1/-1}
+.metric{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0f0f0;font-size:14px}
+.metric:last-child{border-bottom:none}
+.metric .label{color:#666}
+.metric .value{font-weight:600}
+.pace-bar{margin-top:12px;background:#f0f0f0;height:8px;border-radius:4px;overflow:hidden}
+.pace-fill{height:100%;background:linear-gradient(90deg,#C9A96E,#b8945a);transition:width 0.3s}
+.pace-label{font-size:12px;color:#666;margin-top:6px;display:flex;justify-content:space-between}
+.tabs{display:flex;gap:2px;margin-bottom:16px;border-bottom:2px solid #f0f0f0}
+.tab{padding:8px 16px;border:none;background:transparent;border-radius:8px 8px 0 0;cursor:pointer;font-size:13px;font-weight:500;font-family:inherit;color:#666}
+.tab.active{background:#C9A96E;color:white}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.task-item{padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:13px}
+.task-item:last-child{border-bottom:none}
+.task-status{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;margin-right:8px;text-transform:uppercase;letter-spacing:0.5px}
+.status-urgent{background:#FEE2E2;color:#B91C1C}
+.status-stuck{background:#FEF3C7;color:#92400E}
+.status-progress{background:#DBEAFE;color:#1E40AF}
+.status-todo{background:#F3F4F6;color:#374151}
+.status-submitted{background:#E0E7FF;color:#3730A3}
+.task-meta{color:#999;font-size:11px;margin-top:3px}
+.calendar-event{padding:12px;background:#FDF8F0;border-left:3px solid #C9A96E;border-radius:6px;margin-bottom:10px}
+.event-time{font-weight:600;color:#8B6F3A;font-size:13px}
+.event-title{font-size:14px;margin-top:2px}
+.event-desc{font-size:12px;color:#666;margin-top:4px}
+.news-item{padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:13px}
+.news-item:last-child{border-bottom:none}
+.news-title{font-weight:500}
+.news-summary{color:#666;font-size:12px;margin-top:3px}
+.table{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}
+.table th,.table td{padding:8px 10px;text-align:right;border-bottom:1px solid #f0f0f0}
+.table th:first-child,.table td:first-child{text-align:left}
+.table th{color:#666;font-weight:500;background:#fafafa;font-size:11px}
+.table tr.current{background:#FDF8F0;font-weight:600}
+.footer{text-align:center;padding:32px 0;color:#999;font-size:13px}
+.note{font-size:11px;color:#999;margin-top:8px;font-style:italic}
+@media (max-width:600px){.grid{grid-template-columns:1fr}body{padding:16px}}
 </style>
 </head>
 <body>
 <div class="header">
-  <h1>Good morning, Noon. ☀️</h1>
-  <div class="date">วันพฤหัสบดีที่ 23 เมษายน 2569 · Thursday, April 23, 2026</div>
+<h1>Good morning, Noon ☀️</h1>
+<div class="date">วันศุกร์ที่ 24 เมษายน 2569 · Friday, April 24, 2026</div>
 </div>
 
 <div class="card">
-  <div class="card-title">📊 Sales</div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab(event,'overview')">Overview</button>
-    <button class="tab" onclick="switchTab(event,'detail')">Shipnity Detail</button>
-  </div>
-  <div id="overview" class="tab-content active">
-    <div class="row">
-      <div>
-        <div class="metric-sub">ยอดขายวันนี้</div>
-        <div class="metric">฿3,409</div>
-      </div>
-      <div>
-        <div class="metric-sub">ยอดขายเดือนนี้ · MTD (23 วัน)</div>
-        <div class="metric">฿746,437</div>
-      </div>
-    </div>
-    <div style="margin-top:16px">
-      <div class="metric-sub">Pace → คาดการณ์ทั้งเดือน: <b class="yellow">฿973,620</b> (vs target ฿2.5M 🟡)</div>
-      <div class="pace-bar"><div class="pace-fill" style="width:38.9%"></div></div>
-      <div class="note">38.9% ของเป้า ฿2.5M — ต้องเร่ง</div>
-    </div>
-  </div>
-  <div id="detail" class="tab-content">
-    <table>
-      <thead>
-        <tr><th>เดือน</th><th>ยอดขายรวม</th><th>ต้นทุน</th><th>ค่าส่ง</th><th>กำไรขั้นต้น</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>ม.ค. 2569</td><td>฿1,017,696</td><td>฿277,015</td><td>฿113,585</td><td><b class="green">฿627,096</b></td></tr>
-        <tr><td>ก.พ. 2569</td><td>฿871,810</td><td>฿251,170</td><td>฿115,842</td><td>฿504,827</td></tr>
-        <tr><td>มี.ค. 2569</td><td>฿894,591</td><td>฿258,994</td><td>฿111,587</td><td>฿524,010</td></tr>
-        <tr class="current-month"><td>เม.ย. 2569 (MTD)</td><td>฿705,108</td><td>฿176,400</td><td>฿90,809</td><td>฿437,899</td></tr>
-        <tr style="font-weight:600;background:#fafafa"><td>YTD รวม</td><td>฿3,489,204</td><td>฿963,578</td><td>฿431,823</td><td>฿2,093,832</td></tr>
-      </tbody>
-    </table>
-    <div class="note">ข้อมูลจาก Shipnity · รวมทุกช่องทาง (Shopee, Lazada, TikTok, LINE, IG, FB, หน้าร้าน) · cross-check กับต้นทุนจริง</div>
-  </div>
+<h2>📊 Sales</h2>
+<div class="tabs">
+<button class="tab active" onclick="switchTab(event,'overview')">Overview</button>
+<button class="tab" onclick="switchTab(event,'detail')">Shipnity Detail</button>
 </div>
 
-<div class="row">
-  <div class="card">
-    <div class="card-title">🔴 ClickUp · ต้องการ Noon</div>
-    <div class="task-item">
-      <div><span class="task-status status-stuck">Stuck</span>Create Invoice for shipping 1st round</div>
-      <div class="task-meta">Kodangs US · Noon + Kodangs Manage + Kodangs US</div>
-    </div>
-    <div class="task-item">
-      <div><span class="task-status status-urgent">Urgent</span>Eye recheck with contract again</div>
-      <div class="task-meta">Kodangs US · Noon + Kodangs US · in progress</div>
-    </div>
-    <div class="task-item">
-      <div><span class="task-status status-urgent">Urgent</span>QA: สงสัยว่ามีสินค้าค้างสต๊อกเยอะ</div>
-      <div class="task-meta">📦ห้องSTOCK · Kanjana + Noon</div>
-    </div>
-    <div class="task-item">
-      <div><span class="task-status status-progress">In Progress</span>THAI LAWYER</div>
-      <div class="task-meta">Kodangs US · Noon solo</div>
-    </div>
-    <div class="task-item">
-      <div><span class="task-status status-todo">To Do</span>LOGO register at USA</div>
-      <div class="task-meta">Kodangs US · Noon solo</div>
-    </div>
-  </div>
+<div id="overview" class="tab-content active">
+<div class="metric"><span class="label">ยอดขายวันนี้</span><span class="value">฿48,783</span></div>
+<div class="metric"><span class="label">เดือนนี้ MTD (24 วัน)</span><span class="value">฿905,361</span></div>
+<div class="metric"><span class="label">เฉลี่ยต่อวัน</span><span class="value">฿37,723</span></div>
+<div class="metric"><span class="label">Projection ทั้งเดือน (30 วัน)</span><span class="value">฿1,131,701</span></div>
+<div class="pace-bar"><div class="pace-fill" style="width:45.3%"></div></div>
+<div class="pace-label"><span>Pace vs ฿2.5M target</span><span>45% 🟡</span></div>
+<p class="note">Pace ดีกว่า ก.พ. และ มี.ค. — ใกล้เคียง ม.ค. (best month). ถ้ารักษา pace ได้ → เม.ย. จะเบียดขึ้นเป็น peed month ของปี</p>
+</div>
 
-  <div class="card">
-    <div class="card-title">👥 Team Overdue</div>
-    <div class="task-item">
-      <div><b>Kunyakorn</b> → line broadcast เดือนละ 4 ครั้ง</div>
-      <div class="task-meta">27 วันแล้ว · All Task</div>
-    </div>
-    <div class="task-item">
-      <div><b>unassigned</b> → Carter Pants สีดำ</div>
-      <div class="task-meta">58 วันแล้ว · Kodangs US List · in progress</div>
-    </div>
-    <div class="task-item">
-      <div><b>Kunyakorn</b> → line broadcast เดือนละ 4 ครั้ง</div>
-      <div class="task-meta">87 วันแล้ว · All Task</div>
-    </div>
-    <div class="task-item">
-      <div><b>Pachaya</b> → facebook ads bill</div>
-      <div class="task-meta">120 วันแล้ว · Finance</div>
-    </div>
-  </div>
+<div id="detail" class="tab-content">
+<table class="table">
+<thead>
+<tr><th>เดือน</th><th>ยอดขายรวม</th><th>ต้นทุน</th><th>ค่าส่ง</th><th>กำไรขั้นต้น</th></tr>
+</thead>
+<tbody>
+<tr><td>ม.ค. 69</td><td>฿1,020,186</td><td>฿277,615</td><td>฿113,585</td><td>฿628,986</td></tr>
+<tr><td>ก.พ. 69</td><td>฿871,810</td><td>฿251,170</td><td>฿115,842</td><td>฿504,827</td></tr>
+<tr><td>มี.ค. 69</td><td>฿897,771</td><td>฿259,944</td><td>฿111,587</td><td>฿526,240</td></tr>
+<tr class="current"><td>เม.ย. 69 (MTD)</td><td>฿726,526</td><td>฿182,430</td><td>฿91,715</td><td>฿452,381</td></tr>
+<tr><td><strong>YTD รวม</strong></td><td><strong>฿3,516,293</strong></td><td>฿971,158</td><td>฿432,729</td><td><strong>฿2,112,434</strong></td></tr>
+</tbody>
+</table>
+<p class="note">ข้อมูลจาก Shipnity (ทุกช่องทาง: Shopee, Lazada, TikTok, LINE, website ฯลฯ). ตัวเลข MTD ในตาราง (฿726K) ยังไม่รวมยอดของวันนี้ที่อัพเดทใน top panel (฿905K)</p>
+</div>
+</div>
+
+<div class="grid">
+<div class="card">
+<h2>🔴 ClickUp · ต้องการ Noon</h2>
+<div class="task-item">
+<span class="task-status status-submitted">Submitted · Urgent</span>
+<div>QA: สงสัยมีสินค้าค้างสต๊อกเยอะไหม อยากทำโปรโมชั่นด่วน</div>
+<div class="task-meta">Idea Backlog · Noon solo</div>
+</div>
+<div class="task-item">
+<span class="task-status status-urgent">Urgent · In Progress</span>
+<div>Eye recheck with contract again with more details</div>
+<div class="task-meta">List · Noon + Kodangs US</div>
+</div>
+<div class="task-item">
+<span class="task-status status-stuck">Stuck</span>
+<div>Create Invoice for shipping 1st round</div>
+<div class="task-meta">List · Noon + Kodangs Manage + US</div>
+</div>
+<div class="task-item">
+<span class="task-status status-progress">In Progress</span>
+<div>PROJECT: INTERN 2026 — today has 2 interviews!</div>
+<div class="task-meta">Back End · Noon + Kanjana + Tantai</div>
+</div>
+<div class="task-item">
+<span class="task-status status-todo">To Do</span>
+<div>LOGO register at USA</div>
+<div class="task-meta">List · Noon solo</div>
+</div>
 </div>
 
 <div class="card">
-  <div class="card-title">📅 Calendar · วันนี้</div>
-  <div class="empty">ไม่มี meeting — Deep Work Day ✨</div>
-  <div class="note">Suggest focus: เคลียร์ Invoice shipping 1st round (stuck) · ไล่เอกสาร Eye contract · เรียก Kanjana คุย QA ค้างสต๊อก</div>
+<h2>👥 Team Overdue</h2>
+<div class="task-item">
+<div><strong>Kunyakorn (Nine)</strong> → ฝาก email marketing carter + restock [URGENT]</div>
+<div class="task-meta">211 วันแล้ว</div>
+</div>
+<div class="task-item">
+<div><strong>Front</strong> → ฝากติดตามงานในหมวดนี้ [URGENT]</div>
+<div class="task-meta">204 วันแล้ว</div>
+</div>
+<div class="task-item">
+<div><strong>2A Perspective</strong> → Signage + CONCEPT ร้าน Song Wat [URGENT]</div>
+<div class="task-meta">204-206 วันแล้ว · flagship blocker</div>
+</div>
+<div class="task-item">
+<div><strong>Pachaya</strong> → facebook ads bill</div>
+<div class="task-meta">115 วันแล้ว · finance blocker</div>
+</div>
+</div>
 </div>
 
 <div class="card">
-  <div class="card-title">🌍 News & Trends</div>
-  <div class="news-item">🛒 Shopee + TikTok Shop ขึ้นค่าธรรมเนียมอีกรอบ — Shopee เพิ่ม 5% technical support fee + 2.18% transaction · TikTok Shop TH ปรับ fee ใหม่ → margin ช่องทางนี้โดนบีบ</div>
-  <div class="news-item">👕 Streetwear 2026 ไป "structured oversized" — t-shirt ขยับจาก 150 GSM → 240-300 GSM, hoodie 450+ GSM · boxy cropped fit · Kodangs ต้องเช็คน้ำหนักผ้าตัวใหม่</div>
-  <div class="news-item">🎨 "Quiet Luxury" ลงไปถึง wholesale — โลโก้เล็กลง, minimal branding กลับมา · match กับ Kodangs DNA (editorial, clean, detail-driven) — ชิงจังหวะได้</div>
-  <div class="news-item">🧥 Workwear × Streetwear hybrid ยังแรง — "city-to-trail" menswear, technical blousons, tailored shorts · ตรงกับ core ของ Kodangs พอดี</div>
+<h2>📅 Calendar · วันนี้</h2>
+<div class="calendar-event">
+<div class="event-time">14:00 – 14:30</div>
+<div class="event-title">Kodangs Interview — Jirapat (Product / UX Intern)</div>
+<div class="event-desc">จิรภัทร เพ็ชรรัตน์ · koonjj9@gmail.com · Google Meet</div>
+</div>
+<div class="calendar-event">
+<div class="event-time">15:00 – 15:30</div>
+<div class="event-title">Kodangs Interview — Panas (Creative Intern)</div>
+<div class="event-desc">Panas Pimchan · archpanas@gmail.com · Google Meet</div>
+</div>
+<p class="note">2 intern interviews ติดๆกัน — เตรียมคำถามไว้แล้วใช่ไหม? เช้าทั้งเช้าว่าง → Deep Work Day สำหรับสต๊อก/US project</p>
 </div>
 
-<div class="footer">ทำวันนี้ให้ดี. 🤍</div>
+<div class="card">
+<h2>🌍 News &amp; Trends</h2>
+<div class="news-item">
+<div class="news-title">🇹🇭 TikTok Shop แซง Lazada — 21% market share แล้ว</div>
+<div class="news-summary">Video-led shopping โตต่อเนื่อง. Live commerce เป็น growth engine ของแบรนด์ใหม่ในไทยปีนี้</div>
+</div>
+<div class="news-item">
+<div class="news-title">💰 Shopee ขึ้นค่า fee 5% ใหม่ (Feb 2026)</div>
+<div class="news-summary">Technical support fee เพิ่มเติมจาก commission เดิม — margin Kodangs บน Shopee อาจกระทบ ต้องคำนวณใหม่</div>
+</div>
+<div class="news-item">
+<div class="news-title">👕 Streetwear 2026: Oversized + City-to-Trail workwear hybrid</div>
+<div class="news-summary">Boxy silhouette, khaki palette, workwear × outdoor blending — ตรงกับ positioning Kodangs เป๊ะ</div>
+</div>
+<div class="news-item">
+<div class="news-title">📈 Sneaker market projected $102B by 2026 · resale $30B by 2030</div>
+<div class="news-summary">Resale + community-driven brands คือ moat ใหม่ — Kodangs มีชุมชนอยู่แล้ว ใช้ให้เต็มที่</div>
+</div>
+</div>
+
+<div class="footer">
+ทำวันนี้ให้ดี. 🤍<br>
+<a href="https://chanipanimakorn-crypto.github.io/kodangs-dashboard/analytics.html" style="color:#C9A96E">→ CEO Analytics Dashboard</a>
+</div>
 
 <script>
-function switchTab(e,id){
-  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active'));
+function switchTab(evt, id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  e.target.classList.add('active');
+  evt.currentTarget.classList.add('active');
 }
 </script>
 </body>
