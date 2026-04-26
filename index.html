@@ -1,381 +1,213 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Morning Brief · 25 เม.ย. 2569</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Brief · 26 เม.ย. 69</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #fafafa;
-    color: #1a1a1a;
-    line-height: 1.5;
-    padding: 24px 16px;
-  }
-  .container { max-width: 860px; margin: 0 auto; }
-  .header {
-    margin-bottom: 28px;
-  }
-  .header h1 {
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    margin-bottom: 4px;
-  }
-  .header .date {
-    font-size: 14px;
-    color: #777;
-    font-weight: 400;
-  }
-  .card {
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
-    margin-bottom: 16px;
-  }
-  .card-title {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #666;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
-
-  /* Tabs */
-  .tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 14px;
-    border-bottom: 1px solid #eee;
-  }
-  .tab {
-    padding: 8px 14px;
-    border: none;
-    background: transparent;
-    color: #666;
-    border-radius: 8px 8px 0 0;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 500;
-    font-family: inherit;
-    transition: all 0.15s;
-  }
-  .tab:hover { background: #f5f5f5; color: #1a1a1a; }
-  .tab.active { background: #C9A96E; color: white; }
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-
-  /* Sales */
-  .sales-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
-  .metric { flex: 1; min-width: 140px; }
-  .metric-label { font-size: 12px; color: #888; margin-bottom: 4px; }
-  .metric-value { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
-  .metric-sub { font-size: 11px; color: #999; margin-top: 2px; }
-  .pace-bar {
-    background: #f0f0f0;
-    height: 8px;
-    border-radius: 4px;
-    overflow: hidden;
-    margin: 12px 0 6px;
-  }
-  .pace-fill {
-    background: linear-gradient(90deg, #C9A96E, #b89356);
-    height: 100%;
-    transition: width 0.8s ease;
-  }
-  .pace-text { font-size: 12px; color: #666; }
-
-  /* Shipnity detail table */
-  .ship-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .ship-table th {
-    text-align: left;
-    font-weight: 500;
-    color: #666;
-    padding: 8px 6px;
-    border-bottom: 1px solid #eee;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  .ship-table td {
-    padding: 10px 6px;
-    border-bottom: 1px solid #f5f5f5;
-  }
-  .ship-table tr.current {
-    background: #fffbf2;
-    font-weight: 600;
-  }
-  .ship-table tr.current td:first-child { color: #C9A96E; }
-  .ship-table .num { text-align: right; font-variant-numeric: tabular-nums; }
-  .ytd-row { font-weight: 600; border-top: 2px solid #1a1a1a; }
-  .ship-note {
-    font-size: 11px;
-    color: #999;
-    margin-top: 10px;
-    font-style: italic;
-  }
-
-  /* Task rows */
-  .task {
-    display: flex;
-    gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px solid #f3f3f3;
-    font-size: 13px;
-    line-height: 1.4;
-  }
-  .task:last-child { border-bottom: none; }
-  .task-status {
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 3px 8px;
-    border-radius: 20px;
-    background: #f0f0f0;
-    color: #555;
-    flex-shrink: 0;
-    align-self: flex-start;
-    white-space: nowrap;
-  }
-  .task-status.urgent { background: #fee; color: #c33; }
-  .task-status.stuck { background: #fff3cd; color: #856404; }
-  .task-status.inprog { background: #e7f1ff; color: #0d6efd; }
-  .task-status.submitted { background: #e8f5e9; color: #2e7d32; }
-  .task-body { flex: 1; min-width: 0; }
-  .task-name {
-    color: #1a1a1a;
-    word-wrap: break-word;
-  }
-  .task-meta {
-    font-size: 11px;
-    color: #999;
-    margin-top: 2px;
-  }
-  .team-task {
-    padding: 9px 0;
-    border-bottom: 1px solid #f3f3f3;
-    font-size: 13px;
-  }
-  .team-task:last-child { border-bottom: none; }
-  .team-task .who {
-    font-weight: 600;
-    color: #1a1a1a;
-  }
-  .team-task .what {
-    color: #555;
-    margin-top: 2px;
-  }
-  .team-task .days {
-    font-size: 11px;
-    color: #c33;
-    margin-left: 6px;
-  }
-
-  /* Calendar */
-  .cal-event {
-    padding: 10px 12px;
-    background: #f8f5ee;
-    border-left: 3px solid #C9A96E;
-    border-radius: 6px;
-    margin-bottom: 8px;
-    font-size: 13px;
-  }
-  .cal-time { font-weight: 600; margin-right: 8px; }
-
-  /* News */
-  .news-item {
-    padding: 10px 0;
-    border-bottom: 1px solid #f3f3f3;
-    font-size: 13px;
-    line-height: 1.5;
-  }
-  .news-item:last-child { border-bottom: none; }
-
-  .footer {
-    text-align: center;
-    color: #999;
-    font-size: 13px;
-    margin-top: 28px;
-    padding: 20px 0;
-  }
-  .footer a {
-    color: #C9A96E;
-    text-decoration: none;
-    font-weight: 500;
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:#fafafa;color:#1a1a1a;line-height:1.5;padding:24px 16px;max-width:760px;margin:0 auto}
+.header{margin-bottom:28px}
+.header h1{font-size:28px;font-weight:600;letter-spacing:-0.5px;margin-bottom:6px}
+.header .date{font-size:13px;color:#666;font-weight:400}
+.card{background:white;border-radius:16px;padding:22px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 0 0 1px rgba(0,0,0,0.03)}
+.card-title{font-size:11px;font-weight:600;letter-spacing:1.2px;color:#888;text-transform:uppercase;margin-bottom:14px}
+.tabs{display:flex;gap:4px;margin-bottom:16px;border-bottom:1px solid #eee}
+.tab{padding:8px 16px;border:none;background:transparent;cursor:pointer;font-size:13px;font-weight:500;color:#888;border-bottom:2px solid transparent;font-family:inherit;transition:all 0.2s}
+.tab.active{color:#1a1a1a;border-bottom-color:#C9A96E}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.metric{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid #f3f3f3}
+.metric:last-child{border:none}
+.metric-label{font-size:13px;color:#666}
+.metric-value{font-size:18px;font-weight:600;letter-spacing:-0.3px}
+.big-number{font-size:32px;font-weight:700;letter-spacing:-1px;color:#1a1a1a;margin:8px 0 2px}
+.sub-label{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:1px}
+.pace-bar{margin-top:16px;background:#f3f3f3;border-radius:8px;height:8px;overflow:hidden}
+.pace-fill{height:100%;background:linear-gradient(90deg,#C9A96E,#d4b67a);transition:width 0.3s}
+.pace-text{font-size:12px;color:#666;margin-top:6px;display:flex;justify-content:space-between}
+table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+th{text-align:left;padding:8px 6px;font-weight:500;color:#888;border-bottom:1px solid #eee;font-size:11px;text-transform:uppercase;letter-spacing:0.5px}
+td{padding:8px 6px;border-bottom:1px solid #f5f5f5}
+tr.current{background:#fef9f0;font-weight:600}
+tr.total td{font-weight:600;border-top:2px solid #C9A96E;border-bottom:none}
+.task{padding:12px 0;border-bottom:1px solid #f5f5f5}
+.task:last-child{border:none}
+.task-status{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:0.5px;margin-right:8px}
+.s-stuck{background:#fee;color:#c44}
+.s-urgent{background:#fef1de;color:#b8801a}
+.s-progress{background:#e8f4ff;color:#2a6bb8}
+.s-todo{background:#f3f3f3;color:#666}
+.s-submitted{background:#fdf3f3;color:#a23b3b}
+.task-name{font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:2px}
+.task-meta{font-size:12px;color:#888}
+.team-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:13px}
+.team-row:last-child{border:none}
+.person{font-weight:500;color:#1a1a1a}
+.task-text{color:#666;flex:1;margin:0 12px;text-align:right}
+.days{color:#c44;font-weight:500;white-space:nowrap;font-size:12px}
+.calendar-empty{padding:18px 12px;background:#fef9f0;border-radius:10px;font-size:14px;color:#1a1a1a;text-align:center}
+.calendar-empty .em{color:#C9A96E;font-weight:600}
+.news-item{padding:12px 0;border-bottom:1px solid #f5f5f5;font-size:13px}
+.news-item:last-child{border:none}
+.news-item a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #ccc;transition:border-color 0.2s}
+.news-item a:hover{border-bottom-color:#C9A96E}
+.footer{text-align:center;color:#888;font-size:13px;margin-top:32px;padding-top:24px}
+.cta{display:inline-block;margin-top:14px;padding:10px 18px;background:#1a1a1a;color:white;border-radius:10px;text-decoration:none;font-size:13px;font-weight:500;transition:opacity 0.2s}
+.cta:hover{opacity:0.85}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.row{grid-template-columns:1fr}.big-number{font-size:26px}}
 </style>
 </head>
 <body>
-<div class="container">
+<div class="header">
+<h1>Good morning, Noon. ☀️</h1>
+<div class="date">วันอาทิตย์ที่ 26 เมษายน 2569 · Sun, Apr 26, 2026</div>
+</div>
 
-  <div class="header">
-    <h1>Good morning, Noon. ☀️</h1>
-    <div class="date">เสาร์ที่ 25 เมษายน 2569 · Saturday, April 25, 2026</div>
-  </div>
+<div class="card">
+<div class="card-title">📊 Sales</div>
+<div class="tabs">
+<button class="tab active" onclick="switchTab(event,'overview')">Overview</button>
+<button class="tab" onclick="switchTab(event,'detail')">Shipnity Detail</button>
+</div>
 
-  <!-- SALES (tabbed) -->
-  <div class="card">
-    <div class="card-title">📊 Sales</div>
-    <div class="tabs">
-      <button class="tab active" onclick="switchTab(event, 'overview')">Overview</button>
-      <button class="tab" onclick="switchTab(event, 'detail')">Shipnity Detail</button>
-    </div>
+<div id="overview" class="tab-content active">
+<div class="row">
+<div>
+<div class="sub-label">วันนี้</div>
+<div class="big-number">฿10,435</div>
+</div>
+<div>
+<div class="sub-label">เม.ย. MTD (26 วัน)</div>
+<div class="big-number">฿1.05M</div>
+</div>
+</div>
+<div class="pace-bar"><div class="pace-fill" style="width:48.3%"></div></div>
+<div class="pace-text"><span>คาดการณ์ทั้งเดือน · ฿1.21M</span><span>🟡 48% ของ ฿2.5M</span></div>
+<div style="margin-top:16px;padding:12px;background:#f9f7f0;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.6">
+✨ <strong>Apr พีคแล้ว</strong> — เลย ม.ค. (peak month) ไปแล้วใน 26 วัน +2.6%<br>
+GP margin 63.5% สูงกว่า Q1 average — สินค้าขายตรง ไม่ลดเยอะ
+</div>
+</div>
 
-    <div id="overview" class="tab-content active">
-      <div class="sales-row">
-        <div class="metric">
-          <div class="metric-label">ยอดขายวันนี้</div>
-          <div class="metric-value">฿28,589</div>
-          <div class="metric-sub">ทุกช่องทาง (Shipnity)</div>
-        </div>
-        <div class="metric">
-          <div class="metric-label">เดือนนี้ MTD (25 วัน)</div>
-          <div class="metric-value">฿988,521</div>
-          <div class="metric-sub">เฉลี่ย ฿39,541/วัน</div>
-        </div>
-        <div class="metric">
-          <div class="metric-label">คาดการณ์ทั้งเดือน</div>
-          <div class="metric-value">฿1.19M</div>
-          <div class="metric-sub">+16% vs ม.ค. peak</div>
-        </div>
-      </div>
-      <div class="pace-bar">
-        <div class="pace-fill" style="width: 47.4%;"></div>
-      </div>
-      <div class="pace-text">Pace vs ฿2.5M target: <strong>47%</strong> 🟡 · Gap to 4M = ฿2.81M/เดือน</div>
-    </div>
+<div id="detail" class="tab-content">
+<table>
+<thead>
+<tr><th>เดือน</th><th style="text-align:right">รวม</th><th style="text-align:right">ต้นทุน</th><th style="text-align:right">ค่าส่ง</th><th style="text-align:right">กำไรขั้นต้น</th></tr>
+</thead>
+<tbody>
+<tr><td>ม.ค.</td><td style="text-align:right">1,020,186</td><td style="text-align:right">277,615</td><td style="text-align:right">113,585</td><td style="text-align:right">628,986</td></tr>
+<tr><td>ก.พ.</td><td style="text-align:right">871,810</td><td style="text-align:right">251,170</td><td style="text-align:right">115,842</td><td style="text-align:right">504,827</td></tr>
+<tr><td>มี.ค.</td><td style="text-align:right">897,771</td><td style="text-align:right">259,944</td><td style="text-align:right">111,587</td><td style="text-align:right">526,240</td></tr>
+<tr class="current"><td>เม.ย. (MTD)</td><td style="text-align:right">990,254</td><td style="text-align:right">246,124</td><td style="text-align:right">115,488</td><td style="text-align:right">628,641</td></tr>
+<tr class="total"><td>YTD</td><td style="text-align:right">3,780,020</td><td style="text-align:right">1,034,853</td><td style="text-align:right">456,503</td><td style="text-align:right">2,288,694</td></tr>
+</tbody>
+</table>
+<div style="margin-top:12px;font-size:11px;color:#999">ข้อมูลจาก Shipnity (ทุกช่องทาง) — cross-check กับต้นทุนจริง</div>
+</div>
+</div>
 
-    <div id="detail" class="tab-content">
-      <table class="ship-table">
-        <thead>
-          <tr>
-            <th>เดือน</th>
-            <th class="num">ยอดขายรวม</th>
-            <th class="num">ต้นทุน</th>
-            <th class="num">ค่าส่ง</th>
-            <th class="num">กำไรขั้นต้น</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>ม.ค. 2569</td><td class="num">1,020,186</td><td class="num">277,615</td><td class="num">113,585</td><td class="num">628,986</td></tr>
-          <tr><td>ก.พ. 2569</td><td class="num">871,810</td><td class="num">251,170</td><td class="num">115,842</td><td class="num">504,827</td></tr>
-          <tr><td>มี.ค. 2569</td><td class="num">897,771</td><td class="num">259,944</td><td class="num">111,587</td><td class="num">526,240</td></tr>
-          <tr class="current"><td>เม.ย. 2569 (MTD)</td><td class="num">871,957</td><td class="num">217,270</td><td class="num">103,189</td><td class="num">551,498</td></tr>
-          <tr class="ytd-row"><td>YTD 2569</td><td class="num">3,661,724</td><td class="num">1,005,999</td><td class="num">444,203</td><td class="num">2,211,551</td></tr>
-        </tbody>
-      </table>
-      <div class="ship-note">ข้อมูลจาก Shipnity — cross-check กับต้นทุนจริง · ตัวเลขเดือนนี้อาจอัพเดตช้ากว่า widget</div>
-    </div>
-  </div>
+<div class="row">
+<div class="card">
+<div class="card-title">🔴 ClickUp · ต้องการ Noon</div>
 
-  <!-- ClickUp + Team -->
-  <div class="grid-2">
+<div class="task">
+<span class="task-status s-stuck">stuck</span>
+<div class="task-name" style="display:inline">Create Invoice for shipping 1st round</div>
+<div class="task-meta">List · Noon, Kodangs Manage, Kodangs US · 40 วันแล้ว</div>
+</div>
 
-    <div class="card">
-      <div class="card-title">🔴 ต้องการ Noon</div>
-      <div class="task">
-        <div class="task-status urgent">Urgent</div>
-        <div class="task-body">
-          <div class="task-name">Eye recheck with contract again with more details</div>
-          <div class="task-meta">List · In progress · Noon + Kodangs US</div>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-status stuck">Stuck</div>
-        <div class="task-body">
-          <div class="task-name">Create Invoice for shipping 1st round</div>
-          <div class="task-meta">List · Noon + Kodangs Manage + US</div>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-status urgent">Urgent</div>
-        <div class="task-body">
-          <div class="task-name">QA: สงสัยมีสินค้าค้างสต๊อกเยอะไหม — ทำโปรโมชั่นด่วน</div>
-          <div class="task-meta">Idea Backlog · Submitted · Noon</div>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-status inprog">Today</div>
-        <div class="task-body">
-          <div class="task-name">Prepare เอกสารแนบท้าย contract + details</div>
-          <div class="task-meta">List · In progress · Noon</div>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-status">To Do</div>
-        <div class="task-body">
-          <div class="task-name">Project coffee — USA</div>
-          <div class="task-meta">List · Noon + Kanjana + Pan + US</div>
-        </div>
-      </div>
-    </div>
+<div class="task">
+<span class="task-status s-urgent">urgent</span>
+<div class="task-name" style="display:inline">Eye recheck contract with more details</div>
+<div class="task-meta">List · Noon, Kodangs US · 39 วันแล้ว</div>
+</div>
 
-    <div class="card">
-      <div class="card-title">👥 Team Overdue</div>
-      <div class="team-task">
-        <div class="who">Pachaya <span class="days">245 วันแล้ว</span></div>
-        <div class="what">ส่งเอกสาร สัญญาความลับของโรงงาน</div>
-      </div>
-      <div class="team-task">
-        <div class="who">Kunyakorn <span class="days">212 วันแล้ว</span></div>
-        <div class="what">Email marketing Carter + restock</div>
-      </div>
-      <div class="team-task">
-        <div class="who">FRONT <span class="days">212 วันแล้ว</span></div>
-        <div class="what">อัพเดท project activity</div>
-      </div>
-      <div class="team-task">
-        <div class="who">Tantai <span class="days">205 วันแล้ว</span></div>
-        <div class="what">สติกเกอร์หน้าร้าน · โปสเตอร์ตกแต่ง store</div>
-      </div>
-      <div class="team-task">
-        <div class="who">2A Perspective <span class="days">205 วันแล้ว</span></div>
-        <div class="what">Signage ผลิตป้ายต่างๆ + CONCEPT ร้าน</div>
-      </div>
-    </div>
-  </div>
+<div class="task">
+<span class="task-status s-submitted">urgent</span>
+<div class="task-name" style="display:inline">QA: ค้างสต๊อก promotion ด่วน</div>
+<div class="task-meta">Idea Backlog · Noon · ค้างมา 6 เดือน</div>
+</div>
 
-  <!-- Calendar -->
-  <div class="card">
-    <div class="card-title">📅 Calendar — วันนี้</div>
-    <div class="cal-event">
-      <span class="cal-time">All day</span> Carter camo — back in stock 🌿
-      <div class="task-meta" style="margin-top:4px;">Kodangs calendar</div>
-    </div>
-    <div class="task-meta" style="margin-top:8px;">ไม่มี meeting อื่น — เสาร์นี้โฟกัสได้เต็มๆ ✨</div>
-  </div>
+<div class="task">
+<span class="task-status s-progress">in progress</span>
+<div class="task-name" style="display:inline">prepare เอกสารแนบท้าย contract + details</div>
+<div class="task-meta">List · Noon · 4 วันแล้ว</div>
+</div>
 
-  <!-- News -->
-  <div class="card">
-    <div class="card-title">🌍 News & Trends</div>
-    <div class="news-item">📈 <strong>TikTok Shop</strong> แซง Lazada ได้แล้วที่ไทย (21% market share) — in-app buys ตอน live โตแรง</div>
-    <div class="news-item">⚠️ <strong>Shopee</strong> เพิ่ม technical support fee 5% ตั้งแต่ ก.พ. 2026 (TH/MY/SG/VN) — ต้องคำนวณ margin ใหม่</div>
-    <div class="news-item">🎯 <strong>Streetwear 2026</strong>: khaki comeback · bright camo กลับมา · workwear × outdoor hybrid · techwear พุ่ง — ตรงกับ Kodangs DNA</div>
-    <div class="news-item">🛍️ <strong>YouTube × Shopee</strong> partnership ในไทย — video-led shopping กำลังมา</div>
-  </div>
+<div class="task">
+<span class="task-status s-progress">in progress</span>
+<div class="task-name" style="display:inline">THAI LAWYER</div>
+<div class="task-meta">List · Noon · ค้างนาน</div>
+</div>
+</div>
 
-  <div class="footer">
-    ทำวันนี้ให้ดี. 🤍<br>
-    <a href="https://chanipanimakorn-crypto.github.io/kodangs-dashboard/analytics.html">→ CEO Analytics Dashboard</a>
-  </div>
+<div class="card">
+<div class="card-title">👥 Team Overdue</div>
+
+<div class="team-row">
+<span class="person">Kunyakorn</span>
+<span class="task-text">เติม size chart ทุกสินค้า</span>
+<span class="days">~520 วัน</span>
+</div>
+
+<div class="team-row">
+<span class="person">FRONT</span>
+<span class="task-text">ฝากติดตามงานในหมวดนี้</span>
+<span class="days">~205 วัน</span>
+</div>
+
+<div class="team-row">
+<span class="person">Tantai</span>
+<span class="task-text">สติกเกอร์ + โปสเตอร์หน้าร้าน</span>
+<span class="days">~205 วัน</span>
+</div>
+
+<div class="team-row">
+<span class="person">2A Persp.</span>
+<span class="task-text">Signage ป้าย / CONCEPT ร้าน</span>
+<span class="days">~205 วัน</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">📅 Calendar</div>
+<div class="calendar-empty">
+ไม่มี meeting วันนี้ — <span class="em">Deep Work Day</span> ✨<br>
+<span style="font-size:12px;color:#888;margin-top:6px;display:inline-block">Focus: เคลียร์ invoice shipping + contract details (กำลัง stuck/urgent)</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">🌍 News & Trends</div>
+
+<div class="news-item">
+🛍 <a href="https://www.globenewswire.com/news-release/2026/04/22/3279212/28124/en/Thailand-Social-Commerce-Market-Databook-Q1-2026-Update-Video-Led-Shopping-Revolutionizes-Social-Commerce-in-Thailand-with-YouTube-and-Shopee-Partnership.html" target="_blank">TikTok Shop ขึ้น 21% market share — แซง Lazada แล้วในไทย</a>
+</div>
+
+<div class="news-item">
+🧥 <a href="https://stealdeal.com/blogs/news/how-streetwear-is-evolving-in-2026-top-wholesale-trends-retailers-should-watch" target="_blank">Streetwear 2026: heavy GSM (240-300g tee, 450+g hoodie), boxy fit, quiet luxury</a>
+</div>
+
+<div class="news-item">
+👖 <a href="https://www.apetogentleman.com/best-mens-workwear-pieces/" target="_blank">Workwear hybrid trend — city-to-trail aesthetic กำลังมา (ตรง Kodangs DNA)</a>
+</div>
+</div>
+
+<div class="footer">
+<a href="https://chanipanimakorn-crypto.github.io/kodangs-dashboard/analytics.html" class="cta">📊 เปิด CEO Dashboard</a>
+<div style="margin-top:24px">ทำวันนี้ให้ดี. 🤍</div>
 </div>
 
 <script>
-function switchTab(evt, id) {
-  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+function switchTab(e,id){
+  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  evt.currentTarget.classList.add('active');
+  e.target.classList.add('active');
 }
 </script>
 </body>
